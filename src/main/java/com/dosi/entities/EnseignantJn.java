@@ -10,7 +10,6 @@ import java.time.LocalDate;
 
 @Getter
 @Setter
-@Entity
 @Table(name = "ENSEIGNANT_JN")
 public class EnseignantJn {
     @Column(name = "JN_OPERATION", nullable = false, length = 3)

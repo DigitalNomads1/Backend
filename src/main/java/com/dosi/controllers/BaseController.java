@@ -3,11 +3,19 @@ package com.dosi.controllers;
 import com.dosi.services.BaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
 @RestController
 public class BaseController<T> {
 
     @Autowired
     private BaseService<T> service;
+
+    @GetMapping
+    public List<T> getAll() {
+        return service.findAll();
+    }
 
     @PostMapping("/")
     public T create(@RequestBody T entity) {

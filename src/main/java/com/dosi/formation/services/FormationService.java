@@ -1,8 +1,11 @@
 package com.dosi.formation.services;
 
-import com.dosi.formation.entities.Formation;
+import com.dosi.entities.Formation;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+
 
 public interface FormationService {
 
@@ -10,13 +13,13 @@ public interface FormationService {
 
     Formation findByName(String nom);
 
-    Formation findById(Integer id);
+    Optional<Formation> findById(String id);
 
     void createFormation(Formation formation);
 
     void updateFormation(Formation formation);
 
-    void deleteFormation(Integer id);
+    void deleteFormation(String id);
 
 
 }

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
  @Service
-public class CandidatService extends BaseService {
+public class CandidatService extends BaseService<Candidat,String> {
      public CandidatService(CandidatRepository candidatRepository) {
          super(candidatRepository);
      }

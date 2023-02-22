@@ -1,9 +1,11 @@
 package com.dosi.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import net.minidev.json.annotate.JsonIgnore;
 
 @Getter
 @Setter
@@ -22,6 +24,8 @@ public class UniteEnseignement {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "NO_ENSEIGNANT", nullable = false)
     @JsonIgnoreProperties({"hibernateLazyInitializer"})
+    @JsonIgnore
+    @JsonBackReference
     private Enseignant noEnseignant;
 
     @Column(name = "DESIGNATION", nullable = false, length = 64)

@@ -1,9 +1,7 @@
-package com.dosi.promotion.controllers;
+package com.dosi.controllers;
 
-import com.dosi.controllers.BaseController;
 import com.dosi.entities.Candidat;
-import com.dosi.promotion.services.CandidatService;
-import com.dosi.services.EnseignantService;
+import com.dosi.services.CandidatService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 @RestController

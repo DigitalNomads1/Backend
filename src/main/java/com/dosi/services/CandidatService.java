@@ -1,4 +1,4 @@
-package com.dosi.promotion.services;
+package com.dosi.services;
 
 import com.dosi.controllers.BaseController;
 import com.dosi.entities.Candidat;

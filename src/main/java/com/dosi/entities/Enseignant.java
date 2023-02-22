@@ -1,11 +1,12 @@
 package com.dosi.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -51,5 +52,9 @@ public class Enseignant {
 
     @Column(name = "EMAIL_PERSO")
     private String emailPerso;
+
+    @OneToMany(mappedBy = "noEnseignant",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonManagedReference
+    private List<UniteEnseignement> listUE = new ArrayList<>();
 
 }

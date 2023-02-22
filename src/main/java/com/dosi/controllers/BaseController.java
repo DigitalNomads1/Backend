@@ -1,18 +1,13 @@
 package com.dosi.controllers;
 
 import com.dosi.services.BaseService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
-public abstract class BaseController<T, J> {
-
-    private final BaseService<T, J> service;
-
-    public BaseController(BaseService<T, J> service) {
-        this.service = service;
-    }
+ @AllArgsConstructor
+public abstract class BaseController<T, K> {
+    protected BaseService<T, K> service;
 
     @GetMapping
     public List<T> getAll() {
@@ -24,19 +19,18 @@ public abstract class BaseController<T, J> {
         return service.create(entity);
     }
 
+    @GetMapping("/{id}")
+    public T read(@PathVariable K id) {
+        return service.read(id);
+    }
+
     @PutMapping("/")
     public T update(@RequestBody T entity) {
         return service.update(entity);
     }
 
-
-    @GetMapping("/{id}")
-    public T read(@PathVariable J id) {
-        return service.read(id);
-    }
-
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable J id) {
+    public void delete(@PathVariable K id) {
         service.delete(id);
     }
 }

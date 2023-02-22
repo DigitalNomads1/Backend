@@ -9,13 +9,11 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class UEService extends BaseService<UniteEnseignement, UniteEnseignementId> {
-    private UniteEnseignementRepository uniteEnseignementRepository;
 
-    @Autowired
-    public UEService(UniteEnseignementRepository uniteEnseignementRepository) {
-        this.uniteEnseignementRepository = uniteEnseignementRepository;
-        super.setRepository(uniteEnseignementRepository);
+    public UEService(UniteEnseignementRepository repository) {
+        super(repository);
     }
+
 
     // add methods to implement business logic using the repository
 }

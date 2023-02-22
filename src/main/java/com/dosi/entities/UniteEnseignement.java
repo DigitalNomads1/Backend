@@ -1,5 +1,6 @@
 package com.dosi.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -15,10 +16,12 @@ public class UniteEnseignement {
     @MapsId("codeFormation")
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "CODE_FORMATION", nullable = false)
+    @JsonIgnoreProperties({"hibernateLazyInitializer"})
     private Formation codeFormation;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "NO_ENSEIGNANT", nullable = false)
+    @JsonIgnoreProperties({"hibernateLazyInitializer"})
     private Enseignant noEnseignant;
 
     @Column(name = "DESIGNATION", nullable = false, length = 64)

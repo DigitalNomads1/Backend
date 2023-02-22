@@ -22,13 +22,13 @@ public class Formation {
     private String diplome;
 
     @Column(name = "N0_ANNEE", nullable = false)
-    private Boolean n0Annee = false;
+    private int n0Annee;
 
     @Column(name = "NOM_FORMATION", nullable = false, length = 64)
     private String nomFormation;
 
     @Column(name = "DOUBLE_DIPLOME", nullable = false)
-    private Boolean doubleDiplome = false;
+    private String doubleDiplome;
 
     @Column(name = "DEBUT_ACCREDITATION")
     private LocalDate debutAccreditation;

@@ -1,14 +1,18 @@
 package com.dosi.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import net.minidev.json.annotate.JsonIgnore;
 
 @Getter
 @Setter
 @Entity
 @Table(name = "UNITE_ENSEIGNEMENT")
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id")
 public class UniteEnseignement {
     @EmbeddedId
     private UniteEnseignementId id;
@@ -19,9 +23,10 @@ public class UniteEnseignement {
     @JsonIgnoreProperties({"hibernateLazyInitializer"})
     private Formation codeFormation;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "NO_ENSEIGNANT", nullable = false)
     @JsonIgnoreProperties({"hibernateLazyInitializer"})
+    @JsonIgnore
     private Enseignant noEnseignant;
 
     @Column(name = "DESIGNATION", nullable = false, length = 64)

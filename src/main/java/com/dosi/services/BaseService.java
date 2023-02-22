@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
 public abstract class BaseService<T> {
 
     private JpaRepository<T, Long> repository;

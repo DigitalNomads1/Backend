@@ -1,10 +1,10 @@
 package com.dosi.entities;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -54,7 +54,7 @@ public class Enseignant {
     private String emailPerso;
 
     @OneToMany(mappedBy = "noEnseignant",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonManagedReference
+    @JsonIgnore // This annotation tells Jackson to ignore the noEnseignant field in the UniteEnseignement class
     private List<UniteEnseignement> listUE = new ArrayList<>();
 
 }

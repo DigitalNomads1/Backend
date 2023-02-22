@@ -23,9 +23,6 @@ public class UniteEnseignement {
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "NO_ENSEIGNANT", nullable = false)
-    @JsonIgnoreProperties({"hibernateLazyInitializer"})
-    @JsonIgnore
-    @JsonBackReference
     private Enseignant noEnseignant;
 
     @Column(name = "DESIGNATION", nullable = false, length = 64)

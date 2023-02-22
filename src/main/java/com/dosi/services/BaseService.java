@@ -1,16 +1,19 @@
 package com.dosi.services;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-public abstract class BaseService<T> {
+@AllArgsConstructor
+public abstract class BaseService<T, K> {
 
-    private JpaRepository<T, Long> repository;
+    protected JpaRepository<T, K> repository;
 
-    public void setRepository(JpaRepository<T, Long> repository) {
+    public void setRepository(JpaRepository<T, K> repository) {
         this.repository = repository;
     }
 
@@ -20,7 +23,7 @@ public abstract class BaseService<T> {
         return repository.save(entity);
     }
 
-    public T read(Long id) {
+    public T read(K id) {
         return repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Entity not found"));
     }
 
@@ -28,7 +31,7 @@ public abstract class BaseService<T> {
         return repository.save(entity);
     }
 
-    public void delete(Long id) {
+    public void delete(K id) {
         repository.deleteById(id);
     }
 }

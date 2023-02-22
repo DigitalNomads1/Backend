@@ -1,16 +1,16 @@
 package com.dosi.controllers;
 
 import com.dosi.services.BaseService;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
-public class BaseController<T> {
-
-    @Autowired
-    private BaseService<T> service;
+ @AllArgsConstructor
+public abstract class BaseController<T, K> {
+    protected BaseService<T, K> service;
 
     @GetMapping
     public List<T> getAll() {
@@ -23,7 +23,7 @@ public class BaseController<T> {
     }
 
     @GetMapping("/{id}")
-    public T read(@PathVariable Long id) {
+    public T read(@PathVariable K id) {
         return service.read(id);
     }
 
@@ -33,7 +33,7 @@ public class BaseController<T> {
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Long id) {
+    public void delete(@PathVariable K id) {
         service.delete(id);
     }
 }

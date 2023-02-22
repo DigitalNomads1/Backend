@@ -1,7 +1,7 @@
-package com.dosi.formation.services;
+package com.dosi.services;
 
 import com.dosi.entities.Formation;
-import com.dosi.formation.repositories.FormationRepository;
+import com.dosi.repositories.FormationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,7 +10,7 @@ import java.util.Optional;
 
 
 @Service
-public class FormationServiceImpl  implements  FormationService{
+public class FormationServiceImpl implements FormationService {
 
     @Autowired
     FormationRepository formationRepository;
@@ -32,7 +32,7 @@ public class FormationServiceImpl  implements  FormationService{
 
     @Override
     public void createFormation(Formation formation) {
-        formationRepository.save(formation);
+          formationRepository.save(formation);
     }
 
     @Override

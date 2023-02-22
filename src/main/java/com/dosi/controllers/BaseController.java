@@ -6,11 +6,13 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
-public class BaseController<T> {
+public abstract class BaseController<T, J> {
 
-    @Autowired
-    private BaseService<T> service;
+    private final BaseService<T, J> service;
+
+    public BaseController(BaseService<T, J> service) {
+        this.service = service;
+    }
 
     @GetMapping
     public List<T> getAll() {
@@ -22,18 +24,19 @@ public class BaseController<T> {
         return service.create(entity);
     }
 
-    @GetMapping("/{id}")
-    public T read(@PathVariable Long id) {
-        return service.read(id);
-    }
-
     @PutMapping("/")
     public T update(@RequestBody T entity) {
         return service.update(entity);
     }
 
+/*
+    @GetMapping("/{id}")
+    public T read(@PathVariable Long id) {
+        return service.read(id);
+    }
+
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) {
         service.delete(id);
-    }
+    }*/
 }

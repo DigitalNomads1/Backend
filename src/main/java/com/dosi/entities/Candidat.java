@@ -67,7 +67,7 @@ public class Candidat {
     private Long selectionNoOrdre;
 
     @Column(name = "CONFIRMATION_CANDIDAT")
-    private Boolean confirmationCandidat;
+    private char confirmationCandidat;
 
     @Column(name = "DATE_REPONSE_CANDIDAT")
     private LocalDate dateReponseCandidat;

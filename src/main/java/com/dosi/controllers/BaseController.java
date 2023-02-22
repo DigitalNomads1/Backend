@@ -29,14 +29,14 @@ public abstract class BaseController<T, J> {
         return service.update(entity);
     }
 
-/*
+
     @GetMapping("/{id}")
-    public T read(@PathVariable Long id) {
+    public T read(@PathVariable J id) {
         return service.read(id);
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Long id) {
+    public void delete(@PathVariable J id) {
         service.delete(id);
-    }*/
+    }
 }

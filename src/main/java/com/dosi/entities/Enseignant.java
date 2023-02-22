@@ -1,5 +1,6 @@
 package com.dosi.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -53,8 +54,7 @@ public class Enseignant {
     @Column(name = "EMAIL_PERSO")
     private String emailPerso;
 
-    @OneToMany(mappedBy = "noEnseignant",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonManagedReference
+    @OneToMany(mappedBy = "noEnseignant",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<UniteEnseignement> listUE = new ArrayList<>();
 
 }

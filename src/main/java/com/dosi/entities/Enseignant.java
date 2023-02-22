@@ -16,7 +16,7 @@ public class Enseignant {
     @Column(name = "NO_ENSEIGNANT", nullable = false)
     private Long id;
 
-    @Column(name = "\"TYPE\"", nullable = false, length = 5)
+    @Column(name = "TYPE", nullable = false, length = 5)
     private String type;
 
     @Column(name = "SEXE", nullable = false, length = 1)

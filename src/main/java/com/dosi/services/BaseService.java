@@ -3,10 +3,14 @@ package com.dosi.services;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.web.ErrorResponse;
+import org.springframework.web.ErrorResponseException;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
+
+import static org.springframework.http.HttpStatus.NOT_FOUND;
 
 @AllArgsConstructor
 public abstract class BaseService<T, K> {
@@ -24,7 +28,7 @@ public abstract class BaseService<T, K> {
     }
 
     public T read(K id) {
-        return repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Entity not found"));
+        return repository.findById(id).orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Unable to find resource"));
     }
 
     public T update(T entity) {

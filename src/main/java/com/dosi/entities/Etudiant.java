@@ -1,11 +1,12 @@
 package com.dosi.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import net.minidev.json.annotate.JsonIgnore;
 
 import java.time.LocalDate;
 
@@ -13,6 +14,9 @@ import java.time.LocalDate;
 @Setter
 @Entity
 @Table(name = "ETUDIANT")
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id")
 public class Etudiant {
     @Id
     @Column(name = "NO_ETUDIANT", nullable = false, length = 50)
@@ -69,4 +73,10 @@ public class Etudiant {
     @Column(name = "GROUPE_ANGLAIS")
     private Long groupeAnglais;
 
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name = "ANNEE_UNIVERSITAIRE", nullable = false)
+    @JoinColumn(name = "CODE_FORMATION", nullable = false)
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    @JsonIgnore
+    private Promotion promotion;
 }

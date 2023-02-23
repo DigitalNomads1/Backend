@@ -53,8 +53,8 @@ public class Enseignant {
 
     @Column(name = "EMAIL_PERSO")
     private String emailPerso;
-
-    @OneToMany(mappedBy = "noEnseignant",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JsonBackReference
+    @OneToMany(mappedBy = "noEnseignant", fetch = FetchType.EAGER)
     private List<UniteEnseignement> listUE = new ArrayList<>();
 
 }

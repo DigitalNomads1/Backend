@@ -10,9 +10,7 @@ import net.minidev.json.annotate.JsonIgnore;
 @Setter
 @Entity
 @Table(name = "UNITE_ENSEIGNEMENT")
-@JsonIdentityInfo(
-        generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "id")
+
 public class UniteEnseignement {
     @EmbeddedId
     private UniteEnseignementId id;
@@ -26,7 +24,7 @@ public class UniteEnseignement {
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "NO_ENSEIGNANT", nullable = false)
     @JsonIgnoreProperties({"hibernateLazyInitializer"})
-    @JsonIgnore
+    @JsonManagedReference
     private Enseignant noEnseignant;
 
     @Column(name = "DESIGNATION", nullable = false, length = 64)

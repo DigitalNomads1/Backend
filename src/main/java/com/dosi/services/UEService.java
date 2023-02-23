@@ -16,5 +16,4 @@ public class UEService extends BaseService<UniteEnseignement, UniteEnseignementI
     }
 
 
-    // add methods to implement business logic using the repository
 }

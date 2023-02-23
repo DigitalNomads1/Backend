@@ -2,8 +2,7 @@ package com.dosi.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.Hibernate;
 
 import java.io.Serializable;
@@ -11,6 +10,9 @@ import java.util.Objects;
 
 @Getter
 @Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Embeddable
 public class ElementConstitutifId implements Serializable {
     private static final long serialVersionUID = 2503035845541438625L;

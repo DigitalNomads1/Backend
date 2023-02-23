@@ -57,4 +57,8 @@ public class Enseignant {
     @OneToMany(mappedBy = "noEnseignant",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<UniteEnseignement> listUE = new ArrayList<>();
 
+
+    @OneToMany(mappedBy = "noEnseignant",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Promotion> listPromotion = new ArrayList<>();
+
 }

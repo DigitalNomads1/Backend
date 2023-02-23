@@ -10,6 +10,8 @@ import lombok.Setter;
 import net.minidev.json.annotate.JsonIgnore;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -31,9 +33,8 @@ public class Promotion {
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "NO_ENSEIGNANT", nullable = false)
-    @JsonBackReference
-//    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-//    @JsonIgnore
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    @JsonIgnore
     private Enseignant noEnseignant;
 
     @Column(name = "SIGLE_PROMOTION", length = 16)
@@ -59,5 +60,8 @@ public class Promotion {
 
     @Column(name = "COMMENTAIRE")
     private String commentaire;
+
+    @OneToMany(mappedBy = "promotion",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Etudiant> listEtudiant = new ArrayList<>();
 
 }

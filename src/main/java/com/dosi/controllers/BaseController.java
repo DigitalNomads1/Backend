@@ -19,18 +19,8 @@ public abstract class BaseController<T, K> {
         return service.create(entity);
     }
 
-    @GetMapping("/{id}")
-    public T read(@PathVariable K id) {
-        return service.read(id);
-    }
-
     @PutMapping("/")
     public T update(@RequestBody T entity) {
         return service.update(entity);
     }
-
-    @DeleteMapping("/{id}")
-    public void delete(@PathVariable K id) {
-        service.delete(id);
-    }
-}
+ }

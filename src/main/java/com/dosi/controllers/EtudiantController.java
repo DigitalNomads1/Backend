@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/etudiants")
-public class EtudiantController extends BaseController<Etudiant,String>  {
+public class EtudiantController extends GlobalController<Etudiant,String>  {
     public EtudiantController(EtudiantService service) {
         super(service);
     }

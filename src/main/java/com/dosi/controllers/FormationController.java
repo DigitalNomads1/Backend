@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/formations")
-public class FormationController extends BaseController<Formation, String>{
+public class FormationController extends GlobalController<Formation, String>{
     public FormationController(FormationService service) {
         super(service);
     }

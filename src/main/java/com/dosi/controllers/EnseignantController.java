@@ -17,6 +17,12 @@ public class EnseignantController extends GlobalController<Enseignant, Long> {
     public EnseignantController(EnseignantService service) {
         super(service);
     }
+
+    @Override
+    public List getAll() {
+        return super.getAll();
+    }
+
     @GetMapping("/{id}/UE")
     public List<UniteEnseignement> getUE(@PathVariable Long id) {
         return read(id).getListUE();

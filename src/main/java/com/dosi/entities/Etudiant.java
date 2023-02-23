@@ -14,9 +14,9 @@ import java.time.LocalDate;
 @Setter
 @Entity
 @Table(name = "ETUDIANT")
-@JsonIdentityInfo(
+/*@JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "id")
+        property = "id")*/
 public class Etudiant {
     @Id
     @Column(name = "NO_ETUDIANT", nullable = false, length = 50)

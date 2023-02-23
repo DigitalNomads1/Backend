@@ -1,11 +1,10 @@
 package com.dosi.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import net.minidev.json.annotate.JsonIgnore;
 
 import java.time.LocalDate;
 
@@ -72,4 +71,10 @@ public class Candidat {
     @Column(name = "DATE_REPONSE_CANDIDAT")
     private LocalDate dateReponseCandidat;
 
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name = "ANNEE_UNIVERSITAIRE", nullable = false)
+    @JoinColumn(name = "CODE_FORMATION", nullable = false)
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    @JsonIgnore
+    private Promotion promotion;
 }

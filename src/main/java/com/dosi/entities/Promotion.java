@@ -63,5 +63,7 @@ public class Promotion {
 
     @OneToMany(mappedBy = "promotion",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Etudiant> listEtudiant = new ArrayList<>();
+    @OneToMany(mappedBy = "promotion",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Candidat> ListCandidats = new ArrayList<>();
 
 }

@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/candidats")
-public class CandidatController extends BaseController<Candidat, String>{
+public class CandidatController extends GlobalController<Candidat, String>{
     public CandidatController(CandidatService service) {
         super(service);
     }

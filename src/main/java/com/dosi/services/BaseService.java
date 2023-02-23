@@ -35,6 +35,7 @@ public abstract class BaseService<T, K> {
         return repository.save(entity);
     }
 
+
     public void delete(K id) {
         repository.deleteById(id);
     }

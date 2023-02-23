@@ -2,16 +2,18 @@ package com.dosi.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.Hibernate;
-
 import java.io.Serializable;
 import java.util.Objects;
 
 @Getter
 @Setter
 @Embeddable
+@ToString
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class UniteEnseignementId implements Serializable {
     private static final long serialVersionUID = 8208650618508750641L;
     @Column(name = "CODE_FORMATION", nullable = false, length = 8)

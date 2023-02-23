@@ -1,18 +1,16 @@
 package com.dosi.entities;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-
-import java.util.ArrayList;
 import java.util.List;
 
 @Getter
 @Setter
 @Entity
 @Table(name = "ENSEIGNANT")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Enseignant {
     @Id
     @Column(name = "NO_ENSEIGNANT", nullable = false)
@@ -53,9 +51,12 @@ public class Enseignant {
 
     @Column(name = "EMAIL_PERSO")
     private String emailPerso;
-    @JsonBackReference
+
     @OneToMany(mappedBy = "noEnseignant", fetch = FetchType.EAGER)
-    private List<UniteEnseignement> listUE = new ArrayList<>();
+    @JsonIgnoreProperties({"hibernateLazyInitializer"})
+    @JsonBackReference(value="noEnseignant")
+//    @JsonIgnore
+    private List<UniteEnseignement> listUE;
 
 
     @OneToMany(mappedBy = "noEnseignant",cascade = CascadeType.ALL, fetch = FetchType.EAGER)

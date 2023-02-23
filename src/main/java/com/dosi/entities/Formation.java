@@ -1,5 +1,6 @@
 package com.dosi.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -7,6 +8,7 @@ import lombok.Setter;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -34,5 +36,9 @@ public class Formation {
 
     @Column(name = "FIN_ACCREDITATION")
     private LocalDate finAccreditation;
+
+    @OneToMany(mappedBy = "codeFormation", fetch = FetchType.EAGER)
+    @JsonBackReference
+    private List<UniteEnseignement> listUE;
 
 }

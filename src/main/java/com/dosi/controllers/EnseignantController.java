@@ -13,10 +13,16 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/enseignants")
-public class EnseignantController extends BaseController<Enseignant, Long> {
+public class EnseignantController extends GlobalController<Enseignant, Long> {
     public EnseignantController(EnseignantService service) {
         super(service);
     }
+
+    @Override
+    public List getAll() {
+        return super.getAll();
+    }
+
     @GetMapping("/{id}/UE")
     public List<UniteEnseignement> getUE(@PathVariable Long id) {
         return read(id).getListUE();

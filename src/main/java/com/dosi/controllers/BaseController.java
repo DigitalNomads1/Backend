@@ -4,7 +4,7 @@ import com.dosi.services.BaseService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
-
+@CrossOrigin(origins = "*")
  @AllArgsConstructor
 public abstract class BaseController<T, K> {
     protected BaseService<T, K> service;

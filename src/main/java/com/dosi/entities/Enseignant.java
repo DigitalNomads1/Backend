@@ -54,14 +54,22 @@ public class Enseignant {
     @Column(name = "EMAIL_PERSO")
     private String emailPerso;
 
-    @OneToMany(mappedBy = "noEnseignant", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "noEnseignant", fetch = FetchType.LAZY)
     @JsonIgnoreProperties({"hibernateLazyInitializer"})
     @JsonBackReference(value="noEnseignant")
 //    @JsonIgnore
     private List<UniteEnseignement> listUE;
 
+    @OneToMany(mappedBy = "no_enseignant", fetch = FetchType.LAZY)
+    @JsonIgnoreProperties({"hibernateLazyInitializer"})
+    @JsonBackReference(value="no_eseignant")
+//    @JsonIgnore
+    private List<ElementConstitutif> listEC;
+
 
     @OneToMany(mappedBy = "noEnseignant",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JsonIgnore
     private List<Promotion> listPromotion = new ArrayList<>();
+
 
 }

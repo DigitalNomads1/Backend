@@ -71,10 +71,10 @@ public class Candidat  implements  Identifiable<String>{
     @Column(name = "DATE_REPONSE_CANDIDAT")
     private LocalDate dateReponseCandidat;
 
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "ANNEE_UNIVERSITAIRE", nullable = false)
     @JoinColumn(name = "CODE_FORMATION", nullable = false)
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    @JsonIgnore
+//    @JsonIgnore
     private Promotion promotion;
 }

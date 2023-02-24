@@ -20,11 +20,6 @@ public class EnseignantController extends GlobalController<Enseignant, Long> {
         super(service);
     }
 
-    @Override
-    public List getAll() {
-        return super.getAll();
-    }
-
     @GetMapping("/{id}/UE")
     public List<UniteEnseignement> getUE(@PathVariable Long id) {
         return read(id).getListUE();

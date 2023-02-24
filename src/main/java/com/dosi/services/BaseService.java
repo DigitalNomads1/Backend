@@ -23,8 +23,11 @@ public abstract class BaseService<T extends Identifiable, K> {
     }
 
     public T create(T entity) {
-        if (repository.existsById((K)entity.getId())) {
-            throw new EntityExistsException("Entity " + entity + " already exists");
+        if(entity.getId() != null )
+        {
+            if (repository.existsById((K)entity.getId())) {
+                throw new EntityExistsException("Entity " + entity + " already exists");
+            }
         }
         return repository.save(entity);
     }

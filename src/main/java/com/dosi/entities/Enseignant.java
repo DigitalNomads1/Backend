@@ -4,22 +4,25 @@ import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
+
 import java.util.ArrayList;
 import java.util.List;
 
 @Getter
 @Setter
 @Entity
+@ToString
 @Table(name = "ENSEIGNANT")
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Enseignant  implements  Identifiable<Long>{
     @Id
     @Column(name = "NO_ENSEIGNANT", nullable = false)
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(name="ens_seq", sequenceName = "ens_seq", allocationSize=1)
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="ens_seq")
     private Long id;
 
     @Column(name = "TYPE", nullable = false, length = 5)
-
     private String type;
 
     @Column(name = "SEXE", nullable = false, length = 1)
@@ -49,10 +52,10 @@ public class Enseignant  implements  Identifiable<Long>{
     @Column(name = "TELEPHONE", length = 20)
     private String telephone;
 
-    @Column(name = "EMAIL_UBO", nullable = false)
+    @Column(name = "EMAIL_UBO", nullable = false, unique = true)
     private String emailUbo;
 
-    @Column(name = "EMAIL_PERSO")
+    @Column(name = "EMAIL_PERSO", unique = true)
     private String emailPerso;
 
     @OneToMany(mappedBy = "noEnseignant", fetch = FetchType.LAZY)

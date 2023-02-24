@@ -1,9 +1,11 @@
 package com.dosi.controllers;
 
 import com.dosi.services.BaseService;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
+
 @CrossOrigin(origins = "*")
 @AllArgsConstructor
 public abstract class BaseController<T, K> {
@@ -15,12 +17,14 @@ public abstract class BaseController<T, K> {
     }
 
     @PostMapping("/")
-    public T create(@RequestBody T entity) {
+    public T create(@Valid @RequestBody T entity) {
         return service. create(entity);
     }
 
     @PutMapping("/")
-    public T update(@RequestBody T entity) {
+    public T update(@Valid @RequestBody T entity) {
         return service.update(entity);
     }
+
+
  }

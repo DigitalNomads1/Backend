@@ -18,6 +18,7 @@ public class Enseignant {
     private Long id;
 
     @Column(name = "TYPE", nullable = false, length = 5)
+
     private String type;
 
     @Column(name = "SEXE", nullable = false, length = 1)
@@ -58,5 +59,9 @@ public class Enseignant {
     @JsonBackReference(value="noEnseignant")
     @JsonIgnore
     private List<UniteEnseignement> listUE;
+
+
+    @OneToMany(mappedBy = "noEnseignant",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Promotion> listPromotion = new ArrayList<>();
 
 }

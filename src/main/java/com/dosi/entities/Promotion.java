@@ -1,15 +1,25 @@
 package com.dosi.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import net.minidev.json.annotate.JsonIgnore;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
 @Entity
 @Table(name = "PROMOTION")
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id")
 public class Promotion {
     @EmbeddedId
     private PromotionId id;
@@ -17,10 +27,14 @@ public class Promotion {
     @MapsId("codeFormation")
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "CODE_FORMATION", nullable = false)
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    @JsonIgnore
     private Formation codeFormation;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "NO_ENSEIGNANT")
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name = "NO_ENSEIGNANT", nullable = false)
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    @JsonIgnore
     private Enseignant noEnseignant;
 
     @Column(name = "SIGLE_PROMOTION", length = 16)
@@ -46,5 +60,10 @@ public class Promotion {
 
     @Column(name = "COMMENTAIRE")
     private String commentaire;
+
+    @OneToMany(mappedBy = "promotion",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Etudiant> listEtudiant = new ArrayList<>();
+    @OneToMany(mappedBy = "promotion",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Candidat> ListCandidats = new ArrayList<>();
 
 }

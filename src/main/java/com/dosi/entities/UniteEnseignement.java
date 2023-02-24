@@ -2,9 +2,10 @@ package com.dosi.entities;
 
 import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.Setter;
-import net.minidev.json.annotate.JsonIgnore;
+
 
 @Getter
 @Setter
@@ -27,9 +28,11 @@ public class UniteEnseignement {
     private Enseignant noEnseignant;
 
     @Column(name = "DESIGNATION", nullable = false, length = 64)
+    @NotBlank(message = "designation est Requis!")
     private String designation;
 
     @Column(name = "SEMESTRE", nullable = false, length = 3)
+    @NotBlank(message = "semestre est Requis!")
     private String semestre;
 
     @Column(name = "DESCRIPTION", length = 256)

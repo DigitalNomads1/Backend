@@ -1,6 +1,8 @@
 package com.dosi.controllers;
 
+import com.dosi.entities.ElementConstitutif;
 import com.dosi.entities.Enseignant;
+import com.dosi.entities.Promotion;
 import com.dosi.entities.UniteEnseignement;
 import com.dosi.repositories.EnseignantRepository;
 import com.dosi.services.EnseignantService;
@@ -27,5 +29,16 @@ public class EnseignantController extends GlobalController<Enseignant, Long> {
     public List<UniteEnseignement> getUE(@PathVariable Long id) {
         return read(id).getListUE();
     }
+
+    @GetMapping("/{id}/EC")
+    public List<ElementConstitutif> getEC(@PathVariable Long id) {
+        return read(id).getListEC();
+    }
+
+    @GetMapping("/{id}/promotions")
+    public List<Promotion> getPromotions(@PathVariable Long id) {
+        return read(id).getListPromotion();
+    }
+
 }
 

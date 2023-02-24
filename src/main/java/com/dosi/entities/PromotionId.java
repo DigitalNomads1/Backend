@@ -2,8 +2,7 @@ package com.dosi.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.Hibernate;
 
 import java.io.Serializable;
@@ -12,6 +11,10 @@ import java.util.Objects;
 @Getter
 @Setter
 @Embeddable
+@ToString
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class PromotionId implements Serializable {
     private static final long serialVersionUID = -5037787922242894967L;
     @Column(name = "ANNEE_UNIVERSITAIRE", nullable = false, length = 10)

@@ -73,10 +73,10 @@ public class Etudiant {
     @Column(name = "GROUPE_ANGLAIS")
     private Long groupeAnglais;
 
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "ANNEE_UNIVERSITAIRE", nullable = false)
     @JoinColumn(name = "CODE_FORMATION", nullable = false)
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    @JsonIgnore
+//    @JsonIgnore
     private Promotion promotion;
 }

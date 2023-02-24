@@ -1,5 +1,6 @@
 package com.dosi.controllers;
 
+import com.dosi.entities.ElementConstitutif;
 import com.dosi.entities.Formation;
 import com.dosi.entities.UniteEnseignement;
 import com.dosi.services.FormationService;
@@ -21,5 +22,10 @@ public class FormationController extends GlobalController<Formation, String>{
     @GetMapping("/ue/{id}")
     public List<UniteEnseignement> getUeList(@PathVariable String id){
         return ((FormationService)service).findUEList(id);
+    }
+
+    @GetMapping("/{id_formation}/ue/{id_ue}/ec")
+    public List<ElementConstitutif> getEcList(@PathVariable String id_formation, @PathVariable String id_ue) {
+        return  ((FormationService)service).findECList(id_formation,id_ue);
     }
 }

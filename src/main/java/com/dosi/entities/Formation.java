@@ -20,6 +20,7 @@ public class Formation {
     @Column(name = "DIPLOME", nullable = false, length = 3)
     private String diplome;
 
+
     @Column(name = "N0_ANNEE", nullable = false)
     private int n0Annee;
 

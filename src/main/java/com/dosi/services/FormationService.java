@@ -1,10 +1,8 @@
 package com.dosi.services;
 
-import com.dosi.entities.ElementConstitutif;
-import com.dosi.entities.Formation;
-import com.dosi.entities.UniteEnseignement;
-import com.dosi.entities.UniteEnseignementId;
+import com.dosi.entities.*;
 import com.dosi.repositories.ElementConstitutifRepository;
+import com.dosi.repositories.EnseignantRepository;
 import com.dosi.repositories.FormationRepository;
 
 import com.dosi.repositories.UniteEnseignementRepository;
@@ -40,4 +38,6 @@ public class FormationService extends BaseService<Formation, String>{
         UniteEnseignement uniteEnseignement = uniteEnseignementRepository.findById(uniteEnseignementId).get();
 
         return  elementConstitutifRepository.findByCodeUE(uniteEnseignement);  }
+
+
 }

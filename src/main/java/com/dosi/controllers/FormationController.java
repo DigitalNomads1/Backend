@@ -19,7 +19,7 @@ public class FormationController extends GlobalController<Formation, String>{
     }
 
 
-    @GetMapping("/ue/{id}")
+    @GetMapping("/{id}/ue")
     public List<UniteEnseignement> getUeList(@PathVariable String id){
         return ((FormationService)service).findUEList(id);
     }

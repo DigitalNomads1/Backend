@@ -36,4 +36,10 @@ public class ElementConstitutif {
     @JoinColumn(name = "CODE_FORMATION", referencedColumnName = "CODE_FORMATION")
     @JsonIgnoreProperties({"hibernateLazyInitializer"})
     private UniteEnseignement codeUE;
+
+    @MapsId("no_enseignant")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "NO_ENSEIGNANT", referencedColumnName = "NO_ENSEIGNANT")
+    @JsonIgnoreProperties({"hibernateLazyInitializer"})
+    private Enseignant no_enseignant;
 }

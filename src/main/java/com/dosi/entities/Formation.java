@@ -36,9 +36,9 @@ public class Formation {
 
     @Column(name = "FIN_ACCREDITATION")
     private LocalDate finAccreditation;
-
+/*
     @OneToMany(mappedBy = "codeFormation", fetch = FetchType.EAGER)
     @JsonBackReference
-    private List<UniteEnseignement> listUE;
+    private List<UniteEnseignement> listUE;*/
 
 }

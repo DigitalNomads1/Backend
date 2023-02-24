@@ -35,6 +35,6 @@ build/
 
 ### VS Code ###
 .vscode/
-
+#ADD THIS LINE TO .gitignore
 /src/main/resources/application.properties
 

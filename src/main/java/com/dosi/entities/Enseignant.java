@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -55,7 +56,7 @@ public class Enseignant {
     @OneToMany(mappedBy = "noEnseignant", fetch = FetchType.EAGER)
     @JsonIgnoreProperties({"hibernateLazyInitializer"})
     @JsonBackReference(value="noEnseignant")
-//    @JsonIgnore
+    @JsonIgnore
     private List<UniteEnseignement> listUE;
 
 }

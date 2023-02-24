@@ -26,17 +26,5 @@ public abstract class GlobalController<T, K> extends BaseController{
         return (T)service.read(id);
     }
 
-    @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<Object> handleValidationExceptions(
-            MethodArgumentNotValidException ex) {
-        System.out.println("*******************");
-        System.out.println( ex.getMessage());
-        Map<String, String> errors = new HashMap<>();
-        ex.getBindingResult().getAllErrors().forEach((error) -> {
-            String fieldName = ((FieldError) error).getField();
-            String errorMessage = error.getDefaultMessage();
-            errors.put(fieldName, errorMessage);
-        });
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errors);
-    }
+
 }

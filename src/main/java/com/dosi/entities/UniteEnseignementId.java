@@ -2,6 +2,8 @@ package com.dosi.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 import org.hibernate.Hibernate;
 import java.io.Serializable;
@@ -17,9 +19,11 @@ import java.util.Objects;
 public class UniteEnseignementId implements Serializable {
     private static final long serialVersionUID = 8208650618508750641L;
     @Column(name = "CODE_FORMATION", nullable = false, length = 8)
+    @NotBlank(message = "codeFormation est Requis!")
     private String codeFormation;
 
     @Column(name = "CODE_UE", nullable = false, length = 8)
+    @NotBlank(message = "codeUe est Requis!")
     private String codeUe;
 
     @Override

@@ -12,9 +12,10 @@ import java.util.List;
 @Entity
 @Table(name = "ENSEIGNANT")
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
-public class Enseignant {
+public class Enseignant  implements  Identifiable<Long>{
     @Id
     @Column(name = "NO_ENSEIGNANT", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "TYPE", nullable = false, length = 5)

@@ -2,7 +2,9 @@ package com.dosi.entities;
 
 import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,7 +14,9 @@ import lombok.Setter;
 @Entity
 @Table(name = "UNITE_ENSEIGNEMENT")
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
-public class UniteEnseignement {
+public class UniteEnseignement implements Identifiable<UniteEnseignementId>{
+    @NotNull(message = "codeFormation est Requis!")
+    @Valid
     @EmbeddedId
     private UniteEnseignementId id;
 
@@ -20,8 +24,10 @@ public class UniteEnseignement {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "CODE_FORMATION", nullable = false)
     @JsonIgnoreProperties({"hibernateLazyInitializer"})
+    @NotNull(message = "codeFormation est Requis!")
     private Formation codeFormation;
 
+    @NotNull(message = "noEnseignant est Requis!")
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "NO_ENSEIGNANT", nullable = false)
     @JsonIgnoreProperties({"hibernateLazyInitializer"})

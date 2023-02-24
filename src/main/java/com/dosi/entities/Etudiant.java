@@ -17,7 +17,7 @@ import java.time.LocalDate;
 /*@JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property = "id")*/
-public class Etudiant {
+public class Etudiant  implements  Identifiable<String>{
     @Id
     @Column(name = "NO_ETUDIANT", nullable = false, length = 50)
     private String id;

@@ -5,6 +5,9 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 import net.minidev.json.annotate.JsonIgnore;
@@ -20,7 +23,8 @@ import java.util.List;
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property = "id")
-public class Promotion {
+public class Promotion implements Identifiable<PromotionId>{
+    @Valid
     @EmbeddedId
     private PromotionId id;
 
@@ -29,18 +33,23 @@ public class Promotion {
     @JoinColumn(name = "CODE_FORMATION", nullable = false)
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @JsonIgnore
+    @NotNull(message = "CODE_FORMATION est Requis!")
+    @Valid
     private Formation codeFormation;
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "NO_ENSEIGNANT", nullable = false)
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @JsonIgnore
+    @NotNull(message = "NO_ENSEIGNANT est Requis!")
+    @Valid
     private Enseignant noEnseignant;
 
     @Column(name = "SIGLE_PROMOTION", length = 16)
     private String siglePromotion;
 
     @Column(name = "NB_MAX_ETUDIANT", nullable = false)
+    @NotNull(message = "NB_MAX_ETUDIANT est Requis!")
     private Short nbMaxEtudiant;
 
     @Column(name = "DATE_REPONSE_LP")

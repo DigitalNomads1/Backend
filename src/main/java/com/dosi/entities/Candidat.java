@@ -12,7 +12,7 @@ import java.time.LocalDate;
 @Setter
 @Entity
 @Table(name = "CANDIDAT")
-public class Candidat {
+public class Candidat  implements  Identifiable<String>{
     @Id
     @Column(name = "NO_CANDIDAT", nullable = false, length = 50)
     private String id;

@@ -1,19 +1,16 @@
 package com.dosi.services;
 
+import com.dosi.entities.Identifiable;
+import jakarta.persistence.EntityExistsException;
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
+import org.springframework.data.domain.Example;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Service;
-import org.springframework.web.ErrorResponse;
-import org.springframework.web.ErrorResponseException;
 import org.springframework.web.server.ResponseStatusException;
-
 import java.util.List;
-
 import static org.springframework.http.HttpStatus.NOT_FOUND;
 
 @AllArgsConstructor
-public abstract class BaseService<T, K> {
+public abstract class BaseService<T extends Identifiable, K> {
 
     protected JpaRepository<T, K> repository;
 
@@ -21,9 +18,14 @@ public abstract class BaseService<T, K> {
         this.repository = repository;
     }
 
-    public List<T> findAll() { return repository.findAll();}
+    public List<T> findAll() {
+        return repository.findAll();
+    }
 
     public T create(T entity) {
+        if (repository.existsById((K)entity.getId())) {
+            throw new EntityExistsException("Entity " + entity + " already exists");
+        }
         return repository.save(entity);
     }
 

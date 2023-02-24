@@ -2,6 +2,8 @@ package com.dosi.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.Hibernate;
@@ -15,9 +17,11 @@ import java.util.Objects;
 public class PromotionId implements Serializable {
     private static final long serialVersionUID = -5037787922242894967L;
     @Column(name = "ANNEE_UNIVERSITAIRE", nullable = false, length = 10)
+    @NotBlank(message = "ANNEE_UNIVERSITAIRE est Requis!")
     private String anneeUniversitaire;
 
     @Column(name = "CODE_FORMATION", nullable = false, length = 8)
+    @NotBlank(message = "CODE_FORMATION est Requis!")
     private String codeFormation;
 
     @Override

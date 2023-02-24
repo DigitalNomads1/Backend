@@ -11,7 +11,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "ELEMENT_CONSTITUTIF")
-public class ElementConstitutif {
+public class ElementConstitutif implements Identifiable<ElementConstitutifId>{
     @EmbeddedId
     private ElementConstitutifId id;
 

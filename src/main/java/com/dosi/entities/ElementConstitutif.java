@@ -1,9 +1,7 @@
 package com.dosi.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.EmbeddedId;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Getter
@@ -32,4 +30,16 @@ public class ElementConstitutif {
     @Column(name = "NBH_TP")
     private Short nbhTp;
 
+    @MapsId("codeUE")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "CODE_UE", referencedColumnName = "CODE_UE")
+    @JoinColumn(name = "CODE_FORMATION", referencedColumnName = "CODE_FORMATION")
+    @JsonIgnoreProperties({"hibernateLazyInitializer"})
+    private UniteEnseignement codeUE;
+
+    @MapsId("no_enseignant")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "NO_ENSEIGNANT", referencedColumnName = "NO_ENSEIGNANT")
+    @JsonIgnoreProperties({"hibernateLazyInitializer"})
+    private Enseignant no_enseignant;
 }

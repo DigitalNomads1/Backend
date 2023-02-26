@@ -26,14 +26,14 @@ public abstract class BaseService<T extends Identifiable, K> {
         if(entity.getId() != null )
         {
             if (repository.existsById((K)entity.getId())) {
-                throw new EntityExistsException("Entity " + entity + " already exists");
+                throw new EntityExistsException("Entité " + entity + " existe déjà!");
             }
         }
         return repository.save(entity);
     }
 
     public T read(K id) {
-        return repository.findById(id).orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Unable to find resource"));
+        return repository.findById(id).orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "La ressource avec l'identifiant " + id.toString() + " n'a pas été trouvée."));
     }
 
     public T update(T entity) {

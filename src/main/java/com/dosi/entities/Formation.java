@@ -1,5 +1,6 @@
 package com.dosi.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
@@ -8,6 +9,8 @@ import lombok.Setter;
 import lombok.ToString;
 import org.springframework.format.annotation.DateTimeFormat;
 import java.time.LocalDate;
+import java.util.List;
+
 import static com.dosi.utils.Constants.*;
 
 
@@ -54,10 +57,10 @@ public class Formation implements Identifiable<String>{
     @DateTimeFormat(pattern = DATE_PATTERN)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_PATTERN)
     private LocalDate finAccreditation;
-/*
+
     @OneToMany(mappedBy = "codeFormation", fetch = FetchType.EAGER)
     @JsonBackReference
-    private List<UniteEnseignement> listUE;*/
+    private List<UniteEnseignement> listUE;
 
     @AssertTrue(message = "La date de début d'accréditation doit être antérieure à la date de fin d'accréditation")
     public boolean isDebutAccreditationBeforeFinAccreditation() {

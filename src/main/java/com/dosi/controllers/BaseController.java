@@ -31,6 +31,7 @@ public abstract class BaseController<T extends Identifiable, K> {
 
     @PostMapping("/")
     public T create(@Valid @RequestBody T entity, BindingResult bindingResult) {
+        System.out.println(entity);
         if (bindingResult.hasErrors()) {
             throw new ValidationException(bindingResult);
         }

@@ -15,8 +15,8 @@ import lombok.Setter;
 @Table(name = "UNITE_ENSEIGNEMENT")
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class UniteEnseignement implements Identifiable<UniteEnseignementId>{
-    @NotNull(message = "codeFormation est Requis!")
     @Valid
+    @NotNull(message = "codeFormation est Requis!")
     @EmbeddedId
     private UniteEnseignementId id;
 
@@ -53,4 +53,17 @@ public class UniteEnseignement implements Identifiable<UniteEnseignementId>{
     @Column(name = "NBH_TP")
     private Short nbhTp;
 
+    @Override
+    public String toString() {
+        return "UniteEnseignement{" +
+                "id=" + id +
+                ", codeFormation=" + codeFormation +
+                ", designation='" + designation + '\'' +
+                ", semestre='" + semestre + '\'' +
+                ", description='" + description + '\'' +
+                ", nbhCm=" + nbhCm +
+                ", nbhTd=" + nbhTd +
+                ", nbhTp=" + nbhTp +
+                '}';
+    }
 }

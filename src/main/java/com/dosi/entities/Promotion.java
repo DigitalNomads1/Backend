@@ -10,6 +10,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import net.minidev.json.annotate.JsonIgnore;
 
 import java.time.LocalDate;
@@ -75,4 +76,10 @@ public class Promotion implements Identifiable<PromotionId>{
     @OneToMany(mappedBy = "promotion",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Candidat> ListCandidats = new ArrayList<>();
 
+    @Override
+    public String toString() {
+        return "Promotion{" +
+                "id=" + id +
+                ", codeFormation=" + codeFormation ;
+    }
 }

@@ -24,7 +24,7 @@ import java.util.Map;
 public abstract class BaseController<T extends Identifiable, K> {
     protected BaseService<T, K> service;
 
-    @GetMapping("/")
+    @GetMapping({"/", ""})
     public List<T> getAll() {
         return service.findAll();
     }

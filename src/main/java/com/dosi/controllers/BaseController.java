@@ -21,6 +21,7 @@ import java.util.Map;
 
 @CrossOrigin(origins = "*")
 @AllArgsConstructor
+
 public abstract class BaseController<T extends Identifiable, K> {
     protected BaseService<T, K> service;
 

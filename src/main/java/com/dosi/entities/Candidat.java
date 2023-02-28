@@ -3,10 +3,7 @@ package com.dosi.entities;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.*;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -105,6 +102,6 @@ public class Candidat  implements  Identifiable<String>{
     @JoinColumn(name = "CODE_FORMATION", nullable = false)
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 //    @JsonIgnore
-    @NotBlank(message = "la promotion du candidat est Requise!")
+    @NotNull(message = "la promotion du candidat est Requise!")
     private Promotion promotion;
 }

@@ -5,10 +5,8 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Pattern;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import lombok.Getter;
 import lombok.Setter;
 import net.minidev.json.annotate.JsonIgnore;
@@ -105,7 +103,7 @@ public class Etudiant  implements  Identifiable<String>{
     @JoinColumn(name = "ANNEE_UNIVERSITAIRE", nullable = false)
     @JoinColumn(name = "CODE_FORMATION", nullable = false)
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    @NotNull(message = "promotion est requise")
 //    @JsonIgnore
-    @NotBlank(message = "la promotion de l'etudiant est Requise!")
     private Promotion promotion;
 }

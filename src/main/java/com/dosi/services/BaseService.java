@@ -29,7 +29,7 @@ public abstract class BaseService<T extends Identifiable, K> {
         if(entity.getId() != null )
         {
             if (repository.existsById((K)entity.getId())) {
-                throw new EntityExistsException("Entité " + entity + " existe déjà!");
+                throw new EntityExistsException("Entité " + entity.getId() + " existe déjà!");
             }
         }
         return repository.save(entity);

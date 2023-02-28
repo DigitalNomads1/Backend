@@ -60,11 +60,9 @@ public class Etudiant  implements  Identifiable<String>{
     private String nationalite;
 
     @Column(name = "TELEPHONE", length = 20)
-    @Pattern(regexp = "\\d*",message = "Veuillez respecter le formatage du telephone.")
     private String telephone;
 
     @Column(name = "MOBILE", length = 20)
-    @Pattern(regexp = "\\d*",message = "Veuillez respecter le formatage du Mobile.")
     private String mobile;
 
     @Column(name = "EMAIL", nullable = false)

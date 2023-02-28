@@ -5,13 +5,17 @@ import com.dosi.entities.Promotion;
 import com.dosi.entities.PromotionId;
 import com.dosi.entities.UniteEnseignement;
 import com.dosi.entities.UniteEnseignementId;
+import com.dosi.repositories.PromotionRepository;
 import com.dosi.services.PromotionService;
 import com.dosi.services.UEService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/promotions")
 public class PromotionController extends BaseController<Promotion, PromotionId> {
+    @Autowired
+    PromotionRepository repository;
     public PromotionController(PromotionService promotionService) {
         super(promotionService);
     }
@@ -30,6 +34,7 @@ public class PromotionController extends BaseController<Promotion, PromotionId> 
                 .anneeUniversitaire(annee)
                 .codeFormation(formation)
                 .build();
-        service.delete(id);
+            repository.deleteByEmbeddedId(id.getAnneeUniversitaire(), id.getCodeFormation());
+
     }
 }

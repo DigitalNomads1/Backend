@@ -8,8 +8,13 @@ import jakarta.persistence.*;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+<<<<<<< HEAD
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
+=======
+import lombok.*;
+>>>>>>> e91fa5a9fb1b84f65d9f4cc3ab81d58b3a40ec3b
 import net.minidev.json.annotate.JsonIgnore;
 
 import java.time.LocalDate;
@@ -19,6 +24,9 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "PROMOTION")
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
@@ -75,4 +83,10 @@ public class Promotion implements Identifiable<PromotionId>{
     @OneToMany(mappedBy = "promotion",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Candidat> ListCandidats = new ArrayList<>();
 
+    @Override
+    public String toString() {
+        return "Promotion{" +
+                "id=" + id +
+                ", codeFormation=" + codeFormation ;
+    }
 }

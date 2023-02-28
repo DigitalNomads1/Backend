@@ -6,6 +6,7 @@ import com.dosi.entities.Promotion;
 import com.dosi.entities.UniteEnseignement;
 import com.dosi.repositories.EnseignantRepository;
 import com.dosi.services.EnseignantService;
+import com.dosi.services.FormationService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,18 +23,20 @@ public class EnseignantController extends GlobalController<Enseignant, Long> {
 
     @GetMapping("/{id}/UE")
     public List<UniteEnseignement> getUE(@PathVariable Long id) {
-        return read(id).getListUE();
+        return ((EnseignantService)service).getUE(id);
     }
 
     @GetMapping("/{id}/EC")
     public List<ElementConstitutif> getEC(@PathVariable Long id) {
-        return read(id).getListEC();
+        return ((EnseignantService)service).getEC(id);
     }
 
     @GetMapping("/{id}/promotions")
     public List<Promotion> getPromotions(@PathVariable Long id) {
-        return read(id).getListPromotion();
+        return ((EnseignantService)service).getPromotions(id);
+
     }
+
 
 }
 

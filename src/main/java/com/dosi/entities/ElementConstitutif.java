@@ -2,6 +2,10 @@ package com.dosi.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.DecimalMax;
+import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 @Getter
@@ -16,18 +20,25 @@ public class ElementConstitutif implements Identifiable<ElementConstitutifId>{
     private ElementConstitutifId id;
 
     @Column(name = "DESIGNATION", nullable = false, length = 64)
+    @NotBlank(message = "designation est Requis!")
     private String designation;
 
     @Column(name = "DESCRIPTION", length = 240)
     private String description;
 
     @Column(name = "NBH_CM")
+    @DecimalMin(value = "1", message = "Nb d'heures de Cours Magistraux (CM) dispensées dans l'EC est entre 1 et 200")
+    @DecimalMax(value = "200", message = "Nb d'heures de Cours Magistraux (CM) dispensées dans l'EC est entre 1 et 200")
     private Short nbhCm;
 
     @Column(name = "NBH_TD")
+    @DecimalMin(value = "1", message = "Nb d'heures de Travaux Dirigés (TD) dispensées dans l'EC est entre 1 et 200")
+    @DecimalMax(value = "200", message = "Nb d'heures de Travaux Dirigés (TD) dispensées dans l'EC est entre 1 et 200")
     private Short nbhTd;
 
     @Column(name = "NBH_TP")
+    @DecimalMin(value = "1", message = "Nb d'heures de Travaux Pratiques (TP) dispensées dans l'EC est entre 1 et 200")
+    @DecimalMax(value = "200", message = "Nb d'heures de Travaux Pratiques (TP) dispensées dans l'EC est entre 1 et 200")
     private Short nbhTp;
 
     @MapsId("codeUE")
@@ -37,9 +48,9 @@ public class ElementConstitutif implements Identifiable<ElementConstitutifId>{
     @JsonIgnoreProperties({"hibernateLazyInitializer"})
     private UniteEnseignement codeUE;
 
-    @MapsId("no_enseignant")
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "NO_ENSEIGNANT", referencedColumnName = "NO_ENSEIGNANT")
+    @NotNull(message = "gvhj")
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name = "NO_ENSEIGNANT" , nullable = false)
     @JsonIgnoreProperties({"hibernateLazyInitializer"})
     private Enseignant no_enseignant;
 }

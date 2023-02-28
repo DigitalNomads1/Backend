@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/promotions")
 public class PromotionController extends BaseController<Promotion, PromotionId> {
     @Autowired
-    PromotionRepository repository;
+    PromotionService promotionService;
     public PromotionController(PromotionService promotionService) {
         super(promotionService);
     }
@@ -34,7 +34,7 @@ public class PromotionController extends BaseController<Promotion, PromotionId> 
                 .anneeUniversitaire(annee)
                 .codeFormation(formation)
                 .build();
-            repository.deleteByEmbeddedId(id.getAnneeUniversitaire(), id.getCodeFormation());
+            promotionService.deleteByEmbeddedId(id.getAnneeUniversitaire(), id.getCodeFormation());
 
     }
 }

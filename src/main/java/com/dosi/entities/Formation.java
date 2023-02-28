@@ -70,6 +70,4 @@ public class Formation implements Identifiable<String>{
         return debutAccreditation.isBefore(finAccreditation);
     }
 
-
-
 }

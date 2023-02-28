@@ -29,7 +29,7 @@ import static com.dosi.utils.Constants.DATE_PATTERN;
 public class Etudiant  implements  Identifiable<String>{
     @Id
     @Column(name = "NO_ETUDIANT", nullable = false, length = 50)
-    @NotBlank(message = "NO_ETUDIANT est Requis!")
+    @NotBlank(message = "NO ETUDIANT est Requis!")
     private String id;
 
     @Column(name = "NOM", nullable = false, length = 50)
@@ -84,17 +84,17 @@ public class Etudiant  implements  Identifiable<String>{
     private String codePostal;
 
     @Column(name = "VILLE", nullable = false)
-    @NotBlank(message = "ville est Requise!")
+    @NotBlank(message = "Ville est Requise!")
     private String ville;
 
     @Column(name = "PAYS_ORIGINE", nullable = false, length = 5)
     @NotBlank(message = "Pays d'origine est Requis!")
-    @Pattern(regexp = "^(FR|MA|AL|TU|BF)$", message = "pays doit être 'FR', 'MA', 'AL', 'TU' ou 'BF'")
+    @Pattern(regexp = "^(FR|MA|AL|TU|BF)$", message = "Pays doit être 'FR', 'MA', 'AL', 'TU' ou 'BF'")
     private String paysOrigine;
 
     @Column(name = "UNIVERSITE_ORIGINE", nullable = false, length = 6)
-    @NotBlank(message = "Université d'origine est Requis!")
-    @Pattern(regexp = "^(UAE|UCD|UCAM|UH2M|UIT|UH1|UIZ|UM5A|USMBA)$", message = "universiteOrigine doit être 'FR', 'MA', 'AL', 'TU' ou 'BF'")
+    @NotBlank(message = "Université d'origine est Requise!")
+    @Pattern(regexp = "^(UAE|UCD|UCAM|UH2M|UIT|UH1|UIZ|UM5A|USMBA)$", message = "Universite d'Origine doit être 'FR', 'MA', 'AL', 'TU' ou 'BF'")
     private String universiteOrigine;
 
     @Column(name = "GROUPE_TP")

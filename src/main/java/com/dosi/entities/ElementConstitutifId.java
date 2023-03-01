@@ -14,6 +14,7 @@ import java.util.Objects;
 @AllArgsConstructor
 @NoArgsConstructor
 @Embeddable
+@ToString
 public class ElementConstitutifId implements Serializable {
     private static final long serialVersionUID = 2503035845541438625L;
     @Column(name = "CODE_FORMATION", nullable = false, length = 8)

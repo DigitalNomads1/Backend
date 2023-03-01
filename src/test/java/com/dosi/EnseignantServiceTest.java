@@ -50,7 +50,7 @@ public class EnseignantServiceTest {
                         .id(1L)
                         .prenom("John")
                         .nom("Doe")
-                .build());
+                        .build());
         enseignants.add(
                 Enseignant.builder()
                         .id(2L)

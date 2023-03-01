@@ -6,10 +6,12 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 @Getter
 @Setter
 @Entity
+@CrossOrigin(origins = "*")
 @Table(name = "CG_REF_CODES")
 public class CgRefCode {
     @Id

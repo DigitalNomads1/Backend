@@ -24,14 +24,22 @@ public class CandidatService extends BaseService<Candidat,String> {
          if(candidat.getId() != null )
          {
              if (repository.existsById(candidat.getId())) {
-                 throw new EntityExistsException("Etudiant avec l'id " + candidat.getId() + " existe déjà!");
+                 throw new EntityExistsException("Le candidat avec l'id " + candidat.getId() + " existe déjà!");
              }
          }
          if(candidatRepository.findByEmail(candidat.getEmail()) != null)
          {
-             throw new EntityExistsException("Email personnel de l'etudiant existe déjà!");
+             throw new EntityExistsException("Email personnel du candidat existe déjà!");
          }
+         return repository.save(candidat);
+     }
 
+     public Candidat update(Candidat candidat){
+         Candidat candidat1=repository.findById(candidat.getId()).orElse(null);
+
+         if (candidat1 == null || !candidat.getEmail().equals(candidat1.getEmail()))
+             if(candidatRepository.findByEmail(candidat.getEmail()) != null)
+                throw new EntityExistsException("Email personnel du candidat existe déjà!");
 
          return repository.save(candidat);
      }

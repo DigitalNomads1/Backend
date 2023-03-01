@@ -1,9 +1,6 @@
 package com.dosi.entities;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
@@ -11,10 +8,13 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.*;
 import net.minidev.json.annotate.JsonIgnore;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.dosi.utils.Constants.DATE_PATTERN;
 
 @Getter
 @Setter
@@ -36,7 +36,7 @@ public class Promotion implements Identifiable<PromotionId>{
     @JoinColumn(name = "CODE_FORMATION", nullable = false)
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @JsonIgnore
-    @NotNull(message = "CODE_FORMATION est Requis!")
+    @NotNull(message = "Code formation est Requis!")
     @Valid
     private Formation codeFormation;
 
@@ -44,7 +44,7 @@ public class Promotion implements Identifiable<PromotionId>{
     @JoinColumn(name = "NO_ENSEIGNANT", nullable = false)
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @JsonIgnore
-    @NotNull(message = "NO_ENSEIGNANT est Requis!")
+    @NotNull(message = "Numero enseignant est Requis!")
     @Valid
     private Enseignant noEnseignant;
 
@@ -56,12 +56,18 @@ public class Promotion implements Identifiable<PromotionId>{
     private Short nbMaxEtudiant;
 
     @Column(name = "DATE_REPONSE_LP")
+    @DateTimeFormat(pattern = DATE_PATTERN)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_PATTERN)
     private LocalDate dateReponseLp;
 
     @Column(name = "DATE_REPONSE_LALP")
+    @DateTimeFormat(pattern = DATE_PATTERN)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_PATTERN)
     private LocalDate dateReponseLalp;
 
     @Column(name = "DATE_RENTREE")
+    @DateTimeFormat(pattern = DATE_PATTERN)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_PATTERN)
     private LocalDate dateRentree;
 
     @Column(name = "LIEU_RENTREE", length = 12)

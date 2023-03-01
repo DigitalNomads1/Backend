@@ -5,6 +5,7 @@ import com.dosi.entities.ElementConstitutif;
 import com.dosi.entities.ElementConstitutifId;
 import com.dosi.services.ECService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -15,7 +16,6 @@ public class ECController  extends BaseController<ElementConstitutif, ElementCon
     public ECController(ECService service) {
         super(service);
     }
-
 
     @GetMapping("/{formation}-{ue}-{ec}")
     public ElementConstitutif read(@PathVariable String formation, @PathVariable String ue, @PathVariable String ec) {

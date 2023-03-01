@@ -28,7 +28,6 @@ public class FormationService extends BaseService<Formation, String>{
     @Autowired
     ElementConstitutifRepository elementConstitutifRepository;
     public List<ElementConstitutif> findECList(String id_formation, String id_ue){
-        Formation formation = repository.findById(id_formation).get();
 
         UniteEnseignementId uniteEnseignementId = UniteEnseignementId.builder()
                 .codeFormation(id_formation)

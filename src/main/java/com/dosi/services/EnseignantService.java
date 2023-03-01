@@ -53,10 +53,12 @@ public class EnseignantService extends BaseService<Enseignant, Long> {
     }
 
     public Enseignant update(Enseignant enseignant) {
+        Enseignant enseignant1=repository.findById(enseignant.getId()).orElse(null);
+
+        if (enseignant1 == null || !enseignant.getEmailUbo().equals(enseignant1.getEmailUbo()))
         if(findByEmailUbo(enseignant.getEmailUbo())!=null)
-        {
             throw new EntityExistsException("Email existe déjà!");
-        }
+
         return repository.save(enseignant);
     }
 

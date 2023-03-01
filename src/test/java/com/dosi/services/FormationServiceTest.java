@@ -18,9 +18,6 @@ import static org.mockito.Mockito.when;
 
 class FormationServiceTest {
 
-
-
-
     @Mock
     private FormationRepository formationRepository;
 

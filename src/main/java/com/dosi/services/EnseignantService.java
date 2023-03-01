@@ -22,21 +22,17 @@ public class EnseignantService extends BaseService<Enseignant, Long> {
         super(enseignantRepository);
     }
 
-    public List<UniteEnseignement> getUE(@PathVariable Long id) {
+    public List<UniteEnseignement> getUE( Long id) {
         return read(id).getListUE();
     }
 
-    public List<ElementConstitutif> getEC(@PathVariable Long id) {
-        return read(id).getListEC();
-    }
+    public List<ElementConstitutif> getEC(Long id) { return read(id).getListEC();}
 
-    public List<Promotion> getPromotions(@PathVariable Long id) {
+    public List<Promotion> getPromotions(Long id) {
         return read(id).getListPromotion();
     }
-    @Autowired
-    EnseignantRepository enseignantRepository;
     public Enseignant findByEmailUbo(String email){
-        return enseignantRepository.findByEmailUbo(email);
+        return ((EnseignantRepository)repository).findByEmailUbo(email);
     }
 
     public Enseignant create(Enseignant enseignant) {

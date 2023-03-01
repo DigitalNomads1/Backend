@@ -7,10 +7,12 @@ import com.dosi.entities.UniteEnseignement;
 import com.dosi.repositories.EnseignantRepository;
 import com.dosi.repositories.UniteEnseignementRepository;
 import jakarta.persistence.EntityExistsException;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 import java.util.Optional;
@@ -49,5 +51,14 @@ public class EnseignantService extends BaseService<Enseignant, Long> {
 
         return repository.save(enseignant);
     }
+
+    public Enseignant update(Enseignant enseignant) {
+        if(findByEmailUbo(enseignant.getEmailUbo())!=null)
+        {
+            throw new EntityExistsException("Email existe déjà!");
+        }
+        return repository.save(enseignant);
+    }
+
 
 }

@@ -196,21 +196,17 @@ public class CandidatServiceTest {
         verify(candidatRepository, times(1)).save(candidat);
     }
 
-   /*@Test
-    public void testUpdateCandidatUniqueConstraintViolation() {
-        Candidat existingCandidat = new Candidat();
-        existingCandidat.setId("1L");
+    @Test
+    public void testUpdateCandidatWithExistingEmail() {
+        Candidat candidat = new Candidat();
+        candidat.setEmail("dupont@gmail.com");
 
-        Candidat updatedCandidat = new Candidat();
-        updatedCandidat.setId("2L");
+        when(candidatRepository.findByEmail("dupont@gmail.com")).thenReturn(candidat);
 
-        when(candidatRepository.findById("2L")).thenReturn(Optional.of(updatedCandidat));
-        doThrow(ApplicationException.class).when(candidatRepository).save(updatedCandidat);
-
-        assertThrows(ApplicationException.class, () -> {
-            candidatService.update(updatedCandidat);
+        assertThrows(EntityExistsException.class, () -> {
+            candidatService.update(candidat);
         });
-    }*/
+    }
 
     @Test
     public void testDelete() {

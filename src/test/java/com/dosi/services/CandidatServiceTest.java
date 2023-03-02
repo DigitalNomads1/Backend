@@ -1,4 +1,4 @@
-package com.dosi;
+package com.dosi.services;
 
 import com.dosi.entities.Candidat;
 import com.dosi.entities.Enseignant;

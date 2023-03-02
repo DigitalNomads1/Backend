@@ -196,7 +196,7 @@ public class CandidatServiceTest {
         verify(candidatRepository, times(1)).save(candidat);
     }
 
-/*    @Test
+   /*@Test
     public void testUpdateCandidatUniqueConstraintViolation() {
         Candidat existingCandidat = new Candidat();
         existingCandidat.setId("1L");

@@ -16,8 +16,6 @@ public class EtudiantService extends BaseService<Etudiant, String> {
         super(etudiantRepository);
     }
 
-    ;
-
     public Etudiant create(Etudiant etudiant) {
         if (etudiant.getId() != null) {
             if (repository.existsById(etudiant.getId())) {
@@ -44,5 +42,21 @@ public class EtudiantService extends BaseService<Etudiant, String> {
         }
 
     }
+    @Override
+    public Etudiant update(Etudiant etudiant) {
+        Etudiant optionEtudiant = repository.findById(etudiant.getId()).orElse(null);
+
+            if (optionEtudiant == null || !etudiant.getEmail().equals(optionEtudiant.getEmail()))
+                if (etudiantRepository.findByEmail(etudiant.getEmail()) != null)
+                    throw new EntityExistsException("Email personnel de l'etudiant existe déjà!");
+
+
+            if (optionEtudiant == null || !etudiant.getEmailUbo().equals(optionEtudiant.getEmailUbo()))
+                if (etudiantRepository.findByEmailUbo(etudiant.getEmailUbo()) != null)
+                    throw new EntityExistsException("Email Ubo de l'etudiant existe déjà!");
+
+        return repository.save(etudiant);
+    }
+
 }
 

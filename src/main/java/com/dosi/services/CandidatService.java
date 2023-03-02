@@ -16,19 +16,31 @@ public class CandidatService extends BaseService<Candidat, String> {
         super(candidatRepository);
     }
 
-    public Candidat create(Candidat candidat) {
-        if (candidat.getId() != null) {
-            if (repository.existsById(candidat.getId())) {
-                throw new EntityExistsException("Etudiant avec l'id " + candidat.getId() + " existe déjà!");
-            }
-        }
-        if (candidatRepository.findByEmail(candidat.getEmail()) != null) {
-            throw new EntityExistsException("Email personnel de l'etudiant existe déjà!");
-        }
-        return repository.save(candidat);
-    }
+     public Candidat create(Candidat candidat) {
+         if(candidat.getId() != null )
+         {
+             if (repository.existsById(candidat.getId())) {
+                 throw new EntityExistsException("Le candidat avec l'id " + candidat.getId() + " existe déjà!");
+             }
+         }
+         if(candidatRepository.findByEmail(candidat.getEmail()) != null)
+         {
+             throw new EntityExistsException("Email personnel du candidat existe déjà!");
+         }
+         return repository.save(candidat);
+     }
 
-    @Override
+     @Override
+     public Candidat update(Candidat candidat) {
+         Candidat optionalCandidat = repository.findById(candidat.getId()).orElse(null);
+
+         if (optionalCandidat == null || !candidat.getEmail().equals(optionalCandidat.getEmail()))
+             if (candidatRepository.findByEmail(candidat.getEmail()) != null)
+                 throw new EntityExistsException("Email personnel du candidat existe déjà!");
+         return repository.save(candidat);
+     }
+
+     @Override
     public void delete(String id) {
         super.delete(id);
         try {

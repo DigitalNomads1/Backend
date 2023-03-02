@@ -37,18 +37,16 @@ public class Promotion implements Identifiable<PromotionId>{
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @JsonIgnore
     @NotNull(message = "Code formation est Requis!")
-    @Valid
     private Formation codeFormation;
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "NO_ENSEIGNANT", nullable = false)
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @JsonIgnore
-    @NotNull(message = "Numero enseignant est Requis!")
-    @Valid
     private Enseignant noEnseignant;
 
     @Column(name = "SIGLE_PROMOTION", length = 16)
+    @NotNull(message = "Le Sigle promotion est Requis!")
     private String siglePromotion;
 
     @Column(name = "NB_MAX_ETUDIANT", nullable = false)

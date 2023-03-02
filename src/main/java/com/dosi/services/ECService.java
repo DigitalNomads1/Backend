@@ -5,7 +5,6 @@ import com.dosi.exceptions.ApplicationException;
 import com.dosi.repositories.ElementConstitutifRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 
 @Service
 public class ECService extends BaseService<ElementConstitutif, ElementConstitutifId> {

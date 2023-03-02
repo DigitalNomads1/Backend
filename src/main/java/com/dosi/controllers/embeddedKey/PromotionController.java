@@ -37,4 +37,18 @@ public class PromotionController extends BaseController<Promotion, PromotionId> 
             promotionService.deleteByEmbeddedId(id.getAnneeUniversitaire(), id.getCodeFormation());
 
     }
+
+  /*  @DeleteMapping("/{annee}-{formation}")
+    public void delete(@PathVariable String annee, @PathVariable String formation) {
+        PromotionId id = new PromotionId(annee, formation);
+        Promotion promotion = myEntityRepository.findById(id).orElse(null);
+        if (promotion != null) {
+            myEntityRepository.delete(promotion);
+        }
+    }*/
+
+
+
+
+
 }

@@ -45,7 +45,7 @@ public class Enseignant  implements  Identifiable<Long>{
     private String prenom;
 
     @Column(name = "ADRESSE", nullable = false)
-    @NotBlank(message = "adresse est Requis!")
+    @NotBlank(message = "Adresse est Requise!")
     private String adresse;
 
     @Column(name = "CODE_POSTAL", nullable = false, length = 10)
@@ -53,7 +53,7 @@ public class Enseignant  implements  Identifiable<Long>{
     private String codePostal;
 
     @Column(name = "VILLE", nullable = false)
-    @NotBlank(message = "ville est Requis!")
+    @NotBlank(message = "Ville est requise!")
     private String ville;
 
     @Column(name = "PAYS", nullable = false, length = 5)

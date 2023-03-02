@@ -1,4 +1,4 @@
-package com.dosi;
+package com.dosi.services;
 
 import com.dosi.entities.*;
 import com.dosi.exceptions.ApplicationException;
@@ -50,7 +50,7 @@ public class EnseignantServiceTest {
                         .id(1L)
                         .prenom("John")
                         .nom("Doe")
-                .build());
+                        .build());
         enseignants.add(
                 Enseignant.builder()
                         .id(2L)

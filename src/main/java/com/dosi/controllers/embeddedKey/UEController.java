@@ -35,5 +35,3 @@ public class UEController extends BaseController<UniteEnseignement, UniteEnseign
         service.delete(id);
     }
 }
-
-

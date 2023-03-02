@@ -1,14 +1,11 @@
 package com.dosi.services;
 
 import com.dosi.entities.Identifiable;
-import com.dosi.exceptions.ApplicationException;
 import jakarta.persistence.EntityExistsException;
 import lombok.AllArgsConstructor;
-import org.springframework.data.domain.Example;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.web.server.ResponseStatusException;
 
-import javax.management.InvalidApplicationException;
 import java.util.List;
 import static org.springframework.http.HttpStatus.NOT_FOUND;
 

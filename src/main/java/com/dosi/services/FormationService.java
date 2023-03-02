@@ -1,6 +1,7 @@
 package com.dosi.services;
 
 import com.dosi.entities.*;
+import com.dosi.exceptions.ApplicationException;
 import com.dosi.repositories.ElementConstitutifRepository;
 import com.dosi.repositories.FormationRepository;
 
@@ -37,5 +38,12 @@ public class FormationService extends BaseService<Formation, String>{
 
         return  elementConstitutifRepository.findByCodeUE(uniteEnseignement);  }
 
-
+    @Override
+    public void delete(String id) {
+        Formation formation = repository.findById(id).get();
+        List<UniteEnseignement> uniteEnseignements = uniteEnseignementRepository.findByCodeFormation(formation);
+      if(uniteEnseignements.size() > 0)
+          throw new ApplicationException("Veuillez vérifier les données enregistrées, Vérifier que la formation ne contient pas d'UE.");
+        repository.deleteById(id);
+    }
 }

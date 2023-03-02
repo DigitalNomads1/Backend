@@ -4,6 +4,7 @@ import com.dosi.entities.ElementConstitutif;
 import com.dosi.entities.Enseignant;
 import com.dosi.entities.Promotion;
 import com.dosi.entities.UniteEnseignement;
+import com.dosi.exceptions.ApplicationException;
 import com.dosi.repositories.EnseignantRepository;
 import com.dosi.repositories.UniteEnseignementRepository;
 import jakarta.persistence.EntityExistsException;
@@ -50,4 +51,13 @@ public class EnseignantService extends BaseService<Enseignant, Long> {
         return repository.save(enseignant);
     }
 
+    @Override
+    public void delete(Long id) {
+        super.delete(id);
+        try{
+            repository.deleteById(id);
+        }catch (Exception e){
+            throw new ApplicationException("Veuillez vérifier les données enregistrées, Vérifier que l'enseignant n'est pas un responsable d'une Promotion, UE ou EC.");
+        }
+    }
 }

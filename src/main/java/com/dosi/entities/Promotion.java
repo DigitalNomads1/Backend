@@ -88,6 +88,12 @@ public class Promotion implements Identifiable<PromotionId>{
     public String toString() {
         return "Promotion{" +
                 "id=" + id +
-                ", codeFormation=" + codeFormation ;
+                ", codeFormation=" + codeFormation +
+                ", noEnseignant=" + noEnseignant +
+                ", siglePromotion='" + siglePromotion + '\'' +
+                ", nbMaxEtudiant=" + nbMaxEtudiant +
+                ", dateReponseLp=" + dateReponseLp +
+                ", dateReponseLalp=" + dateReponseLalp +
+                '}';
     }
 }

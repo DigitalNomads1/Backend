@@ -176,9 +176,41 @@ public class CandidatServiceTest {
         });
     }
 
-    //test update after pulling from anas---------------------------------
+    @Test
+    public void testUpdate() {
+        // given
+        Candidat candidat = Candidat.builder()
+                .id("1L")
+                .prenom("Anas")
+                .nom("Salhi")
+                .build();
+        when(candidatRepository.save(candidat)).thenReturn(candidat);
 
-    // testUpdateEnseignantUniqueConstraintViolation
+        // when
+        Candidat result = candidatService.update(candidat);
+
+        // then
+        assertEquals("1L", result.getId());
+        assertEquals("Anas", result.getPrenom());
+        assertEquals("Salhi", result.getNom());
+        verify(candidatRepository, times(1)).save(candidat);
+    }
+
+/*    @Test
+    public void testUpdateCandidatUniqueConstraintViolation() {
+        Candidat existingCandidat = new Candidat();
+        existingCandidat.setId("1L");
+
+        Candidat updatedCandidat = new Candidat();
+        updatedCandidat.setId("2L");
+
+        when(candidatRepository.findById("2L")).thenReturn(Optional.of(updatedCandidat));
+        doThrow(ApplicationException.class).when(candidatRepository).save(updatedCandidat);
+
+        assertThrows(ApplicationException.class, () -> {
+            candidatService.update(updatedCandidat);
+        });
+    }*/
 
     @Test
     public void testDelete() {

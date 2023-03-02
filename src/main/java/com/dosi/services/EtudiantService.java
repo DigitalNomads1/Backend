@@ -12,14 +12,13 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class EtudiantService extends BaseService<Etudiant, String> {
-    @Autowired
-    EtudiantRepository etudiantRepository;
+
 
     public EtudiantService(EtudiantRepository etudiantRepository) {
         super(etudiantRepository);
     }
     public Etudiant findByEmail(String email){
-        return ((EtudiantRepository)repository).findByEmailUbo(email);
+        return ((EtudiantRepository)repository).findByEmail(email);
     }
     public Etudiant findByEmailUbo(String email){
         return ((EtudiantRepository)repository).findByEmailUbo(email);
@@ -27,7 +26,7 @@ public class EtudiantService extends BaseService<Etudiant, String> {
 
     public Etudiant create(Etudiant etudiant) {
         if (etudiant.getId() != null) {
-            if (repository.existsById(etudiant.getId())) {
+        if (repository.existsById(etudiant.getId())) {
                 throw new EntityExistsException("Etudiant avec l'id " + etudiant.getId() + " existe déjà!");
             }
         }
@@ -45,12 +44,12 @@ public class EtudiantService extends BaseService<Etudiant, String> {
         Etudiant etudiant1 = repository.findById(etudiant.getId()).orElse(null);
 
             if (etudiant1 == null || !etudiant.getEmail().equals(etudiant1.getEmail()))
-                if (etudiantRepository.findByEmail(etudiant.getEmail()) != null)
+                if (findByEmail(etudiant.getEmail()) != null)
                     throw new EntityExistsException("Email personnel de l'etudiant existe déjà!");
 
 
             if (etudiant1 == null || !etudiant.getEmailUbo().equals(etudiant1.getEmailUbo()))
-                if (etudiantRepository.findByEmailUbo(etudiant.getEmailUbo()) != null)
+                if (findByEmailUbo(etudiant.getEmailUbo()) != null)
                     throw new EntityExistsException("Email Ubo de l'etudiant existe déjà!");
 
         return repository.save(etudiant);

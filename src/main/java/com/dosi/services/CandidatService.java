@@ -4,7 +4,6 @@ import com.dosi.entities.Candidat;
 import com.dosi.exceptions.ApplicationException;
 import com.dosi.repositories.CandidatRepository;
 import jakarta.persistence.EntityExistsException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
  @Service

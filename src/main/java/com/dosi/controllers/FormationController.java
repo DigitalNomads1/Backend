@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+import static com.dosi.utils.Constants.API_URL;
+
 @RestController
-@RequestMapping("/formations")
+@RequestMapping(API_URL + "/formations")
 public class FormationController extends GlobalController<Formation, String>{
     public FormationController(FormationService service) {
         super(service);

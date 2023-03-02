@@ -1,23 +1,15 @@
 package com.dosi.services;
 
-import com.dosi.entities.Enseignant;
 import com.dosi.entities.Etudiant;
-import com.dosi.entities.Promotion;
-import com.dosi.entities.PromotionId;
 import com.dosi.exceptions.ApplicationException;
 import com.dosi.repositories.EtudiantRepository;
-import com.dosi.services.EnseignantService;
-import com.dosi.services.EtudiantService;
 import jakarta.persistence.EntityExistsException;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.web.server.ResponseStatusException;
-
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -109,7 +101,7 @@ public class EtudiantServiceTest {
         Etudiant etudiant = new Etudiant();
         etudiant.setEmailUbo("jean.dupont@univ-brest.fr");
 
-        when(etudiantRepository.findByEmailUbo("jean.dupont@univ-brest.fr")).thenReturn(etudiant);
+        when(etudiantRepository.findByEmailUbo("jean.dupont@univ-brest.fr").get()).thenReturn(etudiant);
 
         assertThrows(EntityExistsException.class, () -> {
             etudiantService.create(etudiant);
@@ -120,7 +112,7 @@ public class EtudiantServiceTest {
         Etudiant etudiant = new Etudiant();
         etudiant.setEmail("jean.dupont@gmail.fr");
 
-        when(etudiantRepository.findByEmail("jean.dupont@gmail.fr")).thenReturn(etudiant);
+        when(etudiantRepository.findByEmail("jean.dupont@gmail.fr").get()).thenReturn(etudiant);
 
         assertThrows(EntityExistsException.class, () -> {
             etudiantService.create(etudiant);
@@ -197,7 +189,7 @@ public class EtudiantServiceTest {
         Etudiant etudiant = new Etudiant();
         etudiant.setEmailUbo("jean.dupont@univ-brest.fr");
 
-        when(etudiantRepository.findByEmailUbo("jean.dupont@univ-brest.fr")).thenReturn(etudiant);
+        when(etudiantRepository.findByEmailUbo("jean.dupont@univ-brest.fr").get()).thenReturn(etudiant);
 
         Etudiant foundEtudiant = etudiantService.findByEmailUbo("jean.dupont@univ-brest.fr");
 

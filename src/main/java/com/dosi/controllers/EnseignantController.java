@@ -7,6 +7,7 @@ import com.dosi.entities.UniteEnseignement;
 import com.dosi.repositories.EnseignantRepository;
 import com.dosi.services.EnseignantService;
 import com.dosi.services.FormationService;
+import com.dosi.utils.Constants;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,8 +15,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+import static com.dosi.utils.Constants.API_URL;
+
 @RestController
-@RequestMapping("/enseignants")
+@RequestMapping(API_URL +"/enseignants")
 public class EnseignantController extends GlobalController<Enseignant, Long> {
     public EnseignantController(EnseignantService service) {
         super(service);

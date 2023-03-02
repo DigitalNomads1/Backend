@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+import static com.dosi.utils.Constants.API_URL;
+
 @RestController
-@RequestMapping("/CgRefCodes")
+@RequestMapping(API_URL +"/CgRefCodes")
 public class CgRedCodeController{
     @Autowired
     CgRefCodeRepository repository;

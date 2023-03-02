@@ -14,10 +14,10 @@ public class EtudiantService extends BaseService<Etudiant, String> {
         super(etudiantRepository);
     }
     public Etudiant findByEmail(String email){
-        return ((EtudiantRepository)repository).findByEmail(email);
+        return ((EtudiantRepository)repository).findByEmail(email).get();
     }
     public Etudiant findByEmailUbo(String email){
-        return ((EtudiantRepository)repository).findByEmailUbo(email);
+        return ((EtudiantRepository)repository).findByEmailUbo(email).get();
     }
 
     public Etudiant create(Etudiant etudiant) {

@@ -3,6 +3,7 @@ package com.dosi.services;
 import com.dosi.entities.Enseignant;
 import com.dosi.entities.Etudiant;
 import com.dosi.repositories.CandidatRepository;
+import com.dosi.repositories.EnseignantRepository;
 import com.dosi.repositories.EtudiantRepository;
 import com.dosi.services.BaseService;
 import jakarta.persistence.EntityExistsException;
@@ -17,8 +18,12 @@ public class EtudiantService extends BaseService<Etudiant, String> {
     public EtudiantService(EtudiantRepository etudiantRepository) {
         super(etudiantRepository);
     }
-
-
+    public Etudiant findByEmail(String email){
+        return ((EtudiantRepository)repository).findByEmailUbo(email);
+    }
+    public Etudiant findByEmailUbo(String email){
+        return ((EtudiantRepository)repository).findByEmailUbo(email);
+    }
 
     public Etudiant create(Etudiant etudiant) {
         if (etudiant.getId() != null) {
@@ -26,10 +31,10 @@ public class EtudiantService extends BaseService<Etudiant, String> {
                 throw new EntityExistsException("Etudiant avec l'id " + etudiant.getId() + " existe déjà!");
             }
         }
-        if (etudiantRepository.findByEmail(etudiant.getEmail()) != null) {
+        if (findByEmail(etudiant.getEmail()) != null) {
             throw new EntityExistsException("Email personnel de l'etudiant existe déjà!");
         }
-        if (etudiantRepository.findByEmailUbo(etudiant.getEmailUbo()) != null) {
+        if (findByEmailUbo(etudiant.getEmailUbo()) != null) {
             throw new EntityExistsException("Email Ubo de l'etudiant existe déjà!");
         }
 

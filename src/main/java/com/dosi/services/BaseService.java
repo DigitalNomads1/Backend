@@ -1,14 +1,10 @@
 package com.dosi.services;
 
 import com.dosi.entities.Identifiable;
-import com.dosi.exceptions.ApplicationException;
 import jakarta.persistence.EntityExistsException;
 import lombok.AllArgsConstructor;
-import org.springframework.data.domain.Example;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.web.server.ResponseStatusException;
-
-import javax.management.InvalidApplicationException;
 import java.util.List;
 import static org.springframework.http.HttpStatus.NOT_FOUND;
 
@@ -44,19 +40,9 @@ public abstract class BaseService<T extends Identifiable, K> {
     }
 
     public void delete(K id) {
-        System.out.println(id);
-
         var entity = repository.findById(id);
-        System.out.println(entity);
-        if( ! entity.isPresent() )
-        {
+        if (!entity.isPresent()) {
             throw new ResponseStatusException(NOT_FOUND, "La ressource avec l'identifiant " + id + " n'a pas été trouvée.");
         }
-//        try{
-        repository.deleteById(id);
-//        }catch (Exception e){
-//            System.out.println("** "  + e.getMessage());
-//            throw new ApplicationException("Veuillez vérifier les données enregistrées, Vérifier que l'enseignant n'est pas un responsable d'une Promotion, UE ou EC.");
-//        }
     }
 }

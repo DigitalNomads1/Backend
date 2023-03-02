@@ -43,7 +43,6 @@ public class Promotion implements Identifiable<PromotionId>{
     @JoinColumn(name = "NO_ENSEIGNANT", nullable = false)
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @JsonIgnore
-    @NotNull(message = "Numero enseignant est Requis!")
     private Enseignant noEnseignant;
 
     @Column(name = "SIGLE_PROMOTION", length = 16)

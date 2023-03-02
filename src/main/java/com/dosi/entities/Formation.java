@@ -4,9 +4,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 import java.time.LocalDate;
 import java.util.List;
@@ -19,6 +17,9 @@ import static com.dosi.utils.Constants.*;
 @Entity
 @Table(name = "FORMATION")
 @ToString
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Formation implements Identifiable<String>{
     @Id
     @Column(name = "CODE_FORMATION", nullable = false, length = 8)

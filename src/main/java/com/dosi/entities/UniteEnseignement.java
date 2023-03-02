@@ -8,13 +8,15 @@ import jakarta.validation.constraints.DecimalMax;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 
 @Getter
 @Setter
 @Entity
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "UNITE_ENSEIGNEMENT")
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class UniteEnseignement implements Identifiable<UniteEnseignementId>{

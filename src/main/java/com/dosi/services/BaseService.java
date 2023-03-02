@@ -53,7 +53,7 @@ public abstract class BaseService<T extends Identifiable, K> {
             throw new ResponseStatusException(NOT_FOUND, "La ressource avec l'identifiant " + id + " n'a pas été trouvée.");
         }
 //        try{
-            repository.deleteById(id);
+        repository.deleteById(id);
 //        }catch (Exception e){
 //            System.out.println("** "  + e.getMessage());
 //            throw new ApplicationException("Veuillez vérifier les données enregistrées, Vérifier que l'enseignant n'est pas un responsable d'une Promotion, UE ou EC.");

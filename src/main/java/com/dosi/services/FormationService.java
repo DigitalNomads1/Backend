@@ -2,7 +2,6 @@ package com.dosi.services;
 
 import com.dosi.entities.*;
 import com.dosi.repositories.ElementConstitutifRepository;
-import com.dosi.repositories.EnseignantRepository;
 import com.dosi.repositories.FormationRepository;
 
 import com.dosi.repositories.UniteEnseignementRepository;

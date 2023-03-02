@@ -4,10 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
-import lombok.Value;
+import lombok.*;
 import net.minidev.json.annotate.JsonIgnore;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -17,6 +14,9 @@ import static com.dosi.utils.Constants.DATE_PATTERN;
 
 @Getter
 @Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @ToString
 @Table(name = "CANDIDAT")

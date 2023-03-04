@@ -4,17 +4,9 @@ import com.dosi.entities.ElementConstitutif;
 import com.dosi.entities.Enseignant;
 import com.dosi.entities.Promotion;
 import com.dosi.entities.UniteEnseignement;
-import com.dosi.repositories.EnseignantRepository;
 import com.dosi.services.EnseignantService;
-import com.dosi.services.FormationService;
-import com.dosi.utils.Constants;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.*;
 import java.util.List;
-
 import static com.dosi.utils.Constants.API_URL;
 
 @RestController

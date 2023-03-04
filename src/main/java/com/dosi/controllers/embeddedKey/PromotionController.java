@@ -3,11 +3,7 @@ package com.dosi.controllers.embeddedKey;
 import com.dosi.controllers.BaseController;
 import com.dosi.entities.Promotion;
 import com.dosi.entities.PromotionId;
-import com.dosi.entities.UniteEnseignement;
-import com.dosi.entities.UniteEnseignementId;
-import com.dosi.repositories.PromotionRepository;
 import com.dosi.services.PromotionService;
-import com.dosi.services.UEService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

@@ -4,10 +4,7 @@ import com.dosi.entities.ElementConstitutif;
 import com.dosi.entities.Formation;
 import com.dosi.entities.UniteEnseignement;
 import com.dosi.services.FormationService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 

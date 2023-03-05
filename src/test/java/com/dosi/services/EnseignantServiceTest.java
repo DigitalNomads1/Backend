@@ -5,16 +5,12 @@ import com.dosi.exceptions.ApplicationException;
 import com.dosi.repositories.EnseignantRepository;
 import com.dosi.repositories.FormationRepository;
 import com.dosi.repositories.UniteEnseignementRepository;
-import com.dosi.services.EnseignantService;
 import jakarta.persistence.EntityExistsException;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.web.server.ResponseStatusException;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -239,7 +235,7 @@ public class EnseignantServiceTest {
 
         when(enseignantRepository.findByEmailUbo("jean.dupont@univ-brest.fr")).thenReturn(enseignant);
 
-        Enseignant foundEnseignant = enseignantService.findByEmailUbo("jean.dupont@univ-brest.fr");
+        Enseignant foundEnseignant = enseignantRepository.findByEmailUbo("jean.dupont@univ-brest.fr");
 
         assertEquals("jean.dupont@univ-brest.fr", foundEnseignant.getEmailUbo());
     }

@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 @Getter
 @Setter
 @Entity
-@CrossOrigin(origins = "*")
 @Table(name = "CG_REF_CODES")
 public class CgRefCode {
     @Id

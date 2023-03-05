@@ -4,10 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
-import lombok.Value;
+import lombok.*;
 import net.minidev.json.annotate.JsonIgnore;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -17,6 +14,9 @@ import static com.dosi.utils.Constants.DATE_PATTERN;
 
 @Getter
 @Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @ToString
 @Table(name = "CANDIDAT")
@@ -95,12 +95,14 @@ public class Candidat  implements  Identifiable<String>{
     private char confirmationCandidat;
 
     @Column(name = "DATE_REPONSE_CANDIDAT")
+    @NotNull(message = "Date de naissance est requise! Le format doit être " + DATE_PATTERN +".")
+    @DateTimeFormat(pattern = DATE_PATTERN)
     private LocalDate dateReponseCandidat;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "ANNEE_UNIVERSITAIRE", nullable = false)
     @JoinColumn(name = "CODE_FORMATION", nullable = false)
-    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    @JsonIgnoreProperties({"hibernateLazyInitializer"})
 //    @JsonIgnore
     @NotNull(message = "la promotion du candidat est Requise!")
     private Promotion promotion;

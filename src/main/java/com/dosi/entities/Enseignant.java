@@ -17,7 +17,6 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-@ToString
 @Table(name = "ENSEIGNANT")
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Enseignant  implements  Identifiable<Long>{
@@ -95,5 +94,14 @@ public class Enseignant  implements  Identifiable<Long>{
     @JsonIgnore
     private List<Promotion> listPromotion = new ArrayList<>();
 
-
+    @Override
+    public String toString() {
+        return "Enseignant{" +
+                "id=" + id +
+                ", type='" + type + '\'' +
+                ", sexe='" + sexe + '\'' +
+                ", nom='" + nom + '\'' +
+                ", prenom='" + prenom + '\'' +
+                '}';
+    }
 }

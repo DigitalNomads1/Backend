@@ -16,7 +16,6 @@ import static com.dosi.utils.Constants.*;
 @Setter
 @Entity
 @Table(name = "FORMATION")
-@ToString
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
@@ -71,4 +70,16 @@ public class Formation implements Identifiable<String>{
         return debutAccreditation.isBefore(finAccreditation);
     }
 
+    @Override
+    public String toString() {
+        return "Formation{" +
+                "id='" + id + '\'' +
+                ", diplome='" + diplome + '\'' +
+                ", n0Annee=" + n0Annee +
+                ", nomFormation='" + nomFormation + '\'' +
+                ", doubleDiplome='" + doubleDiplome + '\'' +
+                ", debutAccreditation=" + debutAccreditation +
+                ", finAccreditation=" + finAccreditation +
+                '}';
+    }
 }

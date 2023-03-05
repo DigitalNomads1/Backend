@@ -46,6 +46,7 @@ public class Promotion implements Identifiable<PromotionId>{
     private Enseignant noEnseignant;
 
     @Column(name = "SIGLE_PROMOTION", length = 16)
+    @NotNull(message = "Le Sigle promotion est Requis!")
     private String siglePromotion;
 
     @Column(name = "NB_MAX_ETUDIANT", nullable = false)
@@ -85,6 +86,12 @@ public class Promotion implements Identifiable<PromotionId>{
     public String toString() {
         return "Promotion{" +
                 "id=" + id +
-                ", codeFormation=" + codeFormation ;
+                ", codeFormation=" + codeFormation +
+                ", noEnseignant=" + noEnseignant +
+                ", siglePromotion='" + siglePromotion + '\'' +
+                ", nbMaxEtudiant=" + nbMaxEtudiant +
+                ", dateReponseLp=" + dateReponseLp +
+                ", dateReponseLalp=" + dateReponseLalp +
+                '}';
     }
 }

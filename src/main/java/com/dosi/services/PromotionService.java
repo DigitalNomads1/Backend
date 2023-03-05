@@ -9,15 +9,14 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class PromotionService extends BaseService<Promotion, PromotionId>{
-    @Autowired
-    PromotionRepository repository;
+
     public PromotionService(PromotionRepository promotionRepository){
         super(promotionRepository);
     }
 
     public void deleteByEmbeddedId(String annee,String formation)
     {
-        repository.deleteByEmbeddedId(annee,formation);
+        ((PromotionRepository)repository).deleteByEmbeddedId(annee,formation);
     }
 
 }

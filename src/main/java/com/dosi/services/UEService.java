@@ -17,9 +17,12 @@ public class UEService extends BaseService<UniteEnseignement, UniteEnseignementI
 
     @Autowired
     EnseignantRepository enseignantRepository;
-    public UEService(UniteEnseignementRepository repository) {
-        super(repository);
+
+    public UEService(UniteEnseignementRepository uniteEnseignementRepository) {
+        super(uniteEnseignementRepository);
     }
+    @Autowired
+    UniteEnseignementRepository uniteEnseignementRepository;
 
     @Override
     public List<UniteEnseignement> findAll() {
@@ -41,13 +44,17 @@ public class UEService extends BaseService<UniteEnseignement, UniteEnseignementI
     }
     @Override
     public void delete(UniteEnseignementId id) {
-        super.delete(id);
-        try {
-            repository.deleteById(id);
-        } catch (Exception e) {
-            throw new ApplicationException("Veuillez vérifier les données enregistrées, Vérifier que l'UE n'a pas des EC ou Evaluation.");
-        }
-    }
-
+        int size = uniteEnseignementRepository.findById(id).get().getListeEC().size();
+        System.out.println(size);
+       if(uniteEnseignementRepository.findById(id).get().getListeEC().size() > 0){
+              throw new ApplicationException("Veuillez vérifier les données enregistrées, Vérifier que l'UE n'a pas des EC.");
+         }
+          super.delete(id);
+          try {
+                repository.deleteById(id);
+          } catch (Exception e) {
+                throw new ApplicationException("Veuillez vérifier les données enregistrées, Vérifier que l'UE n'a pas des EC.");
+          }
+       }
 
 }

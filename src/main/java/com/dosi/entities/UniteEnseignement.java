@@ -10,6 +10,9 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import lombok.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 @Getter
 @Setter
@@ -64,6 +67,9 @@ public class UniteEnseignement implements Identifiable<UniteEnseignementId>{
     @DecimalMin(value = "1", message = "Nb d'heures des TP dispensées dans l'UE est entre 1 et 200")
     @DecimalMax(value = "100", message = "Nb d'heures des TP dispensées dans l'UE est entre 1 et 200")
     private Short nbhTp;
+
+    @OneToMany(mappedBy = "codeUE",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<ElementConstitutif> ListeUE = new ArrayList<>();
 
     @Override
     public String toString() {

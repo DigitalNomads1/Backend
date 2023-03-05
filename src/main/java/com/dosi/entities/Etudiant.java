@@ -46,7 +46,7 @@ public class Etudiant  implements  Identifiable<String>{
     private String sexe;
 
     @Column(name = "DATE_NAISSANCE", nullable = false)
-    @NotNull(message = "DebutAccreditation est Requis! Le format doit être "+ DATE_PATTERN +".")
+    @NotNull(message = "dateNaissance est Requis! Le format doit être "+ DATE_PATTERN +".")
     @DateTimeFormat(pattern = DATE_PATTERN)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_PATTERN)
     private LocalDate dateNaissance;

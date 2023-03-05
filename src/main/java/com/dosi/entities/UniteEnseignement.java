@@ -69,7 +69,7 @@ public class UniteEnseignement implements Identifiable<UniteEnseignementId>{
     private Short nbhTp;
 
     @OneToMany(mappedBy = "codeUE",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<ElementConstitutif> ListeUE = new ArrayList<>();
+    private List<ElementConstitutif> ListeEC = new ArrayList<>();
 
     @Override
     public String toString() {

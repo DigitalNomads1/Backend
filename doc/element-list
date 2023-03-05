@@ -1,0 +1,11 @@
+com.dosi
+com.dosi.auth
+com.dosi.config
+com.dosi.controllers
+com.dosi.controllers.embeddedKey
+com.dosi.entities
+com.dosi.exceptions
+com.dosi.repositories
+com.dosi.services
+com.dosi.services.auth
+com.dosi.utils

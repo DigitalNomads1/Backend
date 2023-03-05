@@ -10,8 +10,7 @@ import java.util.List;
 import static com.dosi.utils.Constants.API_URL;
 
 @RequestMapping(API_URL + "/CgRefCodes")
-@CrossOrigin(origins = "*")
-public class CgRefCodeController {
+public class CgRefCodeController{
     @Autowired
     CgRefCodeRepository repository;
 
@@ -22,6 +21,7 @@ public class CgRefCodeController {
     @GetMapping("/{RvDomain}")
     public List<CgRefCode> findByRvDomain(@PathVariable String RvDomain)
     {
+        System.out.println(RvDomain);
         return repository.findByRvDomain(RvDomain);
     }
 }

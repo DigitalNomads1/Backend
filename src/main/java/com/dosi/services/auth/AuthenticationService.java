@@ -37,24 +37,29 @@ public class AuthenticationService {
             throw new EntityExistsException("Email " +  request.getEmail() + " existe déjà!");
         }
 
+        boolean isAdmin = StringUtils.isBlank(request.getNoEtudiant()) && request.getNoEnseignant() == null;
+
         boolean isEnseignant = StringUtils.isBlank(request.getNoEtudiant()) && (request.getNoEnseignant() != null);
         var user = User.builder()
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()) )
                 .noEnseignant(request.getNoEnseignant())
                 .noEtudiant(request.getNoEtudiant())
-                .role( !isEnseignant ? Role.ETU : Role.ENS)
+                .role( isAdmin ? Role.ADM : (!isEnseignant ? Role.ETU : Role.ENS) )
                 .build();
-        if( isEnseignant )
-        {
-            enseignantRepository.findByEmailUbo(request.getEmail()).orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "l'email de l'Enseignant " + request.getEmail() + " n'a pas été trouvée."));
-            enseignantRepository.findById(request.getNoEnseignant()).orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "l'Enseignant avec le Numéro " + request.getNoEnseignant() + " n'a pas été trouvée."));
+        if( !isAdmin){
+            if( isEnseignant )
+            {
+                enseignantRepository.findByEmailUbo(request.getEmail()).orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "l'email de l'Enseignant " + request.getEmail() + " n'a pas été trouvée."));
+                enseignantRepository.findById(request.getNoEnseignant()).orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "l'Enseignant avec le Numéro " + request.getNoEnseignant() + " n'a pas été trouvée."));
+            }
+            else
+            {
+                etudiantRepository.findByEmailUbo(request.getEmail()).orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "l'email de l'Etudiant " + request.getEmail() + " n'a pas été trouvée."));
+                etudiantRepository.findById(request.getNoEtudiant()).orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "l'Etudiant avec l'ID " + request.getNoEtudiant() + " n'a pas été trouvée."));
+            }
         }
-        else
-        {
-            etudiantRepository.findByEmailUbo(request.getEmail()).orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "l'email de l'Etudiant " + request.getEmail() + " n'a pas été trouvée."));
-            etudiantRepository.findById(request.getNoEtudiant()).orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "l'Etudiant avec l'ID " + request.getNoEtudiant() + " n'a pas été trouvée."));
-        }
+
         try{
             userRepository.save(user);
         } catch (Exception e) {

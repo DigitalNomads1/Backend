@@ -13,6 +13,12 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class AccountController {
     private final AuthenticationService service;
+
+
+    /**
+     * @param request
+     * @return ResponseEntity<AuthenticationResponse>
+     */
     @PostMapping("/register")
     public ResponseEntity<AuthenticationResponse> register(
             @RequestBody RegisterRequest request
@@ -20,6 +26,10 @@ public class AccountController {
         return ResponseEntity.ok(service.register(request));
     }
 
+    /**
+     * @param request
+     * @return ResponseEntity<AuthenticationResponse>
+     */
     @PostMapping("/authenticate")
     public ResponseEntity<AuthenticationResponse> register(
             @RequestBody AuthenticationRequest request

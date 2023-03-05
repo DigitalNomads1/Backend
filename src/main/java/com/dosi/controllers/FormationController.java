@@ -18,11 +18,20 @@ public class FormationController extends GlobalController<Formation, String>{
     }
 
 
+    /**
+     * @param id String
+     * @return List<UniteEnseignement>
+     */
     @GetMapping("/{id}/ue")
     public List<UniteEnseignement> getUeList(@PathVariable String id){
         return ((FormationService)service).findUEList(id);
     }
 
+    /**
+     * @param id_formation String
+     * @param id_ue String
+     * @return List<ElementConstitutif>
+     */
     @GetMapping("/{id_formation}/ue/{id_ue}/ec")
     public List<ElementConstitutif> getEcList(@PathVariable String id_formation, @PathVariable String id_ue) {
         return  ((FormationService)service).findECList(id_formation,id_ue);

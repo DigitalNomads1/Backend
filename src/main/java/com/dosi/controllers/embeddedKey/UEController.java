@@ -9,8 +9,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+import static com.dosi.utils.Constants.API_URL;
+
 @RestController
-@RequestMapping("/unites_enseignement")
+@RequestMapping(API_URL + "/unites_enseignement")
 public class UEController extends BaseController<UniteEnseignement, UniteEnseignementId> {
 
     @Autowired

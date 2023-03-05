@@ -17,10 +17,17 @@ public abstract class BaseService<T extends Identifiable, K> {
         this.repository = repository;
     }
 
+    /**
+     * @return List
+     */
     public List<T> findAll() {
         return repository.findAll();
     }
 
+    /**
+     * @param entity
+     * @return entity
+     */
     public T create(T entity) {
         if(entity.getId() != null )
         {
@@ -31,14 +38,25 @@ public abstract class BaseService<T extends Identifiable, K> {
         return repository.save(entity);
     }
 
+    /**
+     * @param id
+     * @return entity
+     */
     public T read(K id) {
         return repository.findById(id).orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "La ressource avec l'identifiant " + id + " n'a pas été trouvée."));
     }
 
+    /**
+     * @param entity
+     * @return entity
+     */
     public T update(T entity) {
         return repository.save(entity);
     }
 
+    /**
+     * @param id
+     */
     public void delete(K id) {
         var entity = repository.findById(id);
         if (!entity.isPresent()) {

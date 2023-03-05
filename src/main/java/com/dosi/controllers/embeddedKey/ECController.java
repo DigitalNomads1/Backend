@@ -7,8 +7,10 @@ import com.dosi.services.ECService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import static com.dosi.utils.Constants.API_URL;
+
 @RestController
-@RequestMapping("/ec")
+@RequestMapping(API_URL + "/ec")
 public class ECController  extends BaseController<ElementConstitutif, ElementConstitutifId> {
 
     @Autowired

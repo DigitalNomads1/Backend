@@ -12,6 +12,9 @@ public class ECService extends BaseService<ElementConstitutif, ElementConstituti
         super(repository);
     }
 
+    /**
+     * @param id ElementConstitutifId
+     */
     @Override
     public void delete(ElementConstitutifId id) {
         super.delete(id);

@@ -19,18 +19,34 @@ public class EnseignantService extends BaseService<Enseignant, Long> {
         super(enseignantRepository);
     }
 
+    /**
+     * @param id Long
+     * @return List<UniteEnseignement>
+     */
     public List<UniteEnseignement> getUE(Long id) {
         return read(id).getListUE();
     }
 
+    /**
+     * @param id Long
+     * @return List<ElementConstitutif>
+     */
     public List<ElementConstitutif> getEC(Long id) {
         return read(id).getListEC();
     }
 
+    /**
+     * @param id Long
+     * @return List<Promotion>
+     */
     public List<Promotion> getPromotions(Long id) {
         return read(id).getListPromotion();
     }
 
+    /**
+     * @param enseignant
+     * @return Enseignant
+     */
     @Override
     public Enseignant create(Enseignant enseignant) {
         if (enseignant.getId() != null) {

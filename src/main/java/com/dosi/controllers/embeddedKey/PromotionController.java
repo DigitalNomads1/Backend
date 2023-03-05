@@ -7,8 +7,10 @@ import com.dosi.services.PromotionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import static com.dosi.utils.Constants.API_URL;
+
 @RestController
-@RequestMapping("/promotions")
+@RequestMapping(API_URL + "/promotions")
 public class PromotionController extends BaseController<Promotion, PromotionId> {
     @Autowired
     PromotionService promotionService;

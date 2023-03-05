@@ -16,16 +16,28 @@ public class EnseignantController extends GlobalController<Enseignant, Long> {
         super(service);
     }
 
+    /**
+     * @param id Long
+     * @return List<UniteEnseignement>
+     */
     @GetMapping("/{id}/UE")
     public List<UniteEnseignement> getUE(@PathVariable Long id) {
         return ((EnseignantService)service).getUE(id);
     }
 
+    /**
+     * @param id Long
+     * @return List<ElementConstitutif>
+     */
     @GetMapping("/{id}/EC")
     public List<ElementConstitutif> getEC(@PathVariable Long id) {
         return ((EnseignantService)service).getEC(id);
     }
 
+    /**
+     * @param id
+     * @return List<Promotion>
+     */
     @GetMapping("/{id}/promotions")
     public List<Promotion> getPromotions(@PathVariable Long id) {
         return ((EnseignantService)service).getPromotions(id);

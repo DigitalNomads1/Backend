@@ -13,6 +13,11 @@ public class EtudiantService extends BaseService<Etudiant, String> {
     public EtudiantService(EtudiantRepository etudiantRepository) {
         super(etudiantRepository);
     }
+
+    /**
+     * @param email
+     * @return Etudiant
+     */
     public Etudiant findByEmail(String email){
         return ((EtudiantRepository)repository).findByEmail(email).get();
     }
@@ -20,6 +25,10 @@ public class EtudiantService extends BaseService<Etudiant, String> {
         return ((EtudiantRepository)repository).findByEmailUbo(email).get();
     }
 
+    /**
+     * @param etudiant
+     * @return Etudiant
+     */
     public Etudiant create(Etudiant etudiant) {
         if (etudiant.getId() != null) {
         if (repository.existsById(etudiant.getId())) {
@@ -36,6 +45,9 @@ public class EtudiantService extends BaseService<Etudiant, String> {
         return repository.save(etudiant);
     }
 
+    /**
+     * @param id String
+     */
     @Override
     public void delete(String id) {
         super.delete(id);
@@ -46,6 +58,11 @@ public class EtudiantService extends BaseService<Etudiant, String> {
         }
 
     }
+
+    /**
+     * @param etudiant
+     * @return Etudiant
+     */
     @Override
     public Etudiant update(Etudiant etudiant) {
         Etudiant optionEtudiant = repository.findById(etudiant.getId()).orElse(null);

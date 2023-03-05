@@ -7,12 +7,18 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RequestMapping("/CgRefCodes")
+import static com.dosi.utils.Constants.API_URL;
+
+@RequestMapping(API_URL + "/CgRefCodes")
 @CrossOrigin(origins = "*")
 public class CgRefCodeController {
     @Autowired
     CgRefCodeRepository repository;
 
+    /**
+     * @param RvDomain
+     * @return
+     */
     @GetMapping("/{RvDomain}")
     public List<CgRefCode> findByRvDomain(@PathVariable String RvDomain)
     {

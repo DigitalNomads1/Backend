@@ -14,11 +14,19 @@ import java.util.List;
 public abstract class BaseController<T extends Identifiable, K> {
     protected BaseService<T, K> service;
 
+    /**
+     * @return
+     */
     @GetMapping({"/", ""})
     public List<T> getAll() {
         return service.findAll();
     }
 
+    /**
+     * @param entity
+     * @param bindingResult
+     * @return
+     */
     @PostMapping("/")
     public T create(@Valid @RequestBody T entity, BindingResult bindingResult) {
         System.out.println(entity);
@@ -28,6 +36,10 @@ public abstract class BaseController<T extends Identifiable, K> {
         return service. create(entity);
     }
 
+    /**
+     * @param entity
+     * @return
+     */
     @PutMapping("/")
     public T update(@Valid @RequestBody T entity) {
         return service.update(entity);

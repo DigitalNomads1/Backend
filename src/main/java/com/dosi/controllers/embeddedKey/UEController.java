@@ -7,6 +7,8 @@ import com.dosi.services.UEService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/unites_enseignement")
 public class UEController extends BaseController<UniteEnseignement, UniteEnseignementId> {
@@ -16,6 +18,12 @@ public class UEController extends BaseController<UniteEnseignement, UniteEnseign
         super(ueService);
     }
 
+    @Override
+    public List<UniteEnseignement> getAll() {
+        for( UniteEnseignement ue : super.getAll())
+            System.out.println(ue.getNoEnseignant());
+        return super.getAll();
+    }
 
     @GetMapping("/{formation}-{ue}")
     public UniteEnseignement read(@PathVariable String formation, @PathVariable String ue) {

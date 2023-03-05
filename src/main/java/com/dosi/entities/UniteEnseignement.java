@@ -69,6 +69,7 @@ public class UniteEnseignement implements Identifiable<UniteEnseignementId>{
     public String toString() {
         return "UniteEnseignement{" +
                 "id=" + id +
+                "noEnseignant" + noEnseignant +
                 ", codeFormation=" + codeFormation +
                 ", designation='" + designation + '\'' +
                 ", semestre='" + semestre + '\'' +

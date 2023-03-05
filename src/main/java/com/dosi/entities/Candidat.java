@@ -95,12 +95,14 @@ public class Candidat  implements  Identifiable<String>{
     private char confirmationCandidat;
 
     @Column(name = "DATE_REPONSE_CANDIDAT")
+    @NotNull(message = "Date de naissance est requise! Le format doit être " + DATE_PATTERN +".")
+    @DateTimeFormat(pattern = DATE_PATTERN)
     private LocalDate dateReponseCandidat;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "ANNEE_UNIVERSITAIRE", nullable = false)
     @JoinColumn(name = "CODE_FORMATION", nullable = false)
-    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    @JsonIgnoreProperties({"hibernateLazyInitializer"})
 //    @JsonIgnore
     @NotNull(message = "la promotion du candidat est Requise!")
     private Promotion promotion;

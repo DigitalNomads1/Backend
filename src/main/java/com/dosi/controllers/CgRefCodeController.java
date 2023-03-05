@@ -9,6 +9,7 @@ import java.util.List;
 
 import static com.dosi.utils.Constants.API_URL;
 
+@RestController
 @RequestMapping(API_URL + "/CgRefCodes")
 public class CgRefCodeController{
     @Autowired

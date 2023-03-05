@@ -1,5 +1,6 @@
 package com.dosi.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.DecimalMax;
@@ -42,15 +43,17 @@ public class ElementConstitutif implements Identifiable<ElementConstitutifId>{
     private Short nbhTp;
 
     @MapsId("codeUE")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "CODE_UE", referencedColumnName = "CODE_UE")
     @JoinColumn(name = "CODE_FORMATION", referencedColumnName = "CODE_FORMATION")
     @JsonIgnoreProperties({"hibernateLazyInitializer"})
+    @JsonIgnore
     private UniteEnseignement codeUE;
 
-    @NotNull(message = "gvhj")
+    @NotNull(message = "no_enseignant est Requis!")
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "NO_ENSEIGNANT" , nullable = false)
     @JsonIgnoreProperties({"hibernateLazyInitializer"})
     private Enseignant no_enseignant;
+
 }

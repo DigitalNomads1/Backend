@@ -18,7 +18,7 @@ public class ECService extends BaseService<ElementConstitutif, ElementConstituti
         try {
             repository.deleteById(id);
         } catch (Exception e) {
-            throw new ApplicationException("Veuillez vérifier les données enregistrées, Vérifier que l'EC n'a pas des évaluations.");
+            throw new ApplicationException("Veuillez vérifier les données enregistrées");
         }
     }
 }

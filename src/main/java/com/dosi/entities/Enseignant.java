@@ -18,7 +18,7 @@ import java.util.List;
 @Setter
 @Entity
 @Table(name = "ENSEIGNANT")
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Enseignant  implements  Identifiable<Long>{
     @Id
     @Column(name = "NO_ENSEIGNANT", nullable = false)
@@ -78,7 +78,6 @@ public class Enseignant  implements  Identifiable<Long>{
     private String emailPerso;
 
     @OneToMany(mappedBy = "noEnseignant", fetch = FetchType.LAZY)
-    @JsonIgnoreProperties({"hibernateLazyInitializer"})
     @JsonBackReference(value="noEnseignant")
     @JsonIgnore
     private List<UniteEnseignement> listUE;

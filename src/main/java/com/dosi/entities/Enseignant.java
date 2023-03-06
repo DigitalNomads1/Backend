@@ -74,7 +74,7 @@ public class Enseignant  implements  Identifiable<Long>{
     private String emailUbo;
 
     @Column(name = "EMAIL_PERSO", unique = true)
-    @Email(regexp = "[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}")
+//    @Email(regexp = "[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}")
     private String emailPerso;
 
     @OneToMany(mappedBy = "noEnseignant", fetch = FetchType.LAZY)

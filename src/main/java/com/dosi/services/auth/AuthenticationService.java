@@ -50,7 +50,8 @@ public class AuthenticationService {
         if( !isAdmin){
             if( isEnseignant )
             {
-                enseignantRepository.findByEmailUbo(request.getEmail()).orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "l'email de l'Enseignant " + request.getEmail() + " n'a pas été trouvée."));
+                if( enseignantRepository.findByEmailUbo(request.getEmail()).size() ==  0 )
+                throw new ResponseStatusException(NOT_FOUND, "l'email de l'Enseignant " + request.getEmail() + " n'a pas été trouvée.");
                 enseignantRepository.findById(request.getNoEnseignant()).orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "l'Enseignant avec le Numéro " + request.getNoEnseignant() + " n'a pas été trouvée."));
             }
             else

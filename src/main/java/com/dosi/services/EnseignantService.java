@@ -54,11 +54,11 @@ public class EnseignantService extends BaseService<Enseignant, Long> {
                 throw new EntityExistsException("Entité " + enseignant + " existe déjà!");
             }
         }
-        if (((EnseignantRepository) repository).findByEmailUbo(enseignant.getEmailUbo()) != null) {
+        if (((EnseignantRepository) repository).findByEmailUbo(enseignant.getEmailUbo()).size() > 0 ) {
             throw new EntityExistsException("Email Académique " + enseignant.getEmailUbo() + " existe déjà!");
         }
 
-        if (((EnseignantRepository) repository).findByEmailPerso(enseignant.getEmailPerso()) != null) {
+        if (((EnseignantRepository) repository).findByEmailPerso(enseignant.getEmailPerso()).size() >0) {
             throw new EntityExistsException("Email " + enseignant.getEmailPerso() + " existe déjà!");
         }
 
@@ -69,7 +69,7 @@ public class EnseignantService extends BaseService<Enseignant, Long> {
     public Enseignant update(Enseignant entity) {
         Enseignant enseignant = repository.findById(entity.getId()).orElse(null);
         if (enseignant == null || !(StringUtils.equals(entity.getEmailUbo(), enseignant.getEmailUbo())))
-            if (((EnseignantRepository) repository).findByEmailUbo(entity.getEmailUbo()) != null)
+            if (((EnseignantRepository) repository).findByEmailUbo(entity.getEmailUbo()).size() > 0 )
                 throw new EntityExistsException("Email Académique " + entity.getEmailUbo() + " de l'enseignant existe déjà!");
         if (entity.getEmailPerso() == null)
             return repository.save(entity);

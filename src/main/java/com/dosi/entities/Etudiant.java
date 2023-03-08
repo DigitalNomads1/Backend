@@ -1,14 +1,10 @@
 package com.dosi.entities;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
 import lombok.*;
-import net.minidev.json.annotate.JsonIgnore;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.NumberFormat;
 
@@ -101,11 +97,10 @@ public class Etudiant  implements  Identifiable<String>{
     @Column(name = "GROUPE_ANGLAIS")
     private Long groupeAnglais;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne
     @JoinColumn(name = "ANNEE_UNIVERSITAIRE", nullable = false)
     @JoinColumn(name = "CODE_FORMATION", nullable = false)
-    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @NotNull(message = "promotion est requise")
-//    @JsonIgnore
+    @JsonIgnoreProperties("listEtudiants")
     private Promotion promotion;
 }

@@ -3,7 +3,6 @@ package com.dosi.entities;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-
 @Getter
 @Setter
 @Entity
@@ -13,7 +12,7 @@ public class Rubrique {
     @Column(name = "ID_RUBRIQUE", nullable = false)
     private Integer id;
 
-    @Column(name = "\"TYPE\"", nullable = false, length = 10)
+    @Column(name = "TYPE", nullable = false, length = 10)
     private String type;
 
     @ManyToOne(fetch = FetchType.LAZY)

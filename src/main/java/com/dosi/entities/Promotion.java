@@ -7,7 +7,6 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.*;
-import net.minidev.json.annotate.JsonIgnore;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
@@ -23,9 +22,6 @@ import static com.dosi.utils.Constants.DATE_PATTERN;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "PROMOTION")
-@JsonIdentityInfo(
-        generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "id")
 public class Promotion implements Identifiable<PromotionId>{
     @Valid
     @EmbeddedId
@@ -78,9 +74,13 @@ public class Promotion implements Identifiable<PromotionId>{
     private String commentaire;
 
     @OneToMany(mappedBy = "promotion",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<Etudiant> listEtudiant = new ArrayList<>();
+    @JsonIgnoreProperties("promotion")
+    private List<Etudiant> listEtudiants = new ArrayList<>();
+
+
     @OneToMany(mappedBy = "promotion",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<Candidat> ListCandidats = new ArrayList<>();
+    @JsonIgnoreProperties("promotion")
+    private List<Candidat> listCandidats = new ArrayList<>();
 
     @Override
     public String toString() {
@@ -88,7 +88,7 @@ public class Promotion implements Identifiable<PromotionId>{
                 "id=" + id +
                 ", codeFormation=" + codeFormation +
                 ", noEnseignant=" + noEnseignant +
-                ", siglePromotion='" + siglePromotion + '\'' +
+                ", siglePromotion='" + siglePromotion +
                 ", nbMaxEtudiant=" + nbMaxEtudiant +
                 ", dateReponseLp=" + dateReponseLp +
                 ", dateReponseLalp=" + dateReponseLalp +

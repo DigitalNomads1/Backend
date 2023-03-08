@@ -1,13 +1,9 @@
 package com.dosi.services;
 
 import com.dosi.entities.Candidat;
-import com.dosi.entities.Enseignant;
-import com.dosi.entities.Etudiant;
 import com.dosi.entities.Promotion;
 import com.dosi.exceptions.ApplicationException;
 import com.dosi.repositories.CandidatRepository;
-import com.dosi.services.CandidatService;
-import com.dosi.services.EnseignantService;
 import jakarta.persistence.EntityExistsException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

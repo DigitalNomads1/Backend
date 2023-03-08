@@ -16,6 +16,13 @@ public class EnseignantController extends GlobalController<Enseignant, Long> {
         super(service);
     }
 
+    @Override
+    public List getAll() {
+        for (Object enseignant : super.getAll())
+            System.out.println( ((Enseignant)enseignant).getListEC() );
+        return super.getAll();
+    }
+
     /**
      * @param id Long
      * @return List<UniteEnseignement>

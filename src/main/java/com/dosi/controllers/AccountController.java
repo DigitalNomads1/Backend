@@ -1,5 +1,5 @@
 package com.dosi.controllers;
-
+/*
 import com.dosi.auth.AuthenticationRequest;
 import com.dosi.auth.AuthenticationResponse;
 import com.dosi.auth.RegisterRequest;
@@ -19,7 +19,10 @@ public class AccountController {
      * @param request
      * @return ResponseEntity<AuthenticationResponse>
      */
-    @PostMapping("/register")
+/*
+import org.springframework.web.bind.annotation.PostMapping;
+
+@PostMapping("/register")
     public ResponseEntity<AuthenticationResponse> register(
             @RequestBody RegisterRequest request
     ){
@@ -30,7 +33,10 @@ public class AccountController {
      * @param request
      * @return ResponseEntity<AuthenticationResponse>
      */
-    @PostMapping("/authenticate")
+/*
+import org.springframework.web.bind.annotation.PostMapping;
+
+@PostMapping("/authenticate")
     public ResponseEntity<AuthenticationResponse> register(
             @RequestBody AuthenticationRequest request
     ){
@@ -39,3 +45,4 @@ public class AccountController {
     }
 
 }
+*/

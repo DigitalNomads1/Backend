@@ -7,7 +7,6 @@ import com.dosi.repositories.EnseignantRepository;
 import com.dosi.repositories.UniteEnseignementRepository;
 import jakarta.persistence.EntityExistsException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -26,10 +25,6 @@ public class UEService extends BaseService<UniteEnseignement, UniteEnseignementI
 
     @Override
     public List<UniteEnseignement> findAll() {
-        System.out.println(super.findAll());
-        for( UniteEnseignement ue : super.findAll()) {
-            ue.setNoEnseignant(enseignantRepository.findById(ue.getNoEnseignant().getId() ).get());
-        }
         return super.findAll();
     }
 

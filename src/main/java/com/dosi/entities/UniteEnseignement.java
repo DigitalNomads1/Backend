@@ -21,7 +21,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "UNITE_ENSEIGNEMENT")
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class UniteEnseignement implements Identifiable<UniteEnseignementId>{
     @Valid
     @NotNull(message = "codeFormation est Requis!")
@@ -69,7 +69,8 @@ public class UniteEnseignement implements Identifiable<UniteEnseignementId>{
     private Short nbhTp;
 
     @OneToMany(mappedBy = "codeUE",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<ElementConstitutif> ListeEC = new ArrayList<>();
+    @JsonIgnoreProperties("codeUE")
+    private List<ElementConstitutif> ListeEC;
 
     @Override
     public String toString() {

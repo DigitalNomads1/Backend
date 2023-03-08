@@ -2,8 +2,7 @@ package com.dosi.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.Hibernate;
 
 import java.io.Serializable;
@@ -12,6 +11,9 @@ import java.util.Objects;
 @Getter
 @Setter
 @Embeddable
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class RubriqueQuestionId implements Serializable {
     private static final long serialVersionUID = -3854269259954990806L;
     @Column(name = "ID_RUBRIQUE", nullable = false)

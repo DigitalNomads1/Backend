@@ -8,16 +8,16 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "QUESTION_EVALUATION")
-public class QuestionEvaluation {
+public class QuestionEvaluation implements Identifiable<Integer>{
     @Id
     @Column(name = "ID_QUESTION_EVALUATION", nullable = false)
     private Integer id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "ID_QUESTION")
     private Question idQuestion;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "ID_QUALIFICATIF")
     private Qualificatif idQualificatif;
 

@@ -22,10 +22,10 @@ import java.util.Collections;
 @EnableWebSecurity
 @RequiredArgsConstructor
 public class SecurityConfiguration {
-
+/*
     private final JwtAuthenticationFilter jwtAuthFilter;
-    private final AuthenticationProvider authenticationProvider;
-
+    private final AuthenticationProvider authenticationProvider;*/
+/*
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
@@ -46,7 +46,22 @@ public class SecurityConfiguration {
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
+    }*/
+
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        http
+                .cors()
+                .and()
+                .csrf()
+                .disable()
+                .authorizeHttpRequests()
+                .requestMatchers("/**")
+                .permitAll();
+        http.authorizeHttpRequests().requestMatchers("/swagger/**","/v3/**").permitAll();
+        return http.build();
     }
+
 
     @Bean
     CorsConfigurationSource corsConfigurationSource() {

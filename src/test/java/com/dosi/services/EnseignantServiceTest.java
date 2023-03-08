@@ -109,8 +109,10 @@ public class EnseignantServiceTest {
     public void testCreateEnseignantWithExistingEmail() {
         Enseignant enseignant = new Enseignant();
         enseignant.setEmailUbo("jean.dupont@univ-brest.fr");
+        List<Enseignant> enseignants = new ArrayList<Enseignant>();
+        enseignants.add(enseignant);
 
-        when(enseignantRepository.findByEmailUbo("jean.dupont@univ-brest.fr").get()).thenReturn(enseignant);
+        when(enseignantRepository.findByEmailUbo("jean.dupont@univ-brest.fr")).thenReturn(enseignants);
 
         assertThrows(EntityExistsException.class, () -> {
             enseignantService.create(enseignant);
@@ -232,12 +234,14 @@ public class EnseignantServiceTest {
     public void testFindByEmailUbo() {
         Enseignant enseignant = new Enseignant();
         enseignant.setEmailUbo("jean.dupont@univ-brest.fr");
+        List<Enseignant> enseignants = new ArrayList<Enseignant>();
+        enseignants.add(enseignant);
 
-        when(enseignantRepository.findByEmailUbo("jean.dupont@univ-brest.fr").get()).thenReturn(enseignant);
+        when(enseignantRepository.findByEmailUbo("jean.dupont@univ-brest.fr")).thenReturn(enseignants);
 
-        Enseignant foundEnseignant = enseignantRepository.findByEmailUbo("jean.dupont@univ-brest.fr").get();
+        List<Enseignant> foundEnseignants = enseignantRepository.findByEmailUbo("jean.dupont@univ-brest.fr");
 
-        assertEquals("jean.dupont@univ-brest.fr", foundEnseignant.getEmailUbo());
+        assertEquals("jean.dupont@univ-brest.fr", foundEnseignants.get(0).getEmailUbo());
     }
 
     @Test

@@ -32,7 +32,7 @@ public class PromotionController extends BaseController<Promotion, PromotionId> 
                 .anneeUniversitaire(annee)
                 .codeFormation(formation)
                 .build();
-            promotionService.deleteByEmbeddedId(id.getAnneeUniversitaire(), id.getCodeFormation());
+//            promotionService.deleteByEmbeddedId(id.getAnneeUniversitaire(), id.getCodeFormation());
 
     }
 

@@ -7,6 +7,8 @@ import com.dosi.services.ECService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 import static com.dosi.utils.Constants.API_URL;
 
 @RestController
@@ -16,6 +18,12 @@ public class ECController  extends BaseController<ElementConstitutif, ElementCon
     @Autowired
     public ECController(ECService service) {
         super(service);
+    }
+
+    @Override
+    public List<ElementConstitutif> getAll() {
+        System.out.println(super.getAll());
+        return super.getAll();
     }
 
     @GetMapping("/{formation}-{ue}-{ec}")

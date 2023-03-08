@@ -12,7 +12,7 @@ import java.util.List;
 import static com.dosi.utils.Constants.API_URL;
 
 @RestController
-@RequestMapping(API_URL + "/unites_enseignement")
+@RequestMapping(API_URL + "/ue")
 public class UEController extends BaseController<UniteEnseignement, UniteEnseignementId> {
 
     @Autowired
@@ -22,8 +22,7 @@ public class UEController extends BaseController<UniteEnseignement, UniteEnseign
 
     @Override
     public List<UniteEnseignement> getAll() {
-        for( UniteEnseignement ue : super.getAll())
-            System.out.println(ue.getNoEnseignant());
+        System.out.println(super.getAll());
         return super.getAll();
     }
 

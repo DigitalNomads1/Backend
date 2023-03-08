@@ -43,11 +43,10 @@ public class ElementConstitutif implements Identifiable<ElementConstitutifId>{
     private Short nbhTp;
 
     @MapsId("codeUE")
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne
     @JoinColumn(name = "CODE_UE", referencedColumnName = "CODE_UE")
     @JoinColumn(name = "CODE_FORMATION", referencedColumnName = "CODE_FORMATION")
-    @JsonIgnoreProperties({"hibernateLazyInitializer"})
-    @JsonIgnore
+    @JsonIgnoreProperties("ListeEC")
     private UniteEnseignement codeUE;
 
     @NotNull(message = "no_enseignant est Requis!")

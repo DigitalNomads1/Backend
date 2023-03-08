@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.*;
-import net.minidev.json.annotate.JsonIgnore;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
@@ -100,11 +99,10 @@ public class Candidat  implements  Identifiable<String>{
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_PATTERN)
     private LocalDate dateReponseCandidat;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne
     @JoinColumn(name = "ANNEE_UNIVERSITAIRE", nullable = false)
     @JoinColumn(name = "CODE_FORMATION", nullable = false)
-    @JsonIgnoreProperties({"hibernateLazyInitializer"})
-//    @JsonIgnore
+    @JsonIgnoreProperties("listCandidats")
     @NotNull(message = "la promotion du candidat est Requise!")
     private Promotion promotion;
 }

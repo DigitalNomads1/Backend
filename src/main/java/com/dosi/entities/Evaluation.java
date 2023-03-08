@@ -15,17 +15,16 @@ public class Evaluation {
     @Column(name = "ID_EVALUATION", nullable = false)
     private Integer id;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "NO_ENSEIGNANT", nullable = false)
     private Enseignant noEnseignant;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumns({
             @JoinColumn(name = "CODE_FORMATION", referencedColumnName = "CODE_FORMATION"),
-            @JoinColumn(name = "CODE_UE", referencedColumnName = "CODE_UE"),
-            @JoinColumn(name = "CODE_EC", referencedColumnName = "CODE_EC")
+            @JoinColumn(name = "CODE_UE", referencedColumnName = "CODE_UE")
     })
-    private ElementConstitutif elementConstitutif;
+    private UniteEnseignement uniteEnseignement;
 
     @Column(name = "NO_EVALUATION", nullable = false)
     private Short noEvaluation;

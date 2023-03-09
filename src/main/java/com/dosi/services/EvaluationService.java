@@ -1,9 +1,6 @@
 package com.dosi.services;
 
-import com.dosi.entities.Etat;
-import com.dosi.entities.Evaluation;
-import com.dosi.entities.PromotionId;
-import com.dosi.entities.ReponseEvaluation;
+import com.dosi.entities.*;
 import com.dosi.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,9 +14,11 @@ public class EvaluationService extends BaseService<Evaluation, Integer> {
     EnseignantRepository enseignantRepository;
     @Autowired
     UniteEnseignementRepository uniteEnseignementRepository;
-
     @Autowired
     PromotionRepository promotionRepository;
+
+    @Autowired
+    ReponseEvaluationRepository repRepository;
 
     public EvaluationService(EvaluationRepository evaluationRepository) {
         super(evaluationRepository);
@@ -48,5 +47,9 @@ public class EvaluationService extends BaseService<Evaluation, Integer> {
                 .build()).get();
 //        return ((EvaluationRepository)repository).findByEtatAndPromotion(Etat.DIS.toString(),promotion);
           return ((EvaluationRepository)repository).findByPromotion(promotion);
+    }
+
+    public List<ReponseEvaluation> findAllReponses(Integer id){
+        return repRepository.findByEvaluationId(id);
     }
 }

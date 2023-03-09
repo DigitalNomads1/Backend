@@ -1,8 +1,6 @@
 package com.dosi.controllers;
 
-import com.dosi.entities.Etat;
-import com.dosi.entities.Evaluation;
-import com.dosi.entities.Identifiable;
+import com.dosi.entities.*;
 import com.dosi.services.EvaluationService;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -46,4 +44,10 @@ public class EvaluationController extends GlobalController<Evaluation, Integer> 
         System.out.println(code_formation + " " + annee_universitaire);
         return ((EvaluationService) service).findEvaluationsByPromotion(code_formation, annee_universitaire);
     }
+
+    @GetMapping("/{id}/reponses")
+    public List<ReponseEvaluation> getAllAnswers(Integer id) {
+        return ((EvaluationService) service).findAllReponses(id);
+    }
+
 }

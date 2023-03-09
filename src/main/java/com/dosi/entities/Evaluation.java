@@ -66,6 +66,10 @@ public class Evaluation implements Identifiable<Integer>{
     @JoinColumn(name = "CODE_FORMATION", nullable = false, insertable=false, updatable=false)
     @JsonIgnoreProperties("listEvaluations")
     private Promotion promotion;
+/*
+    @OneToMany(mappedBy = "idEvaluation",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JsonIgnoreProperties("idEvaluation")
+    private List<ReponseEvaluation> reponses;*/
 
 
 }

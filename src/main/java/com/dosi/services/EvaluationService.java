@@ -20,6 +20,9 @@ public class EvaluationService extends BaseService<Evaluation, Integer> {
     @Autowired
     ReponseEvaluationRepository repRepository;
 
+    @Autowired
+    QuestionEvaluationRepository quesRepository;
+
     public EvaluationService(EvaluationRepository evaluationRepository) {
         super(evaluationRepository);
     }
@@ -32,24 +35,25 @@ public class EvaluationService extends BaseService<Evaluation, Integer> {
     }
 
     public List<Evaluation> findEvaluationsNonPubliees() {
-        return ((EvaluationRepository)repository).findByEtat(Etat.ELA.toString());
+        return ((EvaluationRepository) repository).findByEtat(Etat.ELA.toString());
     }
 
     public List<Evaluation> findEvaluationsPubliees() {
-        return ((EvaluationRepository)repository).findByEtat(Etat.DIS.toString());
+        return ((EvaluationRepository) repository).findByEtat(Etat.DIS.toString());
     }
 
     // this method retrieve all Current Evaluations for this promotion
     public List<Evaluation> findEvaluationsByPromotion(String code_formation, String annee_universitaire) {
         var promotion = promotionRepository.findById(PromotionId.builder()
-                        .codeFormation(code_formation)
-                        .anneeUniversitaire(annee_universitaire)
+                .codeFormation(code_formation)
+                .anneeUniversitaire(annee_universitaire)
                 .build()).get();
 //        return ((EvaluationRepository)repository).findByEtatAndPromotion(Etat.DIS.toString(),promotion);
-          return ((EvaluationRepository)repository).findByPromotion(promotion);
+        return ((EvaluationRepository) repository).findByPromotion(promotion);
     }
 
-    public List<ReponseEvaluation> findAllReponses(Integer id){
-        return repRepository.findByEvaluationId(id);
+    public List<ReponseEvaluation> findAllReponses(Integer id) {
+        System.out.println(id);
+        return repRepository.findByidEvaluation(repository.findById(id).get());
     }
 }

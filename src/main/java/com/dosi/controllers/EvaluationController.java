@@ -46,7 +46,7 @@ public class EvaluationController extends GlobalController<Evaluation, Integer> 
     }
 
     @GetMapping("/{id}/reponses")
-    public List<ReponseEvaluation> getAllAnswers(Integer id) {
+    public List<ReponseEvaluation> getAllAnswers(@PathVariable Integer id) {
         return ((EvaluationService) service).findAllReponses(id);
     }
 

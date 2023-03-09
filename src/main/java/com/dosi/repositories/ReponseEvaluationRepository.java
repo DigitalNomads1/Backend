@@ -1,5 +1,6 @@
 package com.dosi.repositories;
 
+import com.dosi.entities.Evaluation;
 import com.dosi.entities.ReponseEvaluation;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -10,5 +11,5 @@ import java.util.List;
 
 @Repository
 public interface ReponseEvaluationRepository extends JpaRepository<ReponseEvaluation, Integer> {
-    @Query("SELECT r FROM ReponseEvaluation r JOIN r.idEvaluation e WHERE e.id = :idEvaluation")
-    List<ReponseEvaluation> findByEvaluationId(@Param("idEvaluation") Integer idEvaluation);}
+    List<ReponseEvaluation> findByidEvaluation(Evaluation idEvaluation);
+}

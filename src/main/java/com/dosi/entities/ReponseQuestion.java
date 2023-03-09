@@ -1,5 +1,6 @@
 package com.dosi.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,10 @@ public class ReponseQuestion {
     @EmbeddedId
     private ReponseQuestionId id;
 
-    @MapsId("idReponseEvaluation")
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+//    @MapsId("idReponseEvaluation")
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "ID_REPONSE_EVALUATION", nullable = false)
+    @JsonIgnoreProperties("reponseQuestionList")
     private ReponseEvaluation idReponseEvaluation;
 
     @MapsId("idQuestionEvaluation")

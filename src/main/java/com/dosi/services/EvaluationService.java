@@ -48,6 +48,5 @@ public class EvaluationService extends BaseService<Evaluation, Integer> {
                 .build()).get();
 //        return ((EvaluationRepository)repository).findByEtatAndPromotion(Etat.DIS.toString(),promotion);
           return ((EvaluationRepository)repository).findByPromotion(promotion);
-
     }
 }

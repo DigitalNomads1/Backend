@@ -82,6 +82,10 @@ public class Promotion implements Identifiable<PromotionId>{
     @JsonIgnoreProperties("promotion")
     private List<Candidat> listCandidats = new ArrayList<>();
 
+    @OneToMany(mappedBy = "promotion",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JsonIgnoreProperties("promotion")
+    private List<Evaluation> listEvaluations;
+
     @Override
     public String toString() {
         return "Promotion{" +

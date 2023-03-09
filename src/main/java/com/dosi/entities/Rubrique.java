@@ -7,7 +7,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "RUBRIQUE")
-public class Rubrique {
+public class Rubrique implements Identifiable<Integer>{
     @Id
     @Column(name = "ID_RUBRIQUE", nullable = false)
     private Integer id;

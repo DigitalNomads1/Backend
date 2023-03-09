@@ -97,6 +97,10 @@ public class Enseignant  implements  Identifiable<Long>{
     @JsonIgnore
     private List<Promotion> listPromotion = new ArrayList<>();
 
+    public Enseignant(Long id) {
+        this.id = id;
+    }
+
     @Override
     public String toString() {
         return "Enseignant{" +

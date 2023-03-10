@@ -42,6 +42,21 @@ public class EvaluationService extends BaseService<Evaluation, Integer> {
         return super.create(entity);
     }
 
+    private void setMoyenne(List<Evaluation> evaluations)
+    {
+        evaluations.forEach(evaluation -> {
+            double moyenne = calculerMoyenne(evaluation.getId());
+            evaluation.setMoyenne(moyenne);
+        });
+    }
+
+    @Override
+    public List<Evaluation> findAll() {
+        var evaluations = super.findAll();
+        setMoyenne(evaluations);
+        return evaluations;
+    }
+
     @Override
     public Evaluation read(Integer id) {
         var evaluation = super.read(id);
@@ -52,19 +67,13 @@ public class EvaluationService extends BaseService<Evaluation, Integer> {
 
     public List<Evaluation> findEvaluationsNonPubliees() {
         var evaluationsNonPubliees = ((EvaluationRepository) repository).findByEtat(Etat.ELA.toString());
-        evaluationsNonPubliees.forEach(evaluation -> {
-            double moyenne = calculerMoyenne(evaluation.getId());
-            evaluation.setMoyenne(moyenne);
-        });
+        setMoyenne(evaluationsNonPubliees);
         return evaluationsNonPubliees;
     }
 
     public List<Evaluation> findEvaluationsPubliees() {
         var evaluationsPubliees =  ((EvaluationRepository) repository).findByEtat(Etat.DIS.toString());
-        evaluationsPubliees.forEach(evaluation -> {
-            double moyenne = calculerMoyenne(evaluation.getId());
-            evaluation.setMoyenne(moyenne);
-        });
+        setMoyenne(evaluationsPubliees);
         return evaluationsPubliees;
     }
 
@@ -76,7 +85,6 @@ public class EvaluationService extends BaseService<Evaluation, Integer> {
                 .build()).get();
 //        return ((EvaluationRepository)repository).findByEtatAndPromotion(Etat.DIS.toString(),promotion);
         var evaluationsPubliees =  ((EvaluationRepository) repository).findByEtat(Etat.DIS.toString());
-
         return ((EvaluationRepository) repository).findByPromotion(promotion);
     }
 
@@ -102,8 +110,6 @@ public class EvaluationService extends BaseService<Evaluation, Integer> {
             if( reponsesQuestion.size() > 0 )
                 avg += sumPositionnement / reponsesQuestion.size();
         }
-        System.out.println(avg);
-
         return BigDecimal.valueOf(avg)
                 .setScale(2, RoundingMode.HALF_UP)
                 .doubleValue();

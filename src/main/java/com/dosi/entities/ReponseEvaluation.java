@@ -32,9 +32,9 @@ public class ReponseEvaluation implements Identifiable<Integer>{
 
     @Column(name = "PRENOM", length = 32)
     private String prenom;
-/*
+
     @OneToMany(mappedBy = "idReponseEvaluation",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonIgnoreProperties("idReponseEvaluation")
-    private List<ReponseQuestion> reponseQuestionList;*/
+    private List<ReponseQuestion> reponseQuestionList;
 
 }

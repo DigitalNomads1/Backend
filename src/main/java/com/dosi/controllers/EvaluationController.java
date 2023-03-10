@@ -5,6 +5,7 @@ import com.dosi.services.EvaluationService;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import static com.dosi.utils.Constants.API_URL;
@@ -41,13 +42,17 @@ public class EvaluationController extends GlobalController<Evaluation, Integer> 
 
     @GetMapping("/promotion/{code_formation}_{annee_universitaire}")
     public List<Evaluation> findEvaluationsByPromotions(@PathVariable String code_formation, @PathVariable String annee_universitaire) {
-        System.out.println(code_formation + " " + annee_universitaire);
         return ((EvaluationService) service).findEvaluationsByPromotion(code_formation, annee_universitaire);
     }
 
     @GetMapping("/{id}/reponses")
     public List<ReponseEvaluation> getAllAnswers(@PathVariable Integer id) {
         return ((EvaluationService) service).findAllReponses(id);
+    }
+
+    @GetMapping("/{id}/moyenne")
+    public double calculerMoyenne(@PathVariable Integer id) {
+        return ((EvaluationService) service).calculerMoyenne(id);
     }
 
 }

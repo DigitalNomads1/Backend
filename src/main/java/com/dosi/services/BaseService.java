@@ -3,12 +3,14 @@ package com.dosi.services;
 import com.dosi.entities.Identifiable;
 import jakarta.persistence.EntityExistsException;
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.web.server.ResponseStatusException;
 import java.util.List;
 import static org.springframework.http.HttpStatus.NOT_FOUND;
 
 @AllArgsConstructor
+@NoArgsConstructor
 public abstract class BaseService<T extends Identifiable, K> {
 
     protected JpaRepository<T, K> repository;

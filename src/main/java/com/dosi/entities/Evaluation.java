@@ -66,6 +66,9 @@ public class Evaluation implements Identifiable<Integer>{
     @JoinColumn(name = "CODE_FORMATION", nullable = false, insertable=false, updatable=false)
     @JsonIgnoreProperties("listEvaluations")
     private Promotion promotion;
+
+    @Transient
+    private double moyenne;
 /*
     @OneToMany(mappedBy = "idEvaluation",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonIgnoreProperties("idEvaluation")

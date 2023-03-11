@@ -1,5 +1,6 @@
 package com.dosi.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -8,16 +9,16 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "QUESTION_EVALUATION")
-public class QuestionEvaluation {
+public class QuestionEvaluation implements Identifiable<Integer>{
     @Id
     @Column(name = "ID_QUESTION_EVALUATION", nullable = false)
     private Integer id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "ID_QUESTION")
     private Question idQuestion;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "ID_QUALIFICATIF")
     private Qualificatif idQualificatif;
 
@@ -26,5 +27,11 @@ public class QuestionEvaluation {
 
     @Column(name = "INTITULE", length = 64)
     private String intitule;
+
+    @MapsId("rubriqueEvaluation")
+    @ManyToOne
+    @JoinColumn(name = "ID_RUBRIQUE_EVALUATION", referencedColumnName = "ID_RUBRIQUE_EVALUATION")
+    @JsonIgnoreProperties("questionEvaluationList")
+    private RubriqueEvaluation rubriqueEvaluation;
 
 }

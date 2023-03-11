@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.*;
-import net.minidev.json.annotate.JsonIgnore;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
@@ -39,8 +38,9 @@ public class Candidat  implements  Identifiable<String>{
     @Pattern(regexp = "^(H|F)$", message = "Sexe doit être 'H' ou 'F'")
     private String sexe;
 
+
     @Column(name = "DATE_NAISSANCE", nullable = false)
-    @NotNull(message = "Date de naissance est requise! Le format doit être " + DATE_PATTERN +".")
+    @NotNull(message = "dateNaissance est Requis! Le format doit être "+ DATE_PATTERN +".")
     @DateTimeFormat(pattern = DATE_PATTERN)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_PATTERN)
     private LocalDate dateNaissance;
@@ -95,15 +95,14 @@ public class Candidat  implements  Identifiable<String>{
     private char confirmationCandidat;
 
     @Column(name = "DATE_REPONSE_CANDIDAT")
-    @NotNull(message = "Date de naissance est requise! Le format doit être " + DATE_PATTERN +".")
     @DateTimeFormat(pattern = DATE_PATTERN)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_PATTERN)
     private LocalDate dateReponseCandidat;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne
     @JoinColumn(name = "ANNEE_UNIVERSITAIRE", nullable = false)
     @JoinColumn(name = "CODE_FORMATION", nullable = false)
-    @JsonIgnoreProperties({"hibernateLazyInitializer"})
-//    @JsonIgnore
+    @JsonIgnoreProperties("listCandidats")
     @NotNull(message = "la promotion du candidat est Requise!")
     private Promotion promotion;
 }

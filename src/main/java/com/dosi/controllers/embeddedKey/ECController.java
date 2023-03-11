@@ -5,16 +5,25 @@ import com.dosi.entities.ElementConstitutif;
 import com.dosi.entities.ElementConstitutifId;
 import com.dosi.services.ECService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
+import static com.dosi.utils.Constants.API_URL;
+
 @RestController
-@RequestMapping("/ec")
+@RequestMapping(API_URL + "/ec")
 public class ECController  extends BaseController<ElementConstitutif, ElementConstitutifId> {
 
     @Autowired
     public ECController(ECService service) {
         super(service);
+    }
+
+    @Override
+    public List<ElementConstitutif> getAll() {
+        System.out.println(super.getAll());
+        return super.getAll();
     }
 
     @GetMapping("/{formation}-{ue}-{ec}")

@@ -3,16 +3,14 @@ package com.dosi.controllers.embeddedKey;
 import com.dosi.controllers.BaseController;
 import com.dosi.entities.Promotion;
 import com.dosi.entities.PromotionId;
-import com.dosi.entities.UniteEnseignement;
-import com.dosi.entities.UniteEnseignementId;
-import com.dosi.repositories.PromotionRepository;
 import com.dosi.services.PromotionService;
-import com.dosi.services.UEService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import static com.dosi.utils.Constants.API_URL;
+
 @RestController
-@RequestMapping("/promotions")
+@RequestMapping(API_URL + "/promotions")
 public class PromotionController extends BaseController<Promotion, PromotionId> {
     @Autowired
     PromotionService promotionService;
@@ -34,7 +32,7 @@ public class PromotionController extends BaseController<Promotion, PromotionId> 
                 .anneeUniversitaire(annee)
                 .codeFormation(formation)
                 .build();
-            promotionService.deleteByEmbeddedId(id.getAnneeUniversitaire(), id.getCodeFormation());
+//            promotionService.deleteByEmbeddedId(id.getAnneeUniversitaire(), id.getCodeFormation());
 
     }
 

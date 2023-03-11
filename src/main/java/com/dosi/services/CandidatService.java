@@ -4,7 +4,6 @@ import com.dosi.entities.Candidat;
 import com.dosi.exceptions.ApplicationException;
 import com.dosi.repositories.CandidatRepository;
 import jakarta.persistence.EntityExistsException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
  @Service
@@ -14,10 +13,18 @@ public class CandidatService extends BaseService<Candidat,String> {
          super(candidatRepository);
      }
 
+     /**
+      * @param email
+      * @return Candidat
+      */
      public Candidat findByEmail(String email){
          return ((CandidatRepository)repository).findByEmail(email);
      }
 
+     /**
+      * @param candidat
+      * @return Candidat
+      */
      public Candidat create(Candidat candidat) {
          if(candidat.getId() != null )
          {
@@ -32,6 +39,10 @@ public class CandidatService extends BaseService<Candidat,String> {
          return repository.save(candidat);
      }
 
+     /**
+      * @param candidat
+      * @return Candidat
+      */
      @Override
      public Candidat update(Candidat candidat) {
          Candidat optionalCandidat = repository.findById(candidat.getId()).orElse(null);
@@ -41,6 +52,9 @@ public class CandidatService extends BaseService<Candidat,String> {
          return repository.save(candidat);
      }
 
+     /**
+      * @param id
+      */
      @Override
     public void delete(String id) {
         super.delete(id);

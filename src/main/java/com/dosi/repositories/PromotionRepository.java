@@ -12,8 +12,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface PromotionRepository extends JpaRepository<Promotion, PromotionId> {
 
-    @Transactional
+    /*@Transactional
     @Modifying
     @Query(value = "delete from promotion p where p.ANNEE_UNIVERSITAIRE= ?1 and CODE_FORMATION= ?2",nativeQuery = true)
-    void deleteByEmbeddedId(String annee,String formation);
+    void deleteByEmbeddedId(String annee,String formation);*/
 }

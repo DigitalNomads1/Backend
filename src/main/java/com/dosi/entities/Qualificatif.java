@@ -11,7 +11,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "QUALIFICATIF")
-public class Qualificatif {
+public class Qualificatif implements Identifiable<Integer>{
     @Id
     @Column(name = "ID_QUALIFICATIF", nullable = false)
     private Integer id;

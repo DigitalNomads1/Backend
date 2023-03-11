@@ -129,6 +129,7 @@ public class PromotionServiceTest {
         verify(promotionRepository, times(1)).save(any(Promotion.class));
     }
 
+    /*
     @Test
     public void testDelete() {
         PromotionId promotionId = new PromotionId("2014 - 2015", "DOSI");
@@ -152,5 +153,5 @@ public class PromotionServiceTest {
             promotionService.deleteByEmbeddedId(promotionId.getAnneeUniversitaire(),promotionId.getCodeFormation());
         });
     }
-
+*/
 }

@@ -72,9 +72,9 @@ public class UniteEnseignement implements Identifiable<UniteEnseignementId>{
     @JsonIgnoreProperties("codeUE")
     private List<ElementConstitutif> ListeEC;
 
-    @OneToOne(mappedBy = "uniteEnseignement")
+    @OneToMany(mappedBy = "uniteEnseignement")
     @JsonIgnoreProperties("uniteEnseignement")
-    private Evaluation evaluation;
+    private List<Evaluation> evaluationList;
 
     @Override
     public String toString() {

@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 @Entity
@@ -19,8 +21,10 @@ public class RubriqueEvaluation implements Identifiable<Integer>{
     @JsonIgnoreProperties("listeRubriques")
     private Evaluation idEvaluation;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @MapsId("idRubrique")
+    @ManyToOne
     @JoinColumn(name = "ID_RUBRIQUE")
+    @JsonIgnoreProperties("rubriqueEvaluationList")
     private Rubrique idRubrique;
 
     @Column(name = "ORDRE", nullable = false)
@@ -28,5 +32,9 @@ public class RubriqueEvaluation implements Identifiable<Integer>{
 
     @Column(name = "DESIGNATION", length = 64)
     private String designation;
+
+    @OneToMany(mappedBy = "rubriqueEvaluation",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JsonIgnoreProperties("rubriqueEvaluation")
+    private List<QuestionEvaluation> questionEvaluationList;
 
 }

@@ -1,0 +1,1099 @@
+[33mcommit 9965b6a6968522bde021621b6c995caca2b1f646[m[33m ([m[1;36mHEAD -> [m[1;32mauthBranch[m[33m, [m[1;31morigin/authBranch[m[33m)[m
+Author: khalid tounoussi <khalid.tounoussi@etudiant.univ-brest.fr>
+Date:   Fri Mar 10 11:36:20 2023 +0100
+
+    evaluations moyenne, UE evaluation moyenne
+
+[33mcommit ac8f0c176d952aa7c6ae05658c5323173c48b647[m
+Author: khalid tounoussi <khalid.tounoussi@etudiant.univ-brest.fr>
+Date:   Fri Mar 10 11:23:00 2023 +0100
+
+    evaluations moyenne
+
+[33mcommit c8bdcf76d2eadb65c87cbaa9fe379083bc3e9c6d[m
+Author: khalid tounoussi <khalid.tounoussi@etudiant.univ-brest.fr>
+Date:   Thu Mar 9 13:54:24 2023 +0100
+
+    evaluations answers path
+
+[33mcommit d7311abcbffefcc8592ed2850e155ff6e3c29121[m
+Author: khalid tounoussi <khalid.tounoussi@etudiant.univ-brest.fr>
+Date:   Thu Mar 9 10:13:29 2023 +0100
+
+    evaluation reponses
+
+[33mcommit 0a8cb3b250233a7142d8ebe296dc52a6e98e4b51[m
+Author: khalid tounoussi <khalid.tounoussi@etudiant.univ-brest.fr>
+Date:   Thu Mar 9 09:19:23 2023 +0100
+
+    eval
+
+[33mcommit 6c710dbf21b5698e4aabc3e85af9a433c702fb35[m
+Author: khalid tounoussi <khalid.tounoussi@etudiant.univ-brest.fr>
+Date:   Thu Mar 9 01:20:12 2023 +0100
+
+    eval
+
+[33mcommit b7b672896e55d11a7da750e41fc9365e80c21262[m
+Author: khalid tounoussi <khalid.tounoussi@etudiant.univ-brest.fr>
+Date:   Wed Mar 8 19:48:20 2023 +0100
+
+    evaluations init
+
+[33mcommit 01194c3600b33a0aaf0521e8d86c5512ec8a1b02[m
+Author: khalid tounoussi <khalid.tounoussi@etudiant.univ-brest.fr>
+Date:   Mon Mar 6 23:53:25 2023 +0100
+
+    fix undefined enseignant
+
+[33mcommit 14467efbe3d8b8746b1597b5f87c75601621730a[m
+Author: khalid tounoussi <khalid.tounoussi@etudiant.univ-brest.fr>
+Date:   Mon Mar 6 01:13:15 2023 +0100
+
+    email perso enseignant fix
+
+[33mcommit c45397769197d2a068165e30b24815ab46897951[m
+Author: khalid tounoussi <khalid.tounoussi@etudiant.univ-brest.fr>
+Date:   Mon Mar 6 01:04:49 2023 +0100
+
+    email enseignant fix
+
+[33mcommit 64390f166ee0cd4b736ecfa70aea7005d9bc83ab[m
+Author: nora youssefi <nora.youssefi@etu.uae.ac.ma>
+Date:   Sun Mar 5 23:05:01 2023 +0100
+
+    fix supprimer
+
+[33mcommit 3e0abd7b23b69abae11dd0ba15ad78b2c3feea78[m
+Author: khalid tounoussi <khalid.tounoussi@etudiant.univ-brest.fr>
+Date:   Sun Mar 5 22:54:28 2023 +0100
+
+    cgrefcodes fix
+
+[33mcommit d3e66c5101ccecbda0c2fe42164afa9578cbdba6[m
+Author: khalid tounoussi <khalid.tounoussi@etudiant.univ-brest.fr>
+Date:   Sun Mar 5 22:51:27 2023 +0100
+
+    admin
+
+[33mcommit 6bb2e92b15609ec58d9a0058aead51814b2b6558[m
+Author: khalid tounoussi <khalid.tounoussi@etudiant.univ-brest.fr>
+Date:   Sun Mar 5 21:20:59 2023 +0100
+
+    api path
+
+[33mcommit 3b3a2d5c1374376dc7b358cc2d316f8ec713d3cd[m
+Author: khalid tounoussi <khalid.tounoussi@etudiant.univ-brest.fr>
+Date:   Sun Mar 5 20:14:35 2023 +0100
+
+    documentation
+
+[33mcommit fa4f9ed0377c15e57b7123bc8ad6f1048008b435[m
+Merge: b17f879 842f7cb
+Author: khalid tounoussi <khalid.tounoussi@etudiant.univ-brest.fr>
+Date:   Sun Mar 5 19:57:55 2023 +0100
+
+    merge conflict
+
+[33mcommit 842f7cba99cf5d280b0074a0081fb8a06f787df2[m[33m ([m[1;31morigin/main[m[33m)[m
+Merge: cca3f06 926e8f2
+Author: HajarElansary <hajarbe2016@gmail.com>
+Date:   Sun Mar 5 19:10:26 2023 +0100
+
+    Merge remote-tracking branch 'origin/main' into main
+
+[33mcommit cca3f0698c5205dfbd19d710505dbef10d7bb416[m
+Merge: b943e87 c5918a8
+Author: HajarElansary <hajarbe2016@gmail.com>
+Date:   Sun Mar 5 19:09:33 2023 +0100
+
+    Merge remote-tracking branch 'origin/FormationBranch' into main
+
+[33mcommit c5918a8d64fe4f3218a6a66632049aa21b44decd[m[33m ([m[1;31morigin/FormationBranch[m[33m)[m
+Merge: 139bbc1 1815bcd
+Author: HajarElansary <hajarbe2016@gmail.com>
+Date:   Sun Mar 5 19:08:34 2023 +0100
+
+    formation vierge delete
+
+[33mcommit 926e8f28333d5d655be81abe5aed8748d8ec3c7d[m
+Author: SALHI Anas <anas.salhi6@gmail.com>
+Date:   Sun Mar 5 17:59:25 2023 +0100
+
+    Fixing Date issue
+
+[33mcommit 139bbc14c40127bc91e28f94543840e89482a454[m
+Merge: d7a136d e63caa4
+Author: HajarElansary <hajarbe2016@gmail.com>
+Date:   Sun Mar 5 17:33:42 2023 +0100
+
+    Merge remote-tracking branch 'origin/FormationBranch' into FormationBranch
+
+[33mcommit 1815bcd35ebc427060468ca234f17c4dec71b206[m
+Author: SALHI Anas <anas.salhi6@gmail.com>
+Date:   Sun Mar 5 14:49:14 2023 +0100
+
+    Fixing Date
+
+[33mcommit b17f879ad92811c1f58f08fcedc3745031b04acf[m
+Author: khalid tounoussi <khalid.tounoussi@etudiant.univ-brest.fr>
+Date:   Sun Mar 5 13:42:22 2023 +0100
+
+    error message : Auth bad credentials
+
+[33mcommit f048b0f3464d872f50893acac54397d7dd08906b[m
+Author: Hanane Merroun <hananmerroune@gmail.com>
+Date:   Sun Mar 5 12:21:25 2023 +0100
+
+    fix listeEC in ue
+
+[33mcommit d2fc999b4bd388307d95cfabb63b1eb036db1019[m
+Merge: 7dbb03d 892afbc
+Author: Hanane Merroun <hananmerroune@gmail.com>
+Date:   Sun Mar 5 11:53:51 2023 +0100
+
+    Merge remote-tracking branch 'origin/EnseignantBranch' into main
+    
+    # Conflicts:
+    #       src/main/java/com/dosi/services/EnseignantService.java
+
+[33mcommit 892afbce81e6bf175593f8625cbb424a75d404be[m[33m ([m[1;31morigin/EnseignantBranch[m[33m)[m
+Author: Hanane Merroun <hananmerroune@gmail.com>
+Date:   Sun Mar 5 11:44:48 2023 +0100
+
+    add listeEC to UE
+
+[33mcommit 34b92112d20d2abbbf42325bfef29d4ee26c6195[m
+Author: khalid tounoussi <khalid.tounoussi@etudiant.univ-brest.fr>
+Date:   Sat Mar 4 14:02:00 2023 +0100
+
+    fix cors
+
+[33mcommit 7dbb03d2249ec11a94391e3cc544edaefadaa62d[m
+Author: SALHI Anas <anas.salhi6@gmail.com>
+Date:   Sat Mar 4 12:40:42 2023 +0100
+
+    Adding Promotion Test
+
+[33mcommit 8c08b829e7a6c47d7a3893b123caeb95c2ef4343[m
+Author: khalid tounoussi <khalid.tounoussi@etudiant.univ-brest.fr>
+Date:   Thu Mar 2 17:39:34 2023 +0100
+
+    authentication with token generated ( email, role )
+
+[33mcommit 59089a4ad0ddd04a2de970de8e90376af154a604[m[33m ([m[1;31morigin/PromotionBranch[m[33m)[m
+Author: SALHI Anas <anas.salhi6@gmail.com>
+Date:   Thu Mar 2 17:26:43 2023 +0100
+
+    Adding Promotion Test
+
+[33mcommit 67c5704998e3fb955647a39b74c5078985d3f799[m
+Merge: d11b852 6466e32
+Author: SALHI Anas <anas.salhi6@gmail.com>
+Date:   Thu Mar 2 15:26:12 2023 +0100
+
+    Merge branch 'main' into PromotionBranch
+
+[33mcommit 6466e326383b60774707bfdbaf1da9b3b0ee7d35[m
+Merge: 4d30b1b f34f7c5
+Author: SALHI Anas <anas.salhi6@gmail.com>
+Date:   Thu Mar 2 15:22:46 2023 +0100
+
+    Merge remote-tracking branch 'origin/main' into main
+
+[33mcommit d11b85252f7c92043f26660c52a6dc5b8e05be43[m
+Author: SALHI Anas <anas.salhi6@gmail.com>
+Date:   Thu Mar 2 15:19:58 2023 +0100
+
+    Adding Promotion Test
+
+[33mcommit a9dc9a5062dd92b6213cc3832b5608e5c98eab7d[m
+Merge: 398dd19 4d30b1b
+Author: SALHI Anas <anas.salhi6@gmail.com>
+Date:   Thu Mar 2 15:18:49 2023 +0100
+
+    Merge branch 'main' into PromotionBranch
+
+[33mcommit 398dd1957ecdd552bde485a73305dd22ae0f56cb[m
+Merge: 5790bf8 f34f7c5
+Author: SALHI Anas <anas.salhi6@gmail.com>
+Date:   Thu Mar 2 15:16:32 2023 +0100
+
+    Merge remote-tracking branch 'origin/main' into PromotionBranch
+
+[33mcommit f34f7c5fdd049aa34d7984609045861490a01653[m
+Author: khalid tounoussi <khalid.tounoussi@etudiant.univ-brest.fr>
+Date:   Thu Mar 2 15:16:18 2023 +0100
+
+    fix merge conflict
+
+[33mcommit 4d30b1b91b1f3ff6abd3847efbff59ab659c6ce1[m
+Merge: 88e9bbc 59138a4
+Author: SALHI Anas <anas.salhi6@gmail.com>
+Date:   Thu Mar 2 15:14:35 2023 +0100
+
+    Merge remote-tracking branch 'origin/PromotionBranch' into main
+
+[33mcommit 5790bf890138f68a57aa953acf95d7c1c8476c76[m
+Merge: 59138a4 88e9bbc
+Author: SALHI Anas <anas.salhi6@gmail.com>
+Date:   Thu Mar 2 15:10:02 2023 +0100
+
+    Merge remote-tracking branch 'origin/main' into PromotionBranch
+
+[33mcommit 88e9bbca69edc2ae5798b38f23b40f7d3b2db1a8[m[33m ([m[1;32mhanane[m[33m)[m
+Merge: 30412d7 eeb2d0b
+Author: khalid tounoussi <khalid.tounoussi@etudiant.univ-brest.fr>
+Date:   Thu Mar 2 15:07:07 2023 +0100
+
+    update fix
+
+[33mcommit 30412d7a8ac4c686f7092f09d8e22fccdd16da90[m
+Merge: 9b5d4e0 486338d
+Author: khalid tounoussi <khalid.tounoussi@etudiant.univ-brest.fr>
+Date:   Thu Mar 2 15:04:44 2023 +0100
+
+    update fix
+
+[33mcommit 59138a476a10c3879b3c998464a21c2226503854[m
+Author: SALHI Anas <anas.salhi6@gmail.com>
+Date:   Thu Mar 2 14:32:01 2023 +0100
+
+    Adding Candidat Test
+
+[33mcommit 444207bac1ca3f398ebab0d54b706a4376059dc0[m
+Author: SALHI Anas <anas.salhi6@gmail.com>
+Date:   Thu Mar 2 14:31:18 2023 +0100
+
+    Adding Etudiant Test
+
+[33mcommit 2508c5a5214c5e8463277d95e53f186df9867f9a[m
+Author: Manal Abdouh <manalabdouh1@gmail.com>
+Date:   Thu Mar 2 13:38:11 2023 +0100
+
+    CandidatTest
+
+[33mcommit 005f4414af5801fda002e192a31f7b899d9d4def[m
+Author: Manal Abdouh <manalabdouh1@gmail.com>
+Date:   Thu Mar 2 13:12:24 2023 +0100
+
+    CandidatTest
+
+[33mcommit cff443a353a47440b38e278c945ff12f4e8a81d7[m
+Author: Manal Abdouh <manalabdouh1@gmail.com>
+Date:   Thu Mar 2 13:01:54 2023 +0100
+
+    CandidatTest
+
+[33mcommit eeb2d0b12b4d473db8437c0952b7bac79d4a896e[m
+Merge: 5daf519 b0c396e
+Author: SALHI Anas <anas.salhi6@gmail.com>
+Date:   Thu Mar 2 12:29:18 2023 +0100
+
+    Merge remote-tracking branch 'origin/main' into PromotionBranch
+
+[33mcommit 5daf5196b6570490e9c28d219906e7347e872064[m
+Author: SALHI Anas <anas.salhi6@gmail.com>
+Date:   Thu Mar 2 12:27:40 2023 +0100
+
+    Fixing stuff
+
+[33mcommit d065e1e02171b6c9799cff9cdd3229dec3b161f3[m
+Author: SALHI Anas <anas.salhi6@gmail.com>
+Date:   Thu Mar 2 12:22:34 2023 +0100
+
+    Fixing stuff
+
+[33mcommit 9b5d4e0ec4b6ab5245811c633ad15008245942e9[m
+Author: khalid tounoussi <khalid.tounoussi@etudiant.univ-brest.fr>
+Date:   Thu Mar 2 11:47:05 2023 +0100
+
+    fix delete
+
+[33mcommit b0c396e3dc6ad6f27b349a49a2472b5d04cc484e[m
+Merge: 486338d e63caa4
+Author: nora youssefi <nora.youssefi@etu.uae.ac.ma>
+Date:   Thu Mar 2 11:46:28 2023 +0100
+
+    Merge remote-tracking branch 'origin/FormationBranch' into main
+
+[33mcommit e63caa4adc93079d45d9a27996d5fe1c393d7422[m
+Author: nora youssefi <nora.youssefi@etu.uae.ac.ma>
+Date:   Thu Mar 2 11:43:52 2023 +0100
+
+    formation test
+
+[33mcommit d7a136daa19c797787c6f173230e386575446ebb[m
+Author: HajarElansary <hajarbe2016@gmail.com>
+Date:   Thu Mar 2 11:22:10 2023 +0100
+
+    v1.7 Delete formation vierge
+
+[33mcommit 486338ddada15c8c36b9f2090c998536782b17db[m
+Merge: 1bb6fd7 cd59665
+Author: Hajar EL ANSARY <75335676+hajarelansary@users.noreply.github.com>
+Date:   Thu Mar 2 11:07:46 2023 +0100
+
+    Merge pull request #1 from DigitalNomads1/FormationBranch
+    
+    Formation branch
+
+[33mcommit 1bb6fd75e117e418d3edd36af5e7a0d58501c17c[m
+Author: SALHI Anas <anas.salhi6@gmail.com>
+Date:   Thu Mar 2 11:06:44 2023 +0100
+
+    Fixing stuff
+
+[33mcommit b943e876d7a48ff6685cf0d2ebfbd227c86315cb[m
+Merge: cd59665 961e766
+Author: HajarElansary <hajarbe2016@gmail.com>
+Date:   Thu Mar 2 11:06:10 2023 +0100
+
+    Merge remote-tracking branch 'origin/main' into main
+
+[33mcommit 629dcc98d838c84da0168074a273bace5202ee3b[m
+Merge: cd59665 961e766
+Author: HajarElansary <hajarbe2016@gmail.com>
+Date:   Thu Mar 2 11:04:07 2023 +0100
+
+    Merge remote-tracking branch 'origin/main' into FormationBranch
+
+[33mcommit cd59665c67965a65d3e9048babed2f404527e845[m
+Author: HajarElansary <hajarbe2016@gmail.com>
+Date:   Thu Mar 2 11:03:37 2023 +0100
+
+    test EC
+
+[33mcommit 961e766aff21d35337f52a972a991698a570d7a0[m
+Author: SALHI Anas <anas.salhi6@gmail.com>
+Date:   Thu Mar 2 10:52:52 2023 +0100
+
+    Fixing stuff
+
+[33mcommit b2357b6725a5a41f79bbfaa45a6bf6971e245feb[m
+Author: SALHI Anas <anas.salhi6@gmail.com>
+Date:   Wed Mar 1 17:34:44 2023 +0100
+
+    Fixing stuff
+
+[33mcommit b1ba78a87901722a5fb6aa4dff3e62e220f4edde[m
+Author: HajarElansary <hajarbe2016@gmail.com>
+Date:   Wed Mar 1 17:02:12 2023 +0100
+
+    UEService Test
+
+[33mcommit c5ec12b9983c8d26228ca4eec19eb53358e4d485[m
+Author: SALHI Anas <anas.salhi6@gmail.com>
+Date:   Wed Mar 1 15:39:04 2023 +0100
+
+    Fixing stuff
+
+[33mcommit 855e1578b544e5870c40a5ce50a2c65d9212245d[m
+Author: nora youssefi <nora.youssefi@etu.uae.ac.ma>
+Date:   Wed Mar 1 14:05:16 2023 +0100
+
+    test v1
+
+[33mcommit 8073cec404989131243d15cd8c47112370e9b138[m
+Author: Hanane Merroun <hananmerroune@gmail.com>
+Date:   Wed Mar 1 13:54:59 2023 +0100
+
+    add verif mail to update
+
+[33mcommit 7414b8005ed36b094a1dbaa83da3cf2e218c1b68[m
+Merge: 4d73ba4 6c76596
+Author: SALHI Anas <anas.salhi6@gmail.com>
+Date:   Wed Mar 1 12:07:41 2023 +0100
+
+    Merge branch 'main' into PromotionBranch
+
+[33mcommit 6c76596695969c9c9d89b5a3612af4e183545830[m
+Merge: db08c1c d93d140
+Author: khalid tounoussi <khalid.tounoussi@etudiant.univ-brest.fr>
+Date:   Wed Mar 1 01:31:30 2023 +0100
+
+    unit test
+
+[33mcommit db08c1c385147b10b8bea9e6c355870a4ec1e373[m
+Author: khalid tounoussi <khalid.tounoussi@etudiant.univ-brest.fr>
+Date:   Wed Mar 1 01:29:10 2023 +0100
+
+    Unit tests
+
+[33mcommit 4d73ba47585ec6cdcaec9f305d54c98f0f3aac77[m
+Author: Manal Abdouh <manalabdouh1@gmail.com>
+Date:   Tue Feb 28 16:45:17 2023 +0100
+
+    m
+
+[33mcommit d93d140fc66bff03a5e75b393ab70c69b9e24585[m
+Author: SALHI Anas <anas.salhi6@gmail.com>
+Date:   Tue Feb 28 16:24:02 2023 +0100
+
+    Fixing stuff
+
+[33mcommit e07911ecce0450d2a3f83e9ef3b04a185c07f797[m
+Merge: 68e8446 3bc05cb
+Author: SALHI Anas <anas.salhi6@gmail.com>
+Date:   Tue Feb 28 16:23:00 2023 +0100
+
+    Merge remote-tracking branch 'origin/main' into PromotionBranch
+    
+    # Conflicts:
+    #       src/main/resources/application.properties
+
+[33mcommit 68e844642d9a2ee19a12050e18389cbc98fcd35d[m
+Author: SALHI Anas <anas.salhi6@gmail.com>
+Date:   Tue Feb 28 15:02:13 2023 +0100
+
+    Fixing stuff
+
+[33mcommit 8dbb16386f45a566027ccf58b0831f33fbb38cda[m
+Author: Manal Abdouh <manalabdouh1@gmail.com>
+Date:   Tue Feb 28 14:52:20 2023 +0100
+
+    m
+
+[33mcommit 1ef1bbd542316fd27f9b5b163c6aef44198082fa[m
+Author: SALHI Anas <anas.salhi6@gmail.com>
+Date:   Tue Feb 28 14:41:19 2023 +0100
+
+    Fixing delete promotion.
+
+[33mcommit 3bc05cb568f7b165cdbb21bb6763ee56f84c29f4[m
+Merge: d813ac7 78c7ab3
+Author: HajarElansary <hajarbe2016@gmail.com>
+Date:   Tue Feb 28 13:58:55 2023 +0100
+
+    Merge remote-tracking branch 'origin/main' into main
+    
+    # Conflicts:
+    #       src/main/resources/application.properties
+
+[33mcommit d813ac7e56dfd4c02f71578317a0a7695ed92167[m
+Author: HajarElansary <hajarbe2016@gmail.com>
+Date:   Tue Feb 28 13:58:32 2023 +0100
+
+    ec et ue validation
+
+[33mcommit f2202618e903a14af1c3c7f260cf2e9fb562968b[m
+Merge: 100ba2a 844f617
+Author: HajarElansary <hajarbe2016@gmail.com>
+Date:   Tue Feb 28 13:51:49 2023 +0100
+
+    Merge remote-tracking branch 'origin/FormationBranch' into main
+    
+    # Conflicts:
+    #       src/main/java/com/dosi/services/FormationService.java
+
+[33mcommit a6b580414a45847da689b1358ceaf5fb68d446fe[m
+Merge: 7cbbec6 57066ca
+Author: khalid tounoussi <khalid.tounoussi@etudiant.univ-brest.fr>
+Date:   Tue Feb 28 13:26:29 2023 +0100
+
+    Merge branch 'PromotionBranch' of https://github.com/DigitalNomads1/Backend
+
+[33mcommit 844f617cc3a28f49cd58d8a333a3f7d63ce1ddf8[m[33m ([m[1;32mFormationBranch[m[33m)[m
+Author: nora youssefi <nora.youssefi@etu.uae.ac.ma>
+Date:   Mon Feb 27 17:58:42 2023 +0100
+
+    v4.2
+
+[33mcommit 1ac0b0dae11f8802009865052525832ad3158432[m
+Merge: fea99f2 acbd335
+Author: nora youssefi <nora.youssefi@etu.uae.ac.ma>
+Date:   Mon Feb 27 17:57:51 2023 +0100
+
+    Merge remote-tracking branch 'origin/FormationBranch' into FormationBranch
+    
+    # Conflicts:
+    #       src/main/java/com/dosi/entities/ElementConstitutif.java
+
+[33mcommit 7cbbec6a1263bce9ef0d8a1e2f7c1f3a06928764[m
+Author: khalid tounoussi <khalid.tounoussi@etudiant.univ-brest.fr>
+Date:   Mon Feb 27 17:47:34 2023 +0100
+
+    enseignant vierge
+
+[33mcommit fea99f278b149ea3162bc5a173d917632f625801[m
+Author: nora youssefi <nora.youssefi@etu.uae.ac.ma>
+Date:   Mon Feb 27 17:47:03 2023 +0100
+
+    v4.2
+
+[33mcommit acbd335937d14c6cf7e707f2aa5c1f645a8f45a9[m
+Author: HajarElansary <hajarbe2016@gmail.com>
+Date:   Mon Feb 27 17:45:32 2023 +0100
+
+    ENTITY VERIFICATION
+
+[33mcommit 57066ca8e7e3be3c62c0b153823b6e343bb9a7a4[m
+Merge: 9023602 78c7ab3
+Author: SALHI Anas <anas.salhi6@gmail.com>
+Date:   Mon Feb 27 17:17:52 2023 +0100
+
+    Merge remote-tracking branch 'origin/main' into PromotionBranch
+
+[33mcommit 902360272c4626c3c262ef5bb5efc2268455a7fa[m
+Author: SALHI Anas <anas.salhi6@gmail.com>
+Date:   Mon Feb 27 17:17:43 2023 +0100
+
+    Fixing delete promotion.
+
+[33mcommit 78c7ab3bd193e152dcc135d9e7f194d680e670e5[m
+Merge: 4811303 e91fa5a
+Author: khalid tounoussi <khalid.tounoussi@etudiant.univ-brest.fr>
+Date:   Mon Feb 27 17:04:15 2023 +0100
+
+    merge conflict
+
+[33mcommit 4811303cbc1c62faf6009f035a914f906e6879d4[m
+Author: khalid tounoussi <khalid.tounoussi@etudiant.univ-brest.fr>
+Date:   Mon Feb 27 16:57:45 2023 +0100
+
+    -
+
+[33mcommit e91fa5a9fb1b84f65d9f4cc3ab81d58b3a40ec3b[m
+Author: Hanane Merroun <hananmerroune@gmail.com>
+Date:   Mon Feb 27 16:49:14 2023 +0100
+
+    add Exceptions to Enseignant
+
+[33mcommit 3322e8c30ed74b8493288cb22465d42c21ee5d53[m
+Author: Hanane Merroun <hananmerroune@gmail.com>
+Date:   Mon Feb 27 16:48:02 2023 +0100
+
+    Exceptions to Enseignant
+
+[33mcommit 5d0a1f4424772ccb7fb3449cc25bb0d2f12fdbb7[m
+Merge: 61d10a8 9000b6f
+Author: Hanane Merroun <hananmerroune@gmail.com>
+Date:   Mon Feb 27 16:45:32 2023 +0100
+
+    Merge remote-tracking branch 'origin/hanane' into main
+    
+    # Conflicts:
+    #       src/main/java/com/dosi/controllers/BaseController.java
+
+[33mcommit 61d10a8a7610d1808f627a50487feb8bda3e9729[m
+Author: SALHI Anas <anas.salhi6@gmail.com>
+Date:   Mon Feb 27 16:15:26 2023 +0100
+
+    Fixing delete promotion.
+
+[33mcommit 8b6a1f2bbf373a1cf35c9782a91eb9ce5db7184d[m
+Author: khalid tounoussi <khalid.tounoussi@etudiant.univ-brest.fr>
+Date:   Mon Feb 27 14:45:46 2023 +0100
+
+    PATH GET all
+
+[33mcommit 416bc079a8aa1f83de8598c7188bf147eb7e4925[m
+Author: HajarElansary <hajarbe2016@gmail.com>
+Date:   Mon Feb 27 14:25:43 2023 +0100
+
+    delete formation folder
+
+[33mcommit 100ba2adc64798912f6338bdb71211a515f575ef[m
+Author: HajarElansary <hajarbe2016@gmail.com>
+Date:   Mon Feb 27 14:24:51 2023 +0100
+
+    delete formation folder
+
+[33mcommit 6ef530af4174740e79940c8b5f0f44a1e1197665[m
+Author: nora youssefi <nora.youssefi@etu.uae.ac.ma>
+Date:   Mon Feb 27 14:23:45 2023 +0100
+
+    v4.1
+
+[33mcommit 57709c592968edd1c34a4ffc46da8938924a006b[m
+Author: khalid tounoussi <khalid.tounoussi@etudiant.univ-brest.fr>
+Date:   Sun Feb 26 23:42:58 2023 +0100
+
+    exception handling
+
+[33mcommit a8cfec3082319ea229fa18458b3c3c2d380d867f[m[33m ([m[1;32mPromotionBranch[m[33m)[m
+Author: khalid tounoussi <khalid.tounoussi@etudiant.univ-brest.fr>
+Date:   Sun Feb 26 21:52:26 2023 +0100
+
+    excpetion handling
+
+[33mcommit 50ec59487fc8ec243adbdfdf152faeedc4e7146c[m
+Merge: 2accc14 7793c55
+Author: khalid tounoussi <khalid.tounoussi@etudiant.univ-brest.fr>
+Date:   Sun Feb 26 21:49:34 2023 +0100
+
+    Merge branch 'FormationBranch' of https://github.com/DigitalNomads1/Backend
+
+[33mcommit 2accc147cb7042d9ad1e1e173171d216502e0dc1[m
+Merge: a620f19 456bd73
+Author: khalid tounoussi <khalid.tounoussi@etudiant.univ-brest.fr>
+Date:   Fri Feb 24 17:58:59 2023 +0100
+
+    bug fix
+
+[33mcommit a620f191db3e7e2032f541e94620521415811b43[m
+Author: khalid tounoussi <khalid.tounoussi@etudiant.univ-brest.fr>
+Date:   Fri Feb 24 17:58:04 2023 +0100
+
+    exception handler
+
+[33mcommit 456bd73dee4de9677f190d70a28ad79d41c36470[m
+Author: SALHI Anas <anas.salhi6@gmail.com>
+Date:   Fri Feb 24 16:52:37 2023 +0100
+
+    Embedded key to PromotionController
+
+[33mcommit be464326cf66a43933193dc3eebd65de35fe829d[m
+Merge: 40d1e32 816c376
+Author: khalid tounoussi <khalid.tounoussi@etudiant.univ-brest.fr>
+Date:   Fri Feb 24 16:41:40 2023 +0100
+
+    Merge branch 'main' of https://github.com/DigitalNomads1/Backend
+
+[33mcommit 40d1e321aa4ed35da6b4eb5f6b6cdb4650999d75[m
+Author: khalid tounoussi <khalid.tounoussi@etudiant.univ-brest.fr>
+Date:   Fri Feb 24 16:41:37 2023 +0100
+
+    create fix id issue
+
+[33mcommit 816c376ab3077b7226fa12e35111c0f914872349[m
+Author: Hanane Merroun <hananmerroune@gmail.com>
+Date:   Fri Feb 24 16:26:53 2023 +0100
+
+    add paths to EnseignatController
+
+[33mcommit d858d22491ebff578ceee49e8dcb075b20cfdff1[m
+Merge: e29dcbb cdc45e0
+Author: khalid tounoussi <khalid.tounoussi@etudiant.univ-brest.fr>
+Date:   Fri Feb 24 15:08:54 2023 +0100
+
+    Merge branch 'main' of https://github.com/DigitalNomads1/Backend
+
+[33mcommit e29dcbbf07b3fbf0e8588eb33f17b7c1adb5c02d[m
+Merge: 549feac a781b31
+Author: khalid tounoussi <khalid.tounoussi@etudiant.univ-brest.fr>
+Date:   Fri Feb 24 15:08:49 2023 +0100
+
+    exception handling
+
+[33mcommit 7793c55bbe28b06b4ee120426257037e1a064263[m
+Author: Hajar EL ANSARY <75335676+hajarelansary@users.noreply.github.com>
+Date:   Fri Feb 24 15:04:15 2023 +0100
+
+    Delete formation service impl
+
+[33mcommit cdc45e0b316f473b6cc01a398707162337201b94[m
+Author: Hajar EL ANSARY <75335676+hajarelansary@users.noreply.github.com>
+Date:   Fri Feb 24 15:03:08 2023 +0100
+
+    Delete formationbServiceImpl
+
+[33mcommit 8c4c1be5f41bc3a46e62139be5b371d3affd4017[m
+Merge: 2d6f803 dae363d
+Author: nora youssefi <nora.youssefi@etu.uae.ac.ma>
+Date:   Fri Feb 24 14:55:54 2023 +0100
+
+    Merge branch 'FormationBranch' into main
+
+[33mcommit 2d6f803aaf5696597490db8e4f7e56ef39311d78[m
+Author: SALHI Anas <anas.salhi6@gmail.com>
+Date:   Fri Feb 24 14:55:13 2023 +0100
+
+    Adding CGRefCode
+
+[33mcommit dae363d541786bcfe4d84f3066f98f5e12cb0f3f[m
+Author: nora youssefi <nora.youssefi@etu.uae.ac.ma>
+Date:   Fri Feb 24 14:51:07 2023 +0100
+
+    v2.2
+
+[33mcommit 85afdbaaa5afac9189d69bb78d6f9c9836b39ff7[m
+Author: nora youssefi <nora.youssefi@etu.uae.ac.ma>
+Date:   Fri Feb 24 14:22:24 2023 +0100
+
+    v2
+
+[33mcommit 549feac9544642ad39695dcbda707bfdebfe371f[m
+Author: khalid tounoussi <khalid.tounoussi@etudiant.univ-brest.fr>
+Date:   Fri Feb 24 14:19:36 2023 +0100
+
+    dd
+
+[33mcommit 654b6a5f5cd29fc10df131356040070d16c64624[m
+Author: HajarElansary <hajarbe2016@gmail.com>
+Date:   Wed Feb 22 15:20:26 2023 +0100
+
+    formation v1.4
+
+[33mcommit 7ca0b69343dc64548abe16ec4ee2b48e37d11bc4[m
+Author: HajarElansary <hajarbe2016@gmail.com>
+Date:   Wed Feb 22 11:42:56 2023 +0100
+
+    formation v1
+
+[33mcommit a781b311f215c3249270c026b4a504a71e7bca09[m
+Author: SALHI Anas <anas.salhi6@gmail.com>
+Date:   Thu Feb 23 16:40:05 2023 +0100
+
+    hanane
+
+[33mcommit 36e0540e88a085d5af1d09a84c687144a9980bb1[m
+Author: HajarElansary <hajarbe2016@gmail.com>
+Date:   Thu Feb 23 16:35:02 2023 +0100
+
+    embedded id controller
+
+[33mcommit 3dac763d276e83afba04f49b5826367a9d85c428[m
+Author: SALHI Anas <anas.salhi6@gmail.com>
+Date:   Thu Feb 23 16:20:33 2023 +0100
+
+    Fixing stuff
+
+[33mcommit 51108909ca311bfb791fd614f377203db923740a[m
+Merge: 9293149 027af74
+Author: SALHI Anas <anas.salhi6@gmail.com>
+Date:   Thu Feb 23 16:16:30 2023 +0100
+
+    Merge remote-tracking branch 'origin/main' into PromotionBranch
+
+[33mcommit 0cf7d9863da0a32876b7e9b40e235dbb9d6b9051[m
+Author: HajarElansary <hajarbe2016@gmail.com>
+Date:   Thu Feb 23 15:59:50 2023 +0100
+
+    delete serviceinterface
+
+[33mcommit 027af740cb8c7a65a3bf4169d4928f85323618de[m
+Merge: c0583c5 25d3f14
+Author: khalid tounoussi <khalid.tounoussi@etudiant.univ-brest.fr>
+Date:   Thu Feb 23 15:58:33 2023 +0100
+
+    Merge branch 'main' of https://github.com/DigitalNomads1/Backend
+
+[33mcommit c0583c581a70cd1f26f3e5f3982ae4f206e3e665[m
+Author: khalid tounoussi <khalid.tounoussi@etudiant.univ-brest.fr>
+Date:   Thu Feb 23 15:58:25 2023 +0100
+
+    infinite loop fix
+
+[33mcommit 8330e7605445ad799b3d142954c1b6d442721a53[m
+Author: HajarElansary <hajarbe2016@gmail.com>
+Date:   Wed Feb 22 15:20:26 2023 +0100
+
+    formation v1.4
+
+[33mcommit 7d23ff7f66d4aa4cb5df9f68f488544f639d23f8[m
+Author: HajarElansary <hajarbe2016@gmail.com>
+Date:   Wed Feb 22 11:52:10 2023 +0100
+
+    formation v2
+
+[33mcommit ba9aad0a7c9f05f24fe00473d8ad9ccc2cfc6e46[m
+Author: HajarElansary <hajarbe2016@gmail.com>
+Date:   Wed Feb 22 11:42:56 2023 +0100
+
+    formation v1
+
+[33mcommit 25d3f140e2916f7df421c0990790ff7caf474af7[m
+Author: HajarElansary <hajarbe2016@gmail.com>
+Date:   Thu Feb 23 15:29:43 2023 +0100
+
+    formation ec v1.5
+
+[33mcommit 9293149e4035d6206296589704c7ff2682038403[m
+Author: Manal Abdouh <manalabdouh1@gmail.com>
+Date:   Thu Feb 23 15:15:28 2023 +0100
+
+    m
+
+[33mcommit 63a8ead1fbb451fa5775f4cdffa092fa54f2a5fb[m
+Merge: 61f4237 4a98175
+Author: Manal Abdouh <manalabdouh1@gmail.com>
+Date:   Thu Feb 23 15:01:00 2023 +0100
+
+    Merge remote-tracking branch 'origin/PromotionBranch' into PromotionBranch
+
+[33mcommit 4a9817532a0d75b183c452f8c24a1a041c04f17c[m
+Author: SALHI Anas <anas.salhi6@gmail.com>
+Date:   Thu Feb 23 15:00:39 2023 +0100
+
+    Fixing stuff
+
+[33mcommit 66e9de12adce67c9f349795bc42eb0f935e1f058[m
+Author: khalid tounoussi <khalid.tounoussi@etudiant.univ-brest.fr>
+Date:   Thu Feb 23 14:35:50 2023 +0100
+
+    Version Stable
+
+[33mcommit 61f42373fa5b0092aee18b028769d362bddde439[m
+Merge: 8c6a826 c5a8556
+Author: Manal Abdouh <manalabdouh1@gmail.com>
+Date:   Thu Feb 23 14:18:59 2023 +0100
+
+    Merge remote-tracking branch 'origin/PromotionBranch' into PromotionBranch
+
+[33mcommit c5a8556c4442e5ce5b505c79b00995fa372ace94[m
+Author: SALHI Anas <anas.salhi6@gmail.com>
+Date:   Thu Feb 23 14:18:01 2023 +0100
+
+    Adding Promotion
+
+[33mcommit 8d59ea151b18e0a269b46671d3309f3c2a9d0fd1[m
+Merge: abc18cc 8c6a826
+Author: khalid tounoussi <khalid.tounoussi@etudiant.univ-brest.fr>
+Date:   Thu Feb 23 14:07:17 2023 +0100
+
+    swagger
+
+[33mcommit abc18cca6c066fbf133c2579e74059e2fc648c06[m
+Author: khalid tounoussi <khalid.tounoussi@etudiant.univ-brest.fr>
+Date:   Thu Feb 23 13:48:58 2023 +0100
+
+    SWAGGER
+
+[33mcommit 89b87f96e187066796b01b22d3121219799d0292[m
+Author: khalid tounoussi <khalid.tounoussi@etudiant.univ-brest.fr>
+Date:   Thu Feb 23 13:36:12 2023 +0100
+
+    UE
+
+[33mcommit 8c6a826361d1f2cd8f73ccdfaa40e6c70dc4f6ef[m
+Author: Hanane Merroun <hananmerroune@gmail.com>
+Date:   Thu Feb 23 11:44:55 2023 +0100
+
+    Fix listUE
+
+[33mcommit f333317b4756161006e838dcf51254947f97100c[m
+Author: HajarElansary <hajarbe2016@gmail.com>
+Date:   Thu Feb 23 11:27:57 2023 +0100
+
+    formation ue v1.4
+
+[33mcommit 6d2dee263bb34865b61098bf80137f20738b955b[m
+Author: Hanane Merroun <hananmerroune@gmail.com>
+Date:   Thu Feb 23 11:21:48 2023 +0100
+
+    add crossOrigin
+
+[33mcommit 9000b6ff15c2b2b806fbb949f7c495437e2704de[m[33m ([m[1;31morigin/hanane[m[33m)[m
+Merge: 3bd33ab 62833a9
+Author: Hanane Merroun <hananmerroune@gmail.com>
+Date:   Thu Feb 23 11:17:07 2023 +0100
+
+    Merge branch 'main' of github.com:DigitalNomads1/Backend into hanane
+
+[33mcommit 3bd33abb1a903f2b92d0535975fd309d6411edfa[m
+Author: Hanane Merroun <hananmerroune@gmail.com>
+Date:   Thu Feb 23 11:15:34 2023 +0100
+
+    add crossOrigin
+
+[33mcommit 62833a9d83377d291942bdea7e7cab7c4ed30bee[m
+Author: SALHI Anas <anas.salhi6@gmail.com>
+Date:   Thu Feb 23 10:30:20 2023 +0100
+
+    Fixing imports
+
+[33mcommit 9c838809c80f736b5c8055d96839ce4b510a3a7c[m
+Merge: cdf5d5f b0228d6
+Author: khalid tounoussi <khalid.tounoussi@etudiant.univ-brest.fr>
+Date:   Thu Feb 23 10:22:58 2023 +0100
+
+    Merge branch 'main' of https://github.com/DigitalNomads1/Backend
+
+[33mcommit cdf5d5f360990c04227ebb90dc78fad74051c820[m
+Merge: ae644ad 6149b92
+Author: khalid tounoussi <khalid.tounoussi@etudiant.univ-brest.fr>
+Date:   Thu Feb 23 10:22:53 2023 +0100
+
+    -
+
+[33mcommit b0228d6cb7d0c0c97914288cbef4d26fdc1babcd[m
+Author: SALHI Anas <anas.salhi6@gmail.com>
+Date:   Thu Feb 23 00:13:07 2023 +0100
+
+    Fixing dependency
+
+[33mcommit 0039b3ef746a3188a453b036486f9e8f1133f8a0[m
+Merge: c498bc5 304c42e
+Author: Manal Abdouh <manalabdouh1@gmail.com>
+Date:   Wed Feb 22 16:50:18 2023 +0100
+
+    Merge branch 'main' into PromotionBranch
+
+[33mcommit 304c42efbc6e4989703014aafda185ddb79512c6[m
+Author: Manal Abdouh <manalabdouh1@gmail.com>
+Date:   Wed Feb 22 16:49:48 2023 +0100
+
+    Adding etudiant
+
+[33mcommit c498bc556a6cd49ade590b391d4e4cf382d6f772[m
+Merge: a20719f 6149b92
+Author: Manal Abdouh <manalabdouh1@gmail.com>
+Date:   Wed Feb 22 16:45:36 2023 +0100
+
+    Merge remote-tracking branch 'origin/main' into PromotionBranch
+
+[33mcommit ae644ad38e21c15c7f0540c8627e16708ed4f1fd[m
+Author: khalid tounoussi <khalid.tounoussi@etudiant.univ-brest.fr>
+Date:   Wed Feb 22 16:35:24 2023 +0100
+
+    dd
+
+[33mcommit 6149b92008e9595b71073bab56ea71beac49534f[m
+Merge: 949dc96 da68674
+Author: Hanane Merroun <hananmerroune@gmail.com>
+Date:   Wed Feb 22 16:34:55 2023 +0100
+
+    Merge remote-tracking branch 'origin/main' into main
+
+[33mcommit 949dc96ce330e09874dde26511449860a766aeed[m
+Author: Hanane Merroun <hananmerroune@gmail.com>
+Date:   Wed Feb 22 16:34:35 2023 +0100
+
+    fix mapped list error
+
+[33mcommit 47a9f73b87bcf48c9594f8153c49682a85966c18[m
+Merge: 7343e12 da68674
+Author: khalid tounoussi <khalid.tounoussi@etudiant.univ-brest.fr>
+Date:   Wed Feb 22 16:33:03 2023 +0100
+
+    Merge branch 'main' of https://github.com/DigitalNomads1/Backend
+
+[33mcommit da68674c091265790113e0f5b88dd2a216e6aa44[m
+Author: SALHI Anas <anas.salhi6@gmail.com>
+Date:   Wed Feb 22 16:27:14 2023 +0100
+
+    Fixing project stucture
+
+[33mcommit 7343e123b56b3ec540d99b78b23be7fa49924176[m
+Merge: 80e83c5 d117ba7
+Author: khalid tounoussi <khalid.tounoussi@etudiant.univ-brest.fr>
+Date:   Wed Feb 22 16:21:06 2023 +0100
+
+    Merge branch 'main' of https://github.com/DigitalNomads1/Backend
+
+[33mcommit 80e83c54eff1c5083937d61f560c78bcf0999629[m
+Merge: 2e51739 795ac85
+Author: khalid tounoussi <khalid.tounoussi@etudiant.univ-brest.fr>
+Date:   Wed Feb 22 16:21:02 2023 +0100
+
+    temp
+
+[33mcommit d117ba7787edf811a84adfdb7fe8a62f8bc528db[m
+Author: nora youssefi <nora.youssefi@etu.uae.ac.ma>
+Date:   Wed Feb 22 16:19:14 2023 +0100
+
+    commit v3.2
+
+[33mcommit 2e51739961866f32f491a04618fe331464352d2e[m
+Author: khalid tounoussi <khalid.tounoussi@etudiant.univ-brest.fr>
+Date:   Wed Feb 22 15:22:21 2023 +0100
+
+    --
+
+[33mcommit 795ac855ae87e03f153f7fc1eef71a63483d0d97[m
+Author: Hanane Merroun <hananmerroune@gmail.com>
+Date:   Wed Feb 22 15:06:32 2023 +0100
+
+    add listUE to enseignant
+
+[33mcommit a20719f9968b0d24b91b9298cfb6670cb80bf4f8[m
+Merge: 72ba7b5 8f8f1a7
+Author: Manal Abdouh <manalabdouh1@gmail.com>
+Date:   Wed Feb 22 14:44:26 2023 +0100
+
+    Merge remote-tracking branch 'origin/main' into PromotionBranch
+
+[33mcommit 8f8f1a701f897891f551a54eb1502c3fbfa7ba39[m
+Author: SALHI Anas <anas.salhi6@gmail.com>
+Date:   Wed Feb 22 14:41:46 2023 +0100
+
+    Fixing Generic type
+
+[33mcommit 428dfca7eb43fe6696cf930f3b1d83598655a630[m
+Merge: c6a8f78 f576b1b
+Author: SALHI Anas <anas.salhi6@gmail.com>
+Date:   Wed Feb 22 14:35:43 2023 +0100
+
+    Merge remote-tracking branch 'origin/main' into main
+    
+    # Conflicts:
+    #       src/main/java/com/dosi/controllers/BaseController.java
+    #       src/main/java/com/dosi/controllers/EnseignantController.java
+    #       src/main/java/com/dosi/services/BaseService.java
+    #       src/main/java/com/dosi/services/EnseignantService.java
+
+[33mcommit c6a8f78125c103ff7af9ce709cdea16c0830f21b[m
+Author: khalid tounoussi <khalid.tounoussi@etudiant.univ-brest.fr>
+Date:   Wed Feb 22 14:15:37 2023 +0100
+
+    Generique solution
+
+[33mcommit 72ba7b52c012f70892ea2b75f24f0c3e18a8bc95[m
+Merge: 4fcc025 2bcd75c
+Author: Manal Abdouh <manalabdouh1@gmail.com>
+Date:   Wed Feb 22 14:28:37 2023 +0100
+
+    Merge remote-tracking branch 'origin/PromotionBranch' into PromotionBranch
+
+[33mcommit 2bcd75cb060b6020cb4e62cf81ee9b1cdfcd17fc[m
+Author: SALHI Anas <anas.salhi6@gmail.com>
+Date:   Wed Feb 22 14:28:16 2023 +0100
+
+    Fixing Generic type
+
+[33mcommit f576b1befb3d41880efe449a105b43fc6d296b76[m
+Author: khalid tounoussi <khalid.tounoussi@etudiant.univ-brest.fr>
+Date:   Wed Feb 22 14:15:37 2023 +0100
+
+    Generique solution
+
+[33mcommit 8ec485cae32d1a980fa9cf909df372955373ef93[m
+Merge: 9e8be70 c80450a
+Author: SALHI Anas <anas.salhi6@gmail.com>
+Date:   Wed Feb 22 10:58:55 2023 +0100
+
+    Merge remote-tracking branch 'origin/main' into PromotionBranch
+
+[33mcommit 4fcc0258b3a5d10ff269adfb90b99d438bae9693[m
+Merge: 9e8be70 c80450a
+Author: Manal Abdouh <manalabdouh1@gmail.com>
+Date:   Wed Feb 22 10:58:44 2023 +0100
+
+    Merge remote-tracking branch 'origin/main' into PromotionBranch
+
+[33mcommit c80450a2589eb82f32683fc20e0c455f62dd10ad[m
+Author: Hanane Merroun <hananmerroune@gmail.com>
+Date:   Tue Feb 21 16:47:33 2023 +0100
+
+    gestion enseignants
+
+[33mcommit 9e8be70ef2cbfdb91345edcd92a70afd6ab18f4f[m
+Author: SALHI Anas <anas.salhi6@gmail.com>
+Date:   Tue Feb 21 14:54:56 2023 +0100
+
+    Structure of promotion
+
+[33mcommit 60f625281602cc34e126a470d9fb2f1dfd0a16d5[m
+Author: khalid tounoussi <khalid.tounoussi@etudiant.univ-brest.fr>
+Date:   Tue Feb 21 14:24:17 2023 +0100
+
+    findALL
+
+[33mcommit 439e28495bbe7bcfe9aed89f304bd289f05d69fa[m
+Author: khalid tounoussi <khalid.tounoussi@etudiant.univ-brest.fr>
+Date:   Tue Feb 21 11:35:06 2023 +0100
+
+    base structure
+
+[33mcommit 44bc09456bc957833170d386f41ccc022b289462[m
+Author: khalid tounoussi <khalid.tounoussi@etudiant.univ-brest.fr>
+Date:   Tue Feb 21 11:34:22 2023 +0100
+
+    initial commit
+
+[33mcommit b22614e53aadce8d6e85e544f5b81f7a03b067b0[m
+Author: khalid tounoussi <khalid.tounoussi@etudiant.univ-brest.fr>
+Date:   Tue Feb 21 00:34:49 2023 +0100
+
+    first commit

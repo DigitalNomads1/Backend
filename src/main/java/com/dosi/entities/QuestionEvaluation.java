@@ -1,5 +1,6 @@
 package com.dosi.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -26,5 +27,11 @@ public class QuestionEvaluation implements Identifiable<Integer>{
 
     @Column(name = "INTITULE", length = 64)
     private String intitule;
+
+    @MapsId("rubriqueEvaluation")
+    @ManyToOne
+    @JoinColumn(name = "ID_RUBRIQUE_EVALUATION", referencedColumnName = "ID_RUBRIQUE_EVALUATION")
+    @JsonIgnoreProperties("questionEvaluationList")
+    private RubriqueEvaluation rubriqueEvaluation;
 
 }

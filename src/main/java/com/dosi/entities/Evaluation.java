@@ -1,5 +1,6 @@
 package com.dosi.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
@@ -30,6 +31,7 @@ public class Evaluation implements Identifiable<Integer>{
             @JoinColumn(name = "CODE_FORMATION", referencedColumnName = "CODE_FORMATION"),
             @JoinColumn(name = "CODE_UE", referencedColumnName = "CODE_UE")
     })
+    @JsonIgnoreProperties("uniteEnseignement")
     private UniteEnseignement uniteEnseignement;
 
     @Column(name = "ANNEE_UNIVERSITAIRE", nullable = false, length = 10)
@@ -59,6 +61,7 @@ public class Evaluation implements Identifiable<Integer>{
 
     @OneToMany(mappedBy = "idEvaluation",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonIgnoreProperties("idEvaluation")
+    @JsonIgnore
     private List<RubriqueEvaluation> listeRubriques;
 
     @ManyToOne

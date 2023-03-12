@@ -12,9 +12,6 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-
-import java.util.Arrays;
-
 import java.util.Arrays;
 import java.util.Collections;
 
@@ -34,7 +31,7 @@ public class SecurityConfiguration {
                 .csrf()
                 .disable()
                 .authorizeHttpRequests()
-                .requestMatchers("/api/v1/auth/**")
+                .requestMatchers("/api/v1/auth/**","/swagger/**","/v3/**")
                 .permitAll()
                 .anyRequest()
                 .authenticated()
@@ -44,7 +41,7 @@ public class SecurityConfiguration {
                 .and()
                 .authenticationProvider(authenticationProvider)
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
-        http.authorizeHttpRequests().requestMatchers("/swagger/**","/v3/**").permitAll();
+//        http.authorizeHttpRequests().requestMatchers("/swagger/**","/v3/**").permitAll();
 
         return http.build();
     }

@@ -37,6 +37,7 @@ public class UEService extends BaseService<UniteEnseignement, UniteEnseignementI
         }
         return  repository.save(uniteEnseignement);
     }
+
     @Override
     public void delete(UniteEnseignementId id) {
         int size = uniteEnseignementRepository.findById(id).get().getListeEC().size();

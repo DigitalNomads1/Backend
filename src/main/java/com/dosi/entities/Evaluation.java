@@ -18,15 +18,16 @@ import java.util.List;
 public class Evaluation implements Identifiable<Integer>{
     @Id
     @Column(name = "ID_EVALUATION", nullable = false)
-    @SequenceGenerator(name="eve_seq", sequenceName = "eve_seq", allocationSize=1)
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="eve_seq")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @SequenceGenerator(name="eve_seq", sequenceName = "eve_seq", allocationSize=1)
+//    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="eve_seq")
     private Integer id;
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "NO_ENSEIGNANT", nullable = false)
     private Enseignant noEnseignant;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumns({
             @JoinColumn(name = "CODE_FORMATION", referencedColumnName = "CODE_FORMATION"),
             @JoinColumn(name = "CODE_UE", referencedColumnName = "CODE_UE")

@@ -18,7 +18,6 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler({ Exception.class})
     public ResponseEntity<Map<String, String>> handleValidationExceptions(Exception ex) {
-        System.out.println(ex);
         Map<String, String> response = new HashMap<>();
         System.out.println(ex);
         if( ex instanceof BadCredentialsException){

@@ -72,6 +72,8 @@ public class UEController extends BaseController<UniteEnseignement, UniteEnseign
                 .codeFormation(formation)
                 .codeUe(ue)
                 .build();
+        if( service.read(id).getEvaluationList().isEmpty())
+            throw new ResponseStatusException(NOT_FOUND,"Désolé, nous n'avons pas pu trouver des évaluations pour l'unité d'enseignement que vous recherchez avec le code de formation " + id.getCodeFormation() +" et le code UE " +  id.getCodeUe() +" .");;
         Evaluation latestEvaluation = Collections.max(service.read(id).getEvaluationList(), Comparator.comparing(evaluation -> evaluation.getPromotion().getId().getAnneeUniversitaire()));
         return latestEvaluation;
     }

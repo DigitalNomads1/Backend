@@ -73,7 +73,7 @@ public class UniteEnseignement implements Identifiable<UniteEnseignementId>{
     private List<ElementConstitutif> ListeEC;
 
     @OneToMany(mappedBy = "uniteEnseignement")
-    @JsonIgnoreProperties("uniteEnseignement")
+    @JsonIgnoreProperties({"uniteEnseignement", "noEnseignant"})
     private List<Evaluation> evaluationList;
 
     @Override

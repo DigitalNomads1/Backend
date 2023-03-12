@@ -32,7 +32,7 @@ public class Evaluation implements Identifiable<Integer>{
             @JoinColumn(name = "CODE_FORMATION", referencedColumnName = "CODE_FORMATION"),
             @JoinColumn(name = "CODE_UE", referencedColumnName = "CODE_UE")
     })
-    @JsonIgnoreProperties("uniteEnseignement")
+    @JsonIgnoreProperties({"noEnseignant", "codeFormation", "noEnseignant", "evaluationList"})
     private UniteEnseignement uniteEnseignement;
 
     @Column(name = "ANNEE_UNIVERSITAIRE", nullable = false, length = 10)
@@ -62,7 +62,6 @@ public class Evaluation implements Identifiable<Integer>{
 
     @OneToMany(mappedBy = "idEvaluation",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonIgnoreProperties("idEvaluation")
-    @JsonIgnore
     private List<RubriqueEvaluation> listeRubriques;
 
     @ManyToOne

@@ -1,13 +1,12 @@
 package com.dosi.controllers;
 
 import com.dosi.entities.*;
+import com.dosi.exceptions.ValidationException;
 import com.dosi.services.EvaluationService;
 import jakarta.validation.Valid;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
 import static com.dosi.utils.Constants.API_URL;
 
@@ -24,6 +23,19 @@ public class EvaluationController extends GlobalController<Evaluation, Integer> 
         ((Evaluation)entity).setEtat(Etat.ELA.toString());
         return super.create(entity, bindingResult);
     }*/
+
+    @PostMapping("/save")
+    public Evaluation create(@Valid @RequestBody Evaluation entity, BindingResult bindingResult) {
+        // Custom implementation for create method
+        System.out.println("Custom create method called" + entity);
+        System.out.println( entity.getListeRubriques());
+        if (bindingResult.hasErrors()) {
+            throw new ValidationException(bindingResult);
+        }
+        ((EvaluationService)service).create(entity);
+        return (Evaluation)super.create(entity, bindingResult);
+    }
+
 
     @PostMapping("/publish")
     public Identifiable publishEvaluation(Identifiable entity, BindingResult bindingResult) {

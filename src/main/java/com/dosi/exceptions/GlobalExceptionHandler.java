@@ -20,6 +20,7 @@ public class GlobalExceptionHandler {
     public ResponseEntity<Map<String, String>> handleValidationExceptions(Exception ex) {
         Map<String, String> response = new HashMap<>();
         System.out.println(ex);
+        ex.printStackTrace();
         if( ex instanceof BadCredentialsException){
             response.put("message","Veuillez vérifier votre adresse e-mail et votre mot de passe et réessayer.");
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(response);

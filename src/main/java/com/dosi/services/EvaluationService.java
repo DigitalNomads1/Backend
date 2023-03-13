@@ -2,6 +2,7 @@ package com.dosi.services;
 
 import com.dosi.entities.*;
 import com.dosi.repositories.*;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +20,6 @@ public class EvaluationService extends BaseService<Evaluation, Integer> {
     UniteEnseignementRepository uniteEnseignementRepository;
     @Autowired
     PromotionRepository promotionRepository;
-
     @Autowired
     ReponseEvaluationRepository repRepository;
 
@@ -28,18 +28,33 @@ public class EvaluationService extends BaseService<Evaluation, Integer> {
 
     @Autowired
     ReponseQuestionRepository repQuesRepository;
+    @Autowired
+    RubriqueRepository rubriqueRepository;
 
     @Autowired
-
+    RubriqueEvaluationRepository rubriqueEvaluationRepository;
+    @Autowired
     public EvaluationService(EvaluationRepository evaluationRepository) {
         super(evaluationRepository);
     }
 
     @Override
     public Evaluation create(Evaluation entity) {
+        System.out.println(entity);
         entity.setNoEnseignant(enseignantRepository.findById(entity.getNoEnseignant().getId()).get());
         entity.setUniteEnseignement(uniteEnseignementRepository.findById(entity.getUniteEnseignement().getId()).get());
-        return super.create(entity);
+        var evaluation = super.create(entity);
+        entity.getListeRubriques().forEach( rubriqueEvaluation -> {
+            Rubrique rubrique = rubriqueRepository.findById(rubriqueEvaluation.getIdRubrique().getId()).orElseThrow(() -> new EntityNotFoundException("Rubrique not found"));
+            rubriqueEvaluation.setIdRubrique(rubrique);
+            rubriqueEvaluation.setIdEvaluation(evaluation);
+            rubriqueEvaluationRepository.save(rubriqueEvaluation);
+//            Integer rubriqueId = rubriqueEvaluation.getIdRubrique().getId();
+//            Rubrique rubrique = rubriqueRepository.findById(rubriqueId).orElseThrow(() -> new EntityNotFoundException("Rubrique not found"));
+//            rubriqueEvaluation.setIdRubrique(rubrique);
+        });
+//         evaluation.setListeRubriques( entity.getListeRubriques());
+         return evaluation;
     }
 
     private void setMoyenne(List<Evaluation> evaluations)

@@ -2,6 +2,7 @@ package com.dosi.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -59,8 +60,8 @@ public class Evaluation implements Identifiable<Integer>{
     @Column(name = "FIN_REPONSE", nullable = false)
     private LocalDate finReponse;
 
-    @OneToMany(mappedBy = "idEvaluation",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JsonIgnoreProperties("idEvaluation")
+    @OneToMany(mappedBy = "idEvaluation", fetch = FetchType.EAGER)
+//    @JsonIgnoreProperties("idEvaluation")
     private List<RubriqueEvaluation> listeRubriques;
 
     @ManyToOne
@@ -76,5 +77,21 @@ public class Evaluation implements Identifiable<Integer>{
     @JsonIgnoreProperties("idEvaluation")
     private List<ReponseEvaluation> reponses;*/
 
-
+    @Override
+    public String toString() {
+        return "Evaluation{" +
+                "id=" + id +
+                ", noEnseignant=" + noEnseignant +
+                ", uniteEnseignement=" + uniteEnseignement +
+                ", anneeUniversitaire='" + anneeUniversitaire + '\'' +
+                ", noEvaluation=" + noEvaluation +
+                ", designation='" + designation + '\'' +
+                ", etat='" + etat + '\'' +
+                ", periode='" + periode + '\'' +
+                ", debutReponse=" + debutReponse +
+                ", finReponse=" + finReponse +
+                ", promotion=" + promotion +
+                ", moyenne=" + moyenne +
+                '}';
+    }
 }

@@ -19,6 +19,5 @@ public class RubriqueEvaluationController extends GlobalController<RubriqueEvalu
         super(service);
     }
 
-
 }
 

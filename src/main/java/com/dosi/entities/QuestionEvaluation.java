@@ -12,6 +12,8 @@ import lombok.Setter;
 public class QuestionEvaluation implements Identifiable<Integer>{
     @Id
     @Column(name = "ID_QUESTION_EVALUATION", nullable = false)
+    @SequenceGenerator(name="que_seq", sequenceName = "que_seq", allocationSize=1)
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="que_seq")
     private Integer id;
 
     @ManyToOne(fetch = FetchType.EAGER)

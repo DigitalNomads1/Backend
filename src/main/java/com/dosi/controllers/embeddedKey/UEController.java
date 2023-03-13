@@ -13,6 +13,7 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 
 import static com.dosi.utils.Constants.API_URL;
 import static org.springframework.http.HttpStatus.NOT_FOUND;
@@ -64,6 +65,23 @@ public class UEController extends BaseController<UniteEnseignement, UniteEnseign
                 .codeUe(ue)
                 .build();
         return service.read(id).getEvaluationList();
+    }
+
+    @GetMapping("/{formation}-{ue}/evaluations/{idEval}")
+    public Evaluation getSpecificEvaluation(@PathVariable String formation, @PathVariable String ue, @PathVariable Integer idEval) {
+        UniteEnseignementId id = UniteEnseignementId.builder()
+                .codeFormation(formation)
+                .codeUe(ue)
+                .build();
+        Optional<Evaluation> optionalEvaluation = service.read(id).getEvaluationList().stream()
+                .filter(evaluation -> evaluation.getId().equals(idEval))
+                .findFirst();
+
+        if (optionalEvaluation.isPresent()) {
+            return optionalEvaluation.get();
+        } else {
+            throw new ResponseStatusException(NOT_FOUND, "L'évaluation avec l'ID " +  idEval +" n'existe pas.");
+        }
     }
 
     @GetMapping("/{formation}-{ue}/evaluations/latest")

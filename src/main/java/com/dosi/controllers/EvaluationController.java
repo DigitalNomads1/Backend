@@ -2,6 +2,7 @@ package com.dosi.controllers;
 
 import com.dosi.entities.*;
 import com.dosi.services.EvaluationService;
+import jakarta.validation.Valid;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,13 +17,13 @@ public class EvaluationController extends GlobalController<Evaluation, Integer> 
     public EvaluationController(EvaluationService service) {
         super(service);
     }
-
+/*
     @Override
     @PostMapping("/save")
     public Identifiable create(Identifiable entity, BindingResult bindingResult) {
         ((Evaluation)entity).setEtat(Etat.ELA.toString());
         return super.create(entity, bindingResult);
-    }
+    }*/
 
     @PostMapping("/publish")
     public Identifiable publishEvaluation(Identifiable entity, BindingResult bindingResult) {

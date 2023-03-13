@@ -18,9 +18,8 @@ import java.util.List;
 public class Evaluation implements Identifiable<Integer>{
     @Id
     @Column(name = "ID_EVALUATION", nullable = false)
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    @SequenceGenerator(name="eve_seq", sequenceName = "eve_seq", allocationSize=1)
-//    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="eve_seq")
+    @SequenceGenerator(name="eve_seq", sequenceName = "eve_seq", allocationSize=1)
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="eve_seq")
     private Integer id;
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false)

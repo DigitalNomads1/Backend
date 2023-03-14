@@ -2,14 +2,16 @@ package com.dosi.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.List;
 
 @Getter
 @Setter
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Table(name = "RUBRIQUE")
 public class Rubrique implements Identifiable<Integer>{
     @Id
@@ -32,4 +34,8 @@ public class Rubrique implements Identifiable<Integer>{
     @OneToMany(mappedBy = "idRubrique",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonIgnoreProperties("idRubrique")
     private List<RubriqueEvaluation> rubriqueEvaluationList;
+
+    public Rubrique(Integer id) {
+        this.id = id;
+    }
 }

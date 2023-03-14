@@ -40,15 +40,26 @@ public class EvaluationService extends BaseService<Evaluation, Integer> {
 
     @Override
     public Evaluation create(Evaluation entity) {
-        System.out.println(entity);
+
+        System.out.println("*******" + entity);
         entity.setNoEnseignant(enseignantRepository.findById(entity.getNoEnseignant().getId()).get());
         entity.setUniteEnseignement(uniteEnseignementRepository.findById(entity.getUniteEnseignement().getId()).get());
         var evaluation = super.create(entity);
         entity.getListeRubriques().forEach( rubriqueEvaluation -> {
-            Rubrique rubrique = rubriqueRepository.findById(rubriqueEvaluation.getIdRubrique().getId()).orElseThrow(() -> new EntityNotFoundException("Rubrique not found"));
-            rubriqueEvaluation.setIdRubrique(rubrique);
-            rubriqueEvaluation.setIdEvaluation(evaluation);
-            rubriqueEvaluationRepository.save(rubriqueEvaluation);
+            RubriqueEvaluation newRubriqueEvaluation = RubriqueEvaluation
+                    .builder()
+                    .idEvaluation(evaluation)
+                    .idRubrique(rubriqueEvaluation.getIdRubrique())
+                    .designation(rubriqueEvaluation.getDesignation())
+                    .questionEvaluationList(rubriqueEvaluation.getQuestionEvaluationList())
+                    .ordre(rubriqueEvaluation.getOrdre())
+                    .build();
+//            System.out.println(rubriqueEvaluation);
+//            Rubrique rubrique = rubriqueRepository.findById(.getId()).orElseThrow(() -> new EntityNotFoundException("Rubrique not found"));
+//            newRubriqueEvaluation.setIdRubrique(rubrique);
+//            newRubriqueEvaluation.setIdEvaluation(evaluation);
+            rubriqueEvaluationRepository.save(newRubriqueEvaluation);
+            System.out.println(newRubriqueEvaluation);
 //            Integer rubriqueId = rubriqueEvaluation.getIdRubrique().getId();
 //            Rubrique rubrique = rubriqueRepository.findById(rubriqueId).orElseThrow(() -> new EntityNotFoundException("Rubrique not found"));
 //            rubriqueEvaluation.setIdRubrique(rubrique);

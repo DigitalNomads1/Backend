@@ -3,12 +3,14 @@ package com.dosi.entities;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.List;
 @Getter
 @Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "RUBRIQUE_EVALUATION")
 public class RubriqueEvaluation implements Identifiable<Integer>{
@@ -23,7 +25,7 @@ public class RubriqueEvaluation implements Identifiable<Integer>{
     @JsonIgnoreProperties("listeRubriques")
     private Evaluation idEvaluation;
 
-    @MapsId("idRubrique")
+//    @MapsId("idRubrique")
     @ManyToOne
     @JoinColumn(name = "ID_RUBRIQUE")
     @JsonIgnoreProperties("rubriqueEvaluationList")
@@ -39,11 +41,6 @@ public class RubriqueEvaluation implements Identifiable<Integer>{
     @JsonIgnoreProperties("rubriqueEvaluation")
     private List<QuestionEvaluation> questionEvaluationList;
 
-    // Getter method for the ID of the idEvaluation object
-    @JsonProperty("idEvaluation")
-    public Integer getIdEvaluationId() {
-        return idEvaluation.getId();
-    }
     @Override
     public String toString() {
         return "RubriqueEvaluation{" +

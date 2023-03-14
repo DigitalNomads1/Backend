@@ -24,6 +24,15 @@ public class EvaluationController extends GlobalController<Evaluation, Integer> 
         return super.create(entity, bindingResult);
     }*/
 
+    @Override
+    @GetMapping("/{id}")
+    public Evaluation read(@PathVariable Integer id) {
+        ((EvaluationService)service).read(id).getListeRubriques().forEach( rubriqueEvaluation -> {
+            System.out.println(rubriqueEvaluation.getQuestionEvaluationList());
+        });
+        return super.read(id);
+    }
+
     @PostMapping("/save")
     public Evaluation create(@Valid @RequestBody Evaluation entity, BindingResult bindingResult) {
         // Custom implementation for create method

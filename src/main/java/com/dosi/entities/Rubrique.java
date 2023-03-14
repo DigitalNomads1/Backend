@@ -33,7 +33,7 @@ public class Rubrique implements Identifiable<Integer>{
 
     @OneToMany(mappedBy = "idRubrique",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonIgnoreProperties("idRubrique")
-    private List<RubriqueEvaluation> rubriqueEvaluationList;
+    private List<RubriqueEvaluation> listeRubriques;
 
     public Rubrique(Integer id) {
         this.id = id;

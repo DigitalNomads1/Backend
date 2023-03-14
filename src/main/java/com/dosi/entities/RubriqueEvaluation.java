@@ -28,7 +28,7 @@ public class RubriqueEvaluation implements Identifiable<Integer>{
 //    @MapsId("idRubrique")
     @ManyToOne
     @JoinColumn(name = "ID_RUBRIQUE")
-    @JsonIgnoreProperties("rubriqueEvaluationList")
+    @JsonIgnoreProperties("listeRubriques")
     private Rubrique idRubrique;
 
     @Column(name = "ORDRE", nullable = false)

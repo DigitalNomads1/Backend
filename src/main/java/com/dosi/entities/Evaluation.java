@@ -62,7 +62,7 @@ public class Evaluation implements Identifiable<Integer>{
     private LocalDate finReponse;
 
     @OneToMany(mappedBy = "idEvaluation", fetch = FetchType.EAGER)
-    @JsonIgnoreProperties({"idRubrique","idEvaluation"})
+    @JsonIgnoreProperties({"idEvaluation"})
     private List<RubriqueEvaluation> listeRubriques;
 
     @ManyToOne

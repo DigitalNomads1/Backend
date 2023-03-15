@@ -32,7 +32,7 @@ public class Rubrique implements Identifiable<Integer>{
     private Long ordre;
 
     @OneToMany(mappedBy = "idRubrique",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JsonIgnoreProperties({"idRubrique","idEvaluation"})
+    @JsonIgnoreProperties({"idEvaluation"})
     private List<RubriqueEvaluation> listeRubriques;
 
     public Rubrique(Integer id) {

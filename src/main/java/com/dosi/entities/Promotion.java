@@ -28,10 +28,8 @@ public class Promotion implements Identifiable<PromotionId>{
     private PromotionId id;
 
     @MapsId("codeFormation")
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "CODE_FORMATION", nullable = false)
-    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    @JsonIgnore
     @NotNull(message = "Code formation est Requis!")
     private Formation codeFormation;
 
@@ -73,6 +71,7 @@ public class Promotion implements Identifiable<PromotionId>{
     @Column(name = "COMMENTAIRE")
     private String commentaire;
 
+
     /*@OneToMany(mappedBy = "promotion",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonIgnoreProperties("promotion")
     private List<Etudiant> listEtudiants = new ArrayList<>();
@@ -90,7 +89,6 @@ public class Promotion implements Identifiable<PromotionId>{
     public String toString() {
         return "Promotion{" +
                 "id=" + id +
-                ", codeFormation=" + codeFormation +
                 ", noEnseignant=" + noEnseignant +
                 ", siglePromotion='" + siglePromotion +
                 ", nbMaxEtudiant=" + nbMaxEtudiant +

@@ -31,7 +31,7 @@ public class UniteEnseignement implements Identifiable<UniteEnseignementId>{
     @MapsId("codeFormation")
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "CODE_FORMATION", nullable = false)
-    @JsonIgnoreProperties({"hibernateLazyInitializer"})
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "listUE"})
     @NotNull(message = "codeFormation est Requis!")
     private Formation codeFormation;
 
@@ -73,7 +73,7 @@ public class UniteEnseignement implements Identifiable<UniteEnseignementId>{
     private List<ElementConstitutif> ListeEC;
 
     @OneToMany(mappedBy = "uniteEnseignement")
-    @JsonIgnoreProperties({"uniteEnseignement", "noEnseignant"})
+    @JsonIgnoreProperties({"uniteEnseignement", "noEnseignant", "hibernateLazyInitializer"})
     private List<Evaluation> evaluationList;
 
     @Override

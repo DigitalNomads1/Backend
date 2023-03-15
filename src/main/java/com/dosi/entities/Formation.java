@@ -2,6 +2,7 @@ package com.dosi.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.*;
@@ -59,8 +60,9 @@ public class Formation implements Identifiable<String>{
     private LocalDate finAccreditation;
 
     @OneToMany(mappedBy = "codeFormation", fetch = FetchType.EAGER)
-    @JsonBackReference
+    @JsonIgnoreProperties({"codeFormation","noEnseignant","listeEC","evaluationList"})
     private List<UniteEnseignement> listUE;
+
 
     @AssertTrue(message = "La date de début d'accréditation doit être antérieure à la date de fin d'accréditation")
     public boolean isDebutAccreditationBeforeFinAccreditation() {

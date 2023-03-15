@@ -68,7 +68,7 @@ public class Evaluation implements Identifiable<Integer>{
     @ManyToOne
     @JoinColumn(name = "ANNEE_UNIVERSITAIRE", nullable = false, insertable=false, updatable=false)
     @JoinColumn(name = "CODE_FORMATION", nullable = false, insertable=false, updatable=false)
-    @JsonIgnoreProperties({"listEvaluations","hibernateLazyInitializer"})
+    @JsonIgnoreProperties({"listEvaluations","hibernateLazyInitializer","codeFormation"})
     private Promotion promotion;
 
     @Transient

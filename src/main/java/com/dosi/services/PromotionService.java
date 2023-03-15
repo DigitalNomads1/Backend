@@ -11,10 +11,4 @@ public class PromotionService extends BaseService<Promotion, PromotionId>{
     public PromotionService(PromotionRepository promotionRepository){
         super(promotionRepository);
     }
-/*
-    public void deleteByEmbeddedId(String annee,String formation)
-    {
-        ((PromotionRepository)repository).deleteByEmbeddedId(annee,formation);
-    }
-*/
 }

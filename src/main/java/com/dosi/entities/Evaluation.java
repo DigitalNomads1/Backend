@@ -25,6 +25,7 @@ public class Evaluation implements Identifiable<Integer>{
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "NO_ENSEIGNANT", nullable = false)
+    @JsonIgnoreProperties({"hibernateLazyInitializer"})
     private Enseignant noEnseignant;
 
     @ManyToOne(fetch = FetchType.EAGER)
@@ -32,7 +33,7 @@ public class Evaluation implements Identifiable<Integer>{
             @JoinColumn(name = "CODE_FORMATION", referencedColumnName = "CODE_FORMATION"),
             @JoinColumn(name = "CODE_UE", referencedColumnName = "CODE_UE")
     })
-    @JsonIgnoreProperties({"noEnseignant", "codeFormation", "noEnseignant", "evaluationList"})
+    @JsonIgnoreProperties({"noEnseignant", "codeFormation", "noEnseignant", "evaluationList","hibernateLazyInitializer"})
     private UniteEnseignement uniteEnseignement;
 
     @Column(name = "ANNEE_UNIVERSITAIRE", nullable = false, length = 10)
@@ -61,13 +62,13 @@ public class Evaluation implements Identifiable<Integer>{
     private LocalDate finReponse;
 
     @OneToMany(mappedBy = "idEvaluation", fetch = FetchType.EAGER)
-//    @JsonIgnoreProperties("idEvaluation")
+    @JsonIgnoreProperties({"idRubrique","idEvaluation"})
     private List<RubriqueEvaluation> listeRubriques;
 
     @ManyToOne
     @JoinColumn(name = "ANNEE_UNIVERSITAIRE", nullable = false, insertable=false, updatable=false)
     @JoinColumn(name = "CODE_FORMATION", nullable = false, insertable=false, updatable=false)
-    @JsonIgnoreProperties("listEvaluations")
+    @JsonIgnoreProperties({"listEvaluations","hibernateLazyInitializer"})
     private Promotion promotion;
 
     @Transient

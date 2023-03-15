@@ -1,14 +1,21 @@
 package com.dosi.services;
 
 import com.dosi.entities.Etudiant;
+import com.dosi.entities.Evaluation;
 import com.dosi.exceptions.ApplicationException;
 import com.dosi.repositories.EtudiantRepository;
+import com.dosi.repositories.EvaluationRepository;
 import jakarta.persistence.EntityExistsException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class EtudiantService extends BaseService<Etudiant, String> {
 
+    @Autowired
+    EvaluationRepository evaluationRepository;
 
     public EtudiantService(EtudiantRepository etudiantRepository) {
         super(etudiantRepository);
@@ -77,6 +84,12 @@ public class EtudiantService extends BaseService<Etudiant, String> {
                     throw new EntityExistsException("Email Ubo de l'etudiant existe déjà!");
 
         return repository.save(etudiant);
+    }
+
+    public List<Evaluation> findAllEvaluationsByStudentId(String studentId){
+        System.out.println(studentId);
+        System.out.println( evaluationRepository.findAllEvaluationsByStudentId(studentId));
+        return  evaluationRepository.findAllEvaluationsByStudentId(studentId);
     }
 
 }

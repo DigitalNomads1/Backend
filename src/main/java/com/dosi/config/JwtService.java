@@ -1,10 +1,12 @@
 package com.dosi.config;
 
+import com.dosi.entities.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
@@ -33,16 +35,20 @@ public class JwtService {
 
     public String generateToken( UserDetails userDetails)
     {
+        System.out.println(userDetails);
         return generateToken( new HashMap<>(), userDetails);
     }
 
     public String generateToken(
             Map<String, Object> extraClaims,
             UserDetails userDetails ){
+
         String role = userDetails.getAuthorities().iterator().next().getAuthority();
         Map<String, Object> claims = new HashMap<>();
         claims.putAll(extraClaims);
         claims.put("role", role);
+        if(!StringUtils.isEmpty(((User)userDetails).getNoEtudiant()))
+            claims.put("noEtudiant", ((User)userDetails).getNoEtudiant());
        return Jwts
                .builder()
                .setClaims(claims)

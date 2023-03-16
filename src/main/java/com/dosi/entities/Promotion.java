@@ -35,8 +35,7 @@ public class Promotion implements Identifiable<PromotionId>{
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "NO_ENSEIGNANT", nullable = false)
-    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    @JsonIgnore
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "listUE","listEC","listPromotion"})
     private Enseignant noEnseignant;
 
     @Column(name = "SIGLE_PROMOTION", length = 16)

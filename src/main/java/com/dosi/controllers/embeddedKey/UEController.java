@@ -89,8 +89,9 @@ public class UEController extends BaseController<UniteEnseignement, UniteEnseign
         }
     }
 
-    @GetMapping("/{formation}-{annee}/{ue}/evaluations/latest")
+    @GetMapping("/{formation}/{annee}/{ue}/evaluations/latest")
     public Evaluation getLatestEvaluation(@PathVariable String formation, @PathVariable String annee, @PathVariable String ue) {
+        System.out.println(annee + " : " + formation + " : " + ue);
         UniteEnseignementId id = UniteEnseignementId.builder()
                 .codeFormation(formation)
                 .codeUe(ue)
@@ -98,7 +99,6 @@ public class UEController extends BaseController<UniteEnseignement, UniteEnseign
         if( service.read(id).getEvaluationList().isEmpty())
         {
             throw new ResponseStatusException(NOT_FOUND,"Désolé, nous n'avons pas pu trouver des évaluations pour l'unité d'enseignement que vous recherchez avec le code de formation " + id.getCodeFormation() +" et le code UE " +  id.getCodeUe() +" .");
-
         }
         Evaluation latestEvaluation = Collections.max(service.read(id).getEvaluationList(), Comparator.comparing(evaluation -> evaluation.getPromotion().getId().getAnneeUniversitaire()));
 //      //String newAcademicYear = ((UEService)service).getNextAcademicYear(latestEvaluation.getPromotion().getId().getAnneeUniversitaire());

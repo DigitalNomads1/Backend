@@ -14,7 +14,6 @@ import java.util.List;
 public class ReponseEvaluation implements Identifiable<Integer>{
     @Id
     @Column(name = "ID_REPONSE_EVALUATION", nullable = false)
-
     @SequenceGenerator(name="rpe_seq", sequenceName = "rpe_seq", allocationSize=1)
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="rpe_seq")
     private Integer id;

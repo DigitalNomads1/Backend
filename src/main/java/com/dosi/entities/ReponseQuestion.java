@@ -26,4 +26,13 @@ public class ReponseQuestion implements Identifiable<ReponseQuestionId>{
     @Column(name = "POSITIONNEMENT")
     private Long positionnement;
 
+    @Override
+    public String toString() {
+        return "ReponseQuestion{" +
+                "id=" + id +
+                ", idReponseEvaluation=" + idReponseEvaluation +
+                ", idQuestionEvaluation=" + idQuestionEvaluation +
+                ", positionnement=" + positionnement +
+                '}';
+    }
 }

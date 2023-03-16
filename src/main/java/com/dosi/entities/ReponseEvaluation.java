@@ -2,14 +2,16 @@ package com.dosi.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.List;
 
 @Getter
 @Setter
 @Entity
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "REPONSE_EVALUATION")
 public class ReponseEvaluation implements Identifiable<Integer>{
     @Id
@@ -39,4 +41,16 @@ public class ReponseEvaluation implements Identifiable<Integer>{
     @JsonIgnoreProperties("idReponseEvaluation")
     private List<ReponseQuestion> reponseQuestionList;
 
+    @Override
+    public String toString() {
+        return "ReponseEvaluation{" +
+                "id=" + id +
+                ", idEvaluation=" + idEvaluation +
+                ", noEtudiant=" + noEtudiant +
+                ", commentaire='" + commentaire + '\'' +
+                ", nom='" + nom + '\'' +
+                ", prenom='" + prenom + '\'' +
+                ", reponseQuestionList=" + reponseQuestionList +
+                '}';
+    }
 }

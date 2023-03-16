@@ -1,10 +1,7 @@
 package com.dosi.controllers.embeddedKey;
 
 import com.dosi.controllers.BaseController;
-import com.dosi.entities.Evaluation;
-import com.dosi.entities.PromotionId;
-import com.dosi.entities.UniteEnseignement;
-import com.dosi.entities.UniteEnseignementId;
+import com.dosi.entities.*;
 import com.dosi.repositories.PromotionRepository;
 import com.dosi.services.EvaluationService;
 import com.dosi.services.UEService;
@@ -101,14 +98,20 @@ public class UEController extends BaseController<UniteEnseignement, UniteEnseign
             throw new ResponseStatusException(NOT_FOUND,"Désolé, nous n'avons pas pu trouver des évaluations pour l'unité d'enseignement que vous recherchez avec le code de formation " + id.getCodeFormation() +" et le code UE " +  id.getCodeUe() +" .");
         }
         Evaluation latestEvaluation = Collections.max(service.read(id).getEvaluationList(), Comparator.comparing(evaluation -> evaluation.getPromotion().getId().getAnneeUniversitaire()));
-//      //String newAcademicYear = ((UEService)service).getNextAcademicYear(latestEvaluation.getPromotion().getId().getAnneeUniversitaire());
         var newPromotionId = new PromotionId(latestEvaluation.getPromotion().getCodeFormation().getId(),annee);
         var newPromotion = promotionRepository.findById(newPromotionId);
         if ( !newPromotion.isPresent() )
         {
-            throw new ResponseStatusException(NOT_FOUND,"Désolé, nous n'avons pas pu trouver une promotion " + id.getCodeFormation() +"-" + newPromotionId.getAnneeUniversitaire() + " et le code UE " +  id.getCodeUe() +" .");
+            throw new ResponseStatusException(NOT_FOUND,"Désolé, nous n'avons pas pu trouver une promotion " + id.getCodeFormation() +"-" + newPromotionId.getAnneeUniversitaire() + " .");
         }
         latestEvaluation.setPromotion(newPromotion.get());
+
+        var lowerYear =annee.split("-")[0];
+
+        latestEvaluation.setDebutReponse(latestEvaluation.getDebutReponse().withYear(Integer.valueOf(lowerYear)));
+        latestEvaluation.setFinReponse(latestEvaluation.getFinReponse().withYear(Integer.valueOf(lowerYear)));
+        latestEvaluation.setEtat(Etat.ELA.toString());
+        latestEvaluation.setAnneeUniversitaire(annee);
         return latestEvaluation;
     }
 

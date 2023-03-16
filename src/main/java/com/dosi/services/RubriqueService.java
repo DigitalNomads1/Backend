@@ -11,4 +11,8 @@ public class RubriqueService extends BaseService<Rubrique, Integer> {
         super(rubriqueRepository);
     }
 
+
+    public Rubrique getRubriqueByDesignation(String designation) {
+        return ((RubriqueRepository)repository).findByDesignation(designation);
+    }
 }

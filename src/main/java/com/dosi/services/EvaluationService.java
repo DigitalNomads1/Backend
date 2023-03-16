@@ -143,4 +143,8 @@ public class EvaluationService extends BaseService<Evaluation, Integer> {
                 .doubleValue();
 //        return 1L;
     }
+
+    public List<Rubrique> findRubriquesNotInEvaluation(Integer evaluationId) {
+        return rubriqueRepository.findRubriquesNotInEvaluation(evaluationId);
+    }
 }

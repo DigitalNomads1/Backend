@@ -77,4 +77,9 @@ public class EvaluationController extends GlobalController<Evaluation, Integer> 
         return ((EvaluationService) service).calculerMoyenne(id);
     }
 
+    @GetMapping("/{id}/rubriques_not_in")
+    public List<Rubrique> getRubriquesNotInEvaluation(@PathVariable("id") Integer evaluationId) {
+        return ((EvaluationService)service).findRubriquesNotInEvaluation(evaluationId);
+    }
+
 }

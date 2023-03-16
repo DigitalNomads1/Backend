@@ -53,4 +53,13 @@ public class UEService extends BaseService<UniteEnseignement, UniteEnseignementI
           }
        }
 
+    public String getNextAcademicYear(String currentAcademicYear) {
+        String[] parts = currentAcademicYear.split("-");
+        int year1 = Integer.parseInt(parts[0]);
+        int year2 = Integer.parseInt(parts[1]);
+        int nextYear1 = year1 + 1;
+        int nextYear2 = year2 + 1;
+        return nextYear1 + "-" + nextYear2;
+    }
+
 }

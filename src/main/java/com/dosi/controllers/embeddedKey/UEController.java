@@ -2,8 +2,10 @@ package com.dosi.controllers.embeddedKey;
 
 import com.dosi.controllers.BaseController;
 import com.dosi.entities.Evaluation;
+import com.dosi.entities.PromotionId;
 import com.dosi.entities.UniteEnseignement;
 import com.dosi.entities.UniteEnseignementId;
+import com.dosi.repositories.PromotionRepository;
 import com.dosi.services.EvaluationService;
 import com.dosi.services.UEService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +31,9 @@ public class UEController extends BaseController<UniteEnseignement, UniteEnseign
 
     @Autowired
     EvaluationService evaluationService;
+
+    @Autowired
+    PromotionRepository promotionRepository;
 
     @Override
     public List<UniteEnseignement> getAll() {
@@ -84,21 +89,28 @@ public class UEController extends BaseController<UniteEnseignement, UniteEnseign
         }
     }
 
-    /*@GetMapping("/{formation}-{ue}/evaluations/latest")
-    public Evaluation getLatestEvaluation(@PathVariable String formation, @PathVariable String ue) {
+    @GetMapping("/{formation}-{annee}/{ue}/evaluations/latest")
+    public Evaluation getLatestEvaluation(@PathVariable String formation, @PathVariable String annee, @PathVariable String ue) {
         UniteEnseignementId id = UniteEnseignementId.builder()
                 .codeFormation(formation)
                 .codeUe(ue)
                 .build();
         if( service.read(id).getEvaluationList().isEmpty())
         {
-            throw new ResponseStatusException(NOT_FOUND,"Désolé, nous n'avons pas pu trouver des évaluations pour l'unité d'enseignement que vous recherchez avec le code de formation " + id.getCodeFormation() +" et le code UE " +  id.getCodeUe() +" .");;
+            throw new ResponseStatusException(NOT_FOUND,"Désolé, nous n'avons pas pu trouver des évaluations pour l'unité d'enseignement que vous recherchez avec le code de formation " + id.getCodeFormation() +" et le code UE " +  id.getCodeUe() +" .");
 
         }
         Evaluation latestEvaluation = Collections.max(service.read(id).getEvaluationList(), Comparator.comparing(evaluation -> evaluation.getPromotion().getId().getAnneeUniversitaire()));
-        latestEvaluation.getPromotion()
+//      //String newAcademicYear = ((UEService)service).getNextAcademicYear(latestEvaluation.getPromotion().getId().getAnneeUniversitaire());
+        var newPromotionId = new PromotionId(latestEvaluation.getPromotion().getCodeFormation().getId(),annee);
+        var newPromotion = promotionRepository.findById(newPromotionId);
+        if ( !newPromotion.isPresent() )
+        {
+            throw new ResponseStatusException(NOT_FOUND,"Désolé, nous n'avons pas pu trouver une promotion " + id.getCodeFormation() +"-" + newPromotionId.getAnneeUniversitaire() + " et le code UE " +  id.getCodeUe() +" .");
+        }
+        latestEvaluation.setPromotion(newPromotion.get());
         return latestEvaluation;
-    }*/
+    }
 
     @DeleteMapping("/{formation}-{ue}")
     public void delete(@PathVariable String formation, @PathVariable String ue) {

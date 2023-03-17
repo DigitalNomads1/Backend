@@ -20,13 +20,13 @@ public interface EvaluationRepository extends JpaRepository<Evaluation, Integer>
     List<Evaluation> findByEtatAndPromotion(String etat, Promotion promotion);
     List<Evaluation> findByPromotion( Promotion promotion);
 
-    @Query(value = "SELECT * FROM evaluation WHERE ETAT=:state ID_EVALUATION IN (SELECT e.ID_EVALUATION FROM ETUDIANT et, Evaluation e, PROMOTION p " +
+    @Query(value = "SELECT * FROM evaluation WHERE ETAT=:state AND ID_EVALUATION IN (SELECT e.ID_EVALUATION FROM ETUDIANT et, Evaluation e, PROMOTION p " +
             "WHERE ID_EVALUATION NOT IN (SELECT  e.ID_EVALUATION  FROM ETUDIANT et, Evaluation e, PROMOTION p, REPONSE_EVALUATION rp " +
             "WHERE et.NO_ETUDIANT=:studentId and et.annee_universitaire=p.annee_universitaire and et.code_formation=p.code_formation " +
             "AND e.code_formation=p.code_formation  and e.annee_universitaire=p.annee_universitaire " +
             "AND rp.id_evaluation=e.id_evaluation AND rp.no_etudiant=et.NO_ETUDIANT ) " +
             "AND et.NO_ETUDIANT=:studentId and et.annee_universitaire=p.annee_universitaire and et.code_formation=p.code_formation " +
             "AND e.code_formation=p.code_formation  and e.annee_universitaire=p.annee_universitaire)", nativeQuery = true)
-    List<Evaluation> findAllEvaluationsByStudentId(@Param("studentId") String studentId, @Param("etat") String state);
+    List<Evaluation> findAllEvaluationsByStudentId(@Param("studentId") String studentId, @Param("state") String state);
 
 }

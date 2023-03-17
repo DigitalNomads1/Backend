@@ -46,10 +46,11 @@ public class EvaluationController extends GlobalController<Evaluation, Integer> 
     }
 
 
-    @PostMapping("/publish")
-    public Identifiable publishEvaluation(Identifiable entity, BindingResult bindingResult) {
-        ((Evaluation)entity).setEtat(Etat.DIS.toString());
-        return super.create(entity, bindingResult);
+    @PostMapping("{id}/publish")
+    public Identifiable publishEvaluation(@PathVariable Integer id) {
+        var evaluation = ((EvaluationService)service).read(id);
+        evaluation.setEtat(Etat.DIS.toString());
+        return super.update(evaluation);
     }
 
     @GetMapping("/unpublished")

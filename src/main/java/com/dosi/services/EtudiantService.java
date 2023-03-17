@@ -1,5 +1,6 @@
 package com.dosi.services;
 
+import com.dosi.entities.Etat;
 import com.dosi.entities.Etudiant;
 import com.dosi.entities.Evaluation;
 import com.dosi.exceptions.ApplicationException;
@@ -88,8 +89,7 @@ public class EtudiantService extends BaseService<Etudiant, String> {
 
     public List<Evaluation> findAllEvaluationsByStudentId(String studentId){
         System.out.println(studentId);
-        System.out.println( evaluationRepository.findAllEvaluationsByStudentId(studentId));
-        return  evaluationRepository.findAllEvaluationsByStudentId(studentId);
+        return  evaluationRepository.findAllEvaluationsByStudentId(studentId, Etat.DIS.toString());
     }
 
 }

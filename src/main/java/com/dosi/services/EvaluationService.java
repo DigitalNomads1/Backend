@@ -2,12 +2,14 @@ package com.dosi.services;
 
 import com.dosi.entities.*;
 import com.dosi.repositories.*;
+import jakarta.persistence.EntityExistsException;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -30,9 +32,11 @@ public class EvaluationService extends BaseService<Evaluation, Integer> {
     ReponseQuestionRepository repQuesRepository;
     @Autowired
     RubriqueRepository rubriqueRepository;
-
     @Autowired
     RubriqueEvaluationRepository rubriqueEvaluationRepository;
+
+    @Autowired
+    QuestionEvaluationRepository questionEvaluationRepository;
     @Autowired
     public EvaluationService(EvaluationRepository evaluationRepository) {
         super(evaluationRepository);
@@ -46,6 +50,8 @@ public class EvaluationService extends BaseService<Evaluation, Integer> {
         entity.setUniteEnseignement(uniteEnseignementRepository.findById(entity.getUniteEnseignement().getId()).get());
         var evaluation = super.create(entity);
         entity.getListeRubriques().forEach( rubriqueEvaluation -> {
+            if( rubriqueEvaluationRepository.findByIdEvaluationAndIdRubrique(evaluation,rubriqueEvaluation.getIdRubrique()).isPresent() )
+                throw new EntityExistsException("La rubrique " +rubriqueEvaluation.getIdRubrique().getDesignation() + " déja existe pour cette évaluation!" );
             RubriqueEvaluation newRubriqueEvaluation = RubriqueEvaluation
                     .builder()
                     .idEvaluation(evaluation)
@@ -54,18 +60,56 @@ public class EvaluationService extends BaseService<Evaluation, Integer> {
                     .questionEvaluationList(rubriqueEvaluation.getQuestionEvaluationList())
                     .ordre(rubriqueEvaluation.getOrdre())
                     .build();
-//            System.out.println(rubriqueEvaluation);
-//            Rubrique rubrique = rubriqueRepository.findById(.getId()).orElseThrow(() -> new EntityNotFoundException("Rubrique not found"));
-//            newRubriqueEvaluation.setIdRubrique(rubrique);
-//            newRubriqueEvaluation.setIdEvaluation(evaluation);
+            newRubriqueEvaluation.getQuestionEvaluationList().forEach( questionEvaluation -> {
+                questionEvaluationRepository.save(questionEvaluation);
+            });
             rubriqueEvaluationRepository.save(newRubriqueEvaluation);
             System.out.println(newRubriqueEvaluation);
-//            Integer rubriqueId = rubriqueEvaluation.getIdRubrique().getId();
-//            Rubrique rubrique = rubriqueRepository.findById(rubriqueId).orElseThrow(() -> new EntityNotFoundException("Rubrique not found"));
-//            rubriqueEvaluation.setIdRubrique(rubrique);
         });
-//         evaluation.setListeRubriques( entity.getListeRubriques());
-         return evaluation;
+        return evaluation;
+    }
+
+    @Override
+    public Evaluation update(Evaluation entity) {
+        System.out.println("UPDATE----------------------");
+        System.out.println(entity);
+        System.out.println("-------------------------");
+        List<RubriqueEvaluation> newListeRubriques = new ArrayList<>();
+        entity.getListeRubriques().forEach( rubriqueEvaluation -> {
+            if( rubriqueEvaluationRepository.findByIdEvaluationAndIdRubrique(entity,rubriqueEvaluation.getIdRubrique()).isPresent() )
+                throw new EntityExistsException("La rubrique " +rubriqueEvaluation.getIdRubrique().getDesignation() + " existe déja dans cette évaluation!" );
+            rubriqueEvaluation.setId(null);
+            RubriqueEvaluation newRubriqueEvaluation = RubriqueEvaluation.builder()
+                    .idEvaluation(entity)
+                    .idRubrique(rubriqueEvaluation.getIdRubrique())
+                    .designation(rubriqueEvaluation.getDesignation())
+                    .questionEvaluationList(rubriqueEvaluation.getQuestionEvaluationList())
+                    .ordre(rubriqueEvaluation.getOrdre())
+                    .idEvaluation(entity)
+                    .build();
+
+            System.out.println();
+            RubriqueEvaluation finalNewRubriqueEvaluation = newRubriqueEvaluation;
+
+            System.out.println("5****************************************************************");
+            newRubriqueEvaluation = rubriqueEvaluationRepository.save(newRubriqueEvaluation);
+            newRubriqueEvaluation.getQuestionEvaluationList().forEach(questionEvaluation -> {
+                System.out.println("3****************************************************************");
+                questionEvaluation.setRubriqueEvaluation(finalNewRubriqueEvaluation);
+                System.out.println(questionEvaluation);
+                System.out.println(finalNewRubriqueEvaluation); // **********
+                QuestionEvaluation temp = questionEvaluationRepository.save(questionEvaluation);
+                System.out.println(temp);
+                System.out.println("4****************************************************************");
+
+            });
+            newListeRubriques.add(newRubriqueEvaluation);
+        });
+        System.out.println("6****************************************************************");
+
+        entity.setListeRubriques(null);
+        super.update(entity);
+        return super.read(entity.getId());
     }
 
     private void setMoyenne(List<Evaluation> evaluations)

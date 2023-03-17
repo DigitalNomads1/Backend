@@ -30,10 +30,20 @@ public class QuestionEvaluation implements Identifiable<Integer>{
     @Column(name = "INTITULE", length = 64)
     private String intitule;
 
-    @MapsId("rubriqueEvaluation")
+//    @MapsId("rubriqueEvaluation")
     @ManyToOne
     @JoinColumn(name = "ID_RUBRIQUE_EVALUATION", referencedColumnName = "ID_RUBRIQUE_EVALUATION")
     @JsonIgnoreProperties("questionEvaluationList")
     private RubriqueEvaluation rubriqueEvaluation;
 
+    @Override
+    public String toString() {
+        return "QuestionEvaluation{" +
+                "id=" + id +
+                ", idQuestion=" + idQuestion +
+                ", idQualificatif=" + idQualificatif +
+                ", ordre=" + ordre +
+                ", intitule='" + intitule + '\'' +
+                '}';
+    }
 }

@@ -27,4 +27,14 @@ public class Question implements Identifiable<Integer>{
     @Column(name = "INTITULE", nullable = false, length = 64)
     private String intitule;
 
+    @Override
+    public String toString() {
+        return "Question{" +
+                "id=" + id +
+                ", type='" + type + '\'' +
+                ", noEnseignant=" + noEnseignant +
+                ", idQualificatif=" + idQualificatif +
+                ", intitule='" + intitule + '\'' +
+                '}';
+    }
 }

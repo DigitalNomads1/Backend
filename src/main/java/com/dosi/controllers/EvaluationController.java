@@ -33,7 +33,7 @@ public class EvaluationController extends GlobalController<Evaluation, Integer> 
         return super.read(id);
     }
 
-    @PostMapping("/save")
+    @PostMapping("/update")
     public Evaluation create(@Valid @RequestBody Evaluation entity, BindingResult bindingResult) {
         // Custom implementation for create method
         System.out.println("Custom create method called" + entity);
@@ -41,8 +41,7 @@ public class EvaluationController extends GlobalController<Evaluation, Integer> 
         if (bindingResult.hasErrors()) {
             throw new ValidationException(bindingResult);
         }
-        ((EvaluationService)service).create(entity);
-        return (Evaluation)super.create(entity, bindingResult);
+        return (Evaluation)super.update(entity);
     }
 
 

@@ -3,7 +3,6 @@ package com.dosi.services;
 import com.dosi.entities.*;
 import com.dosi.repositories.*;
 import jakarta.persistence.EntityExistsException;
-import jakarta.persistence.EntityNotFoundException;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,7 +10,6 @@ import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
 
@@ -39,6 +37,7 @@ public class EvaluationService extends BaseService<Evaluation, Integer> {
 
     @Autowired
     QuestionEvaluationRepository questionEvaluationRepository;
+
     @Autowired
     public EvaluationService(EvaluationRepository evaluationRepository) {
         super(evaluationRepository);
@@ -51,16 +50,16 @@ public class EvaluationService extends BaseService<Evaluation, Integer> {
         var ue = uniteEnseignementRepository.findById(entity.getUniteEnseignement().getId()).get();
         entity.setUniteEnseignement(ue);
         Evaluation evaluation = null;
-        try{
+        try {
             evaluation = super.create(entity);
         } catch (Exception e) {
-            if( e.getMessage().contains("DOSI.EVE_EVE_UK"))
-            throw new EntityExistsException(  "Vous ne pouvez pas créer une nouvelle évaluation pour l'UE " +  ue.getId().getCodeUe() +" de la promotion " + ue.getCodeFormation().getId()+ "_" + entity.getAnneeUniversitaire() +" car une évaluation pour cette UE existe déjà.");
+            if (e.getMessage().contains("DOSI.EVE_EVE_UK"))
+                throw new EntityExistsException("Vous ne pouvez pas créer une nouvelle évaluation pour l'UE " + ue.getId().getCodeUe() + " de la promotion " + ue.getCodeFormation().getId() + "_" + entity.getAnneeUniversitaire() + " car une évaluation pour cette UE existe déjà.");
         }
         Evaluation finalEvaluation = evaluation;
         entity.getListeRubriques().forEach(rubriqueEvaluation -> {
-            if( rubriqueEvaluationRepository.findByIdEvaluationAndIdRubrique(finalEvaluation,rubriqueEvaluation.getIdRubrique()).isPresent() )
-                throw new EntityExistsException("La rubrique " +rubriqueEvaluation.getIdRubrique().getDesignation() + " déja existe pour cette évaluation!" );
+            if (rubriqueEvaluationRepository.findByIdEvaluationAndIdRubrique(finalEvaluation, rubriqueEvaluation.getIdRubrique()).isPresent())
+                throw new EntityExistsException("La rubrique " + rubriqueEvaluation.getIdRubrique().getDesignation() + " déja existe pour cette évaluation!");
             RubriqueEvaluation newRubriqueEvaluation = RubriqueEvaluation.builder()
                     .idEvaluation(finalEvaluation)
                     .idRubrique(rubriqueEvaluation.getIdRubrique())
@@ -87,51 +86,48 @@ public class EvaluationService extends BaseService<Evaluation, Integer> {
         return read(evaluation.getId());
     }
 
+    void performDeleteForQuestions(int idRubriqueEval) {
+        questionEvaluationRepository.deleteByIdRubriqueEvaluation(idRubriqueEval);
+    }
+
+    void performDeleteForRubriqueEvaluation(int idEval) {
+        rubriqueEvaluationRepository.findByIdEvaluation(idEval).forEach(rubEval -> {
+            performDeleteForQuestions(rubEval.getId());
+            rubriqueEvaluationRepository.deleteById(rubEval.getId());
+        });
+    }
+
     @Override
     public Evaluation update(Evaluation entity) {
         System.out.println("UPDATE----------------------");
         System.out.println(entity);
         System.out.println("-------------------------");
-        List<RubriqueEvaluation> newListeRubriques = new ArrayList<>();
-        entity.getListeRubriques().forEach( rubriqueEvaluation -> {
-            if( rubriqueEvaluationRepository.findByIdEvaluationAndIdRubrique(entity,rubriqueEvaluation.getIdRubrique()).isPresent() )
-                throw new EntityExistsException("La rubrique " +rubriqueEvaluation.getIdRubrique().getDesignation() + " existe déja dans cette évaluation!" );
-            rubriqueEvaluation.setId(null);
+        performDeleteForRubriqueEvaluation(entity.getId());
+        entity.getListeRubriques().forEach(rubriqueEvaluation -> {
+            System.out.println("RUBRIQUE EVALUATION " + rubriqueEvaluation);
+            System.out.println("INSIDE IF");
             RubriqueEvaluation newRubriqueEvaluation = RubriqueEvaluation.builder()
                     .idEvaluation(entity)
                     .idRubrique(rubriqueEvaluation.getIdRubrique())
                     .designation(rubriqueEvaluation.getDesignation())
                     .questionEvaluationList(rubriqueEvaluation.getQuestionEvaluationList())
                     .ordre(rubriqueEvaluation.getOrdre())
-                    .idEvaluation(entity)
                     .build();
-
-            System.out.println();
-            RubriqueEvaluation finalNewRubriqueEvaluation = newRubriqueEvaluation;
-
-            System.out.println("5****************************************************************");
             newRubriqueEvaluation = rubriqueEvaluationRepository.save(newRubriqueEvaluation);
-            newRubriqueEvaluation.getQuestionEvaluationList().forEach(questionEvaluation -> {
-                System.out.println("3****************************************************************");
-                questionEvaluation.setRubriqueEvaluation(finalNewRubriqueEvaluation);
-                System.out.println(questionEvaluation);
-                System.out.println(finalNewRubriqueEvaluation); // **********
-                QuestionEvaluation temp = questionEvaluationRepository.save(questionEvaluation);
-                System.out.println(temp);
-                System.out.println("4****************************************************************");
-
-            });
-            newListeRubriques.add(newRubriqueEvaluation);
+            for (QuestionEvaluation questionEvaluation : newRubriqueEvaluation.getQuestionEvaluationList()) {
+                QuestionEvaluation newQuestionEvaluation = QuestionEvaluation.builder()
+                        .idQuestion(questionEvaluation.getIdQuestion())
+                        .intitule(questionEvaluation.getIntitule())
+                        .ordre(questionEvaluation.getOrdre())
+                        .rubriqueEvaluation(newRubriqueEvaluation)
+                        .build();
+                questionEvaluationRepository.save(newQuestionEvaluation);
+            }
         });
-        System.out.println("6****************************************************************");
-
-        entity.setListeRubriques(null);
-        super.update(entity);
         return super.read(entity.getId());
     }
 
-    private void setMoyenne(List<Evaluation> evaluations)
-    {
+    private void setMoyenne(List<Evaluation> evaluations) {
         evaluations.forEach(evaluation -> {
             double moyenne = calculerMoyenne(evaluation.getId());
             evaluation.setMoyenne(moyenne);
@@ -144,7 +140,6 @@ public class EvaluationService extends BaseService<Evaluation, Integer> {
         setMoyenne(evaluations);
         return evaluations;
     }
-
 
 
     @Override
@@ -162,7 +157,7 @@ public class EvaluationService extends BaseService<Evaluation, Integer> {
     }
 
     public List<Evaluation> findEvaluationsPubliees() {
-        var evaluationsPubliees =  ((EvaluationRepository) repository).findByEtat(Etat.DIS.toString());
+        var evaluationsPubliees = ((EvaluationRepository) repository).findByEtat(Etat.DIS.toString());
         setMoyenne(evaluationsPubliees);
         return evaluationsPubliees;
     }
@@ -180,7 +175,7 @@ public class EvaluationService extends BaseService<Evaluation, Integer> {
         var promotion = findEvaluationsByPromotion(code_formation, annee_universitaire);
         var evalsByUeAndPromotion = promotion.stream()
                 .filter(e -> StringUtils.equals(e.getUniteEnseignement().getId().getCodeFormation(), code_formation)
-                        && StringUtils.equals( e.getUniteEnseignement().getId().getCodeUe(), codeUE ))
+                        && StringUtils.equals(e.getUniteEnseignement().getId().getCodeUe(), codeUE))
                 .toList();
 //        return ((EvaluationRepository)repository).findByEtatAndPromotion(Etat.DIS.toString(),promotion);
 //        var evaluationsPubliees =  ((EvaluationRepository) repository).findByEtat(Etat.DIS.toString());
@@ -192,7 +187,8 @@ public class EvaluationService extends BaseService<Evaluation, Integer> {
     }
 
     public double calculerMoyenne(Integer id) {
-        List<ReponseEvaluation> reponsesEvaluation = repRepository.findByidEvaluation(repository.findById(id).get());;
+        List<ReponseEvaluation> reponsesEvaluation = repRepository.findByidEvaluation(repository.findById(id).get());
+        ;
         if (reponsesEvaluation == null || reponsesEvaluation.isEmpty()) {
             return 0;
         }
@@ -206,7 +202,7 @@ public class EvaluationService extends BaseService<Evaluation, Integer> {
                     .mapToLong(ReponseQuestion::getPositionnement)
                     .filter(Objects::nonNull)
                     .sum();
-            if( reponsesQuestion.size() > 0 )
+            if (reponsesQuestion.size() > 0)
                 avg += sumPositionnement / reponsesQuestion.size();
         }
         return BigDecimal.valueOf(avg)

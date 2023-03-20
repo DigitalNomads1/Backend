@@ -42,4 +42,14 @@ public class Rubrique implements Identifiable<Integer>{
     public Rubrique(Integer id) {
         this.id = id;
     }
+
+    @Override
+    public String toString() {
+        return "Rubrique{" +
+                "id=" + id +
+                ", type='" + type + '\'' +
+                ", designation='" + designation + '\'' +
+                ", ordre=" + ordre +
+                '}';
+    }
 }

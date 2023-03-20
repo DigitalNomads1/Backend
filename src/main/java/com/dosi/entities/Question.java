@@ -1,5 +1,6 @@
 package com.dosi.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -22,6 +23,7 @@ public class Question implements Identifiable<Integer>{
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "ID_QUALIFICATIF", nullable = false)
+    @JsonIgnoreProperties({"hibernateLazyInitializer"})
     private Qualificatif idQualificatif;
 
     @Column(name = "INTITULE", nullable = false, length = 64)

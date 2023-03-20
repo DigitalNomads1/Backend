@@ -70,18 +70,8 @@ public class Promotion implements Identifiable<PromotionId>{
     @Column(name = "COMMENTAIRE")
     private String commentaire;
 
-
-    /*@OneToMany(mappedBy = "promotion",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JsonIgnoreProperties("promotion")
-    private List<Etudiant> listEtudiants = new ArrayList<>();
-
-
-    @OneToMany(mappedBy = "promotion",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JsonIgnoreProperties("promotion")
-    private List<Candidat> listCandidats = new ArrayList<>();*/
-
-    @OneToMany(mappedBy = "promotion",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JsonIgnoreProperties("promotion")
+    @OneToMany(mappedBy = "promotion")
+    @JsonIgnoreProperties({"promotion","hibernateLazyInitializer","handler"})
     private List<Evaluation> listEvaluations;
 
     @Override

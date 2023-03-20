@@ -16,6 +16,7 @@ import java.util.List;
 @Setter
 @Entity
 @Table(name = "EVALUATION")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Evaluation implements Identifiable<Integer>{
     @Id
     @Column(name = "ID_EVALUATION", nullable = false)
@@ -68,7 +69,7 @@ public class Evaluation implements Identifiable<Integer>{
     @ManyToOne
     @JoinColumn(name = "ANNEE_UNIVERSITAIRE", nullable = false, insertable=false, updatable=false)
     @JoinColumn(name = "CODE_FORMATION", nullable = false, insertable=false, updatable=false)
-    @JsonIgnoreProperties({"listEvaluations","hibernateLazyInitializer","codeFormation"})
+    @JsonIgnoreProperties({"listEvaluations","hibernateLazyInitializer","codeFormation", "handler"})
     private Promotion promotion;
 
     @Transient

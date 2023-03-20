@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
 
@@ -60,21 +61,30 @@ public class EvaluationService extends BaseService<Evaluation, Integer> {
         entity.getListeRubriques().forEach(rubriqueEvaluation -> {
             if( rubriqueEvaluationRepository.findByIdEvaluationAndIdRubrique(finalEvaluation,rubriqueEvaluation.getIdRubrique()).isPresent() )
                 throw new EntityExistsException("La rubrique " +rubriqueEvaluation.getIdRubrique().getDesignation() + " déja existe pour cette évaluation!" );
-            RubriqueEvaluation newRubriqueEvaluation = RubriqueEvaluation
-                    .builder()
+            RubriqueEvaluation newRubriqueEvaluation = RubriqueEvaluation.builder()
                     .idEvaluation(finalEvaluation)
                     .idRubrique(rubriqueEvaluation.getIdRubrique())
                     .designation(rubriqueEvaluation.getDesignation())
                     .questionEvaluationList(rubriqueEvaluation.getQuestionEvaluationList())
                     .ordre(rubriqueEvaluation.getOrdre())
                     .build();
-            newRubriqueEvaluation.getQuestionEvaluationList().forEach( questionEvaluation -> {
-                questionEvaluationRepository.save(questionEvaluation);
-            });
-            rubriqueEvaluationRepository.save(newRubriqueEvaluation);
+            List<QuestionEvaluation> questionEvaluationList = newRubriqueEvaluation.getQuestionEvaluationList();
+            List<QuestionEvaluation> copyOfQuestionEvaluationList = new ArrayList<>(questionEvaluationList); // create a copy of the list
+            System.out.println(copyOfQuestionEvaluationList);
+            newRubriqueEvaluation = rubriqueEvaluationRepository.save(newRubriqueEvaluation);
+            for (QuestionEvaluation questionEvaluation : copyOfQuestionEvaluationList) {
+                QuestionEvaluation newQuestionEvaluation = QuestionEvaluation.builder()
+                        .idQuestion(questionEvaluation.getIdQuestion())
+                        .intitule(questionEvaluation.getIntitule())
+                        .ordre(questionEvaluation.getOrdre())
+                        .rubriqueEvaluation(newRubriqueEvaluation)
+                        .build();
+                System.out.println(newQuestionEvaluation);
+                questionEvaluationRepository.save(newQuestionEvaluation);
+            }
             System.out.println(newRubriqueEvaluation);
         });
-        return evaluation;
+        return read(evaluation.getId());
     }
 
     @Override

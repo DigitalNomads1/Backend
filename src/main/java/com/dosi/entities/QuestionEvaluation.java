@@ -2,12 +2,14 @@ package com.dosi.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 @Table(name = "QUESTION_EVALUATION")
 public class QuestionEvaluation implements Identifiable<Integer>{
     @Id

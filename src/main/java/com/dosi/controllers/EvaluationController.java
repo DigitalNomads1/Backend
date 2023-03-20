@@ -1,6 +1,7 @@
 package com.dosi.controllers;
 
 import com.dosi.entities.*;
+import com.dosi.exceptions.ApplicationException;
 import com.dosi.exceptions.ValidationException;
 import com.dosi.services.EvaluationService;
 import jakarta.validation.Valid;
@@ -48,6 +49,10 @@ public class EvaluationController extends GlobalController<Evaluation, Integer> 
     @PostMapping("{id}/publish")
     public Identifiable publishEvaluation(@PathVariable Integer id) {
         var evaluation = ((EvaluationService)service).read(id);
+        if( evaluation.getListeRubriques() != null && evaluation.getListeRubriques().isEmpty())
+        {
+            throw new ApplicationException("Vous ne pouvez pas créer une évaluation sans ajouter des rubriques correspondantes. Veuillez ajouter au moins une rubrique avant de créer l'évaluation.");
+        }
         evaluation.setEtat(Etat.DIS.toString());
         return super.update(evaluation);
     }

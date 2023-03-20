@@ -7,6 +7,9 @@ import com.dosi.repositories.ReponseEvaluationRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -16,8 +19,18 @@ public class QuestionService extends BaseService<Question, Integer> {
         super(questionRepository);
     }
 
-    public Map<Integer, Integer> getAllAvgOfQuestions( Integer idEval) {
-        return ((QuestionRepository)repository).findAvgOfEveryQuestion(idEval);
+    public List<Map> getAllAvgOfQuestions(Integer idEval) {
+        System.out.println(((QuestionRepository)repository).findAvgOfEveryQuestion(idEval));
+        List<Map> list = new ArrayList<Map>();
+        ((QuestionRepository)repository).findAvgOfEveryQuestion(idEval).forEach( question ->
+                {
+                    Map map = new HashMap();
+                    map.put("id_question", question.get(0));
+                    map.put("moyenne", question.get(1));
+                    list.add(map);
+                }
+                );
+        return list;
     }
 
 }

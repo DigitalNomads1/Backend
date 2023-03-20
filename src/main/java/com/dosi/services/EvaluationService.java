@@ -45,16 +45,23 @@ public class EvaluationService extends BaseService<Evaluation, Integer> {
     @Override
     public Evaluation create(Evaluation entity) {
 
-        System.out.println("*******" + entity);
         entity.setNoEnseignant(enseignantRepository.findById(entity.getNoEnseignant().getId()).get());
-        entity.setUniteEnseignement(uniteEnseignementRepository.findById(entity.getUniteEnseignement().getId()).get());
-        var evaluation = super.create(entity);
-        entity.getListeRubriques().forEach( rubriqueEvaluation -> {
-            if( rubriqueEvaluationRepository.findByIdEvaluationAndIdRubrique(evaluation,rubriqueEvaluation.getIdRubrique()).isPresent() )
+        var ue = uniteEnseignementRepository.findById(entity.getUniteEnseignement().getId()).get();
+        entity.setUniteEnseignement(ue);
+        Evaluation evaluation = null;
+        try{
+            evaluation = super.create(entity);
+        } catch (Exception e) {
+            if( e.getMessage().contains("DOSI.EVE_EVE_UK"))
+            throw new EntityExistsException(  "Vous ne pouvez pas créer une nouvelle évaluation pour l'UE " +  ue.getId().getCodeUe() +" de la promotion " + ue.getCodeFormation().getId()+ "_" + entity.getAnneeUniversitaire() +" car une évaluation pour cette UE existe déjà.");
+        }
+        Evaluation finalEvaluation = evaluation;
+        entity.getListeRubriques().forEach(rubriqueEvaluation -> {
+            if( rubriqueEvaluationRepository.findByIdEvaluationAndIdRubrique(finalEvaluation,rubriqueEvaluation.getIdRubrique()).isPresent() )
                 throw new EntityExistsException("La rubrique " +rubriqueEvaluation.getIdRubrique().getDesignation() + " déja existe pour cette évaluation!" );
             RubriqueEvaluation newRubriqueEvaluation = RubriqueEvaluation
                     .builder()
-                    .idEvaluation(evaluation)
+                    .idEvaluation(finalEvaluation)
                     .idRubrique(rubriqueEvaluation.getIdRubrique())
                     .designation(rubriqueEvaluation.getDesignation())
                     .questionEvaluationList(rubriqueEvaluation.getQuestionEvaluationList())

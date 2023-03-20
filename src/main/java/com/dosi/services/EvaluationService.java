@@ -101,7 +101,6 @@ public class EvaluationService extends BaseService<Evaluation, Integer> {
     public Evaluation update(Evaluation entity) {
         performDeleteForRubriqueEvaluation(entity.getId());
         entity.getListeRubriques().forEach(rubriqueEvaluation -> {
-            System.out.println("RUBRIQUE EVALUATION " + rubriqueEvaluation);
             RubriqueEvaluation newRubriqueEvaluation = RubriqueEvaluation.builder()
                     .idEvaluation(entity)
                     .idRubrique(rubriqueEvaluation.getIdRubrique())
@@ -120,7 +119,9 @@ public class EvaluationService extends BaseService<Evaluation, Integer> {
                 questionEvaluationRepository.save(newQuestionEvaluation);
             }
         });
-        System.out.println(entity.getPromotion());
+
+        System.out.println(entity);
+        entity.setPromotion(promotionRepository.findById( new PromotionId( entity.getUniteEnseignement().getId().getCodeFormation(), entity.getAnneeUniversitaire())).get());
         super.update(entity);
         return super.read(entity.getId());
     }

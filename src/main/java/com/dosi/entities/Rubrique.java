@@ -35,6 +35,10 @@ public class Rubrique implements Identifiable<Integer>{
     @JsonIgnoreProperties({"idEvaluation"})
     private List<RubriqueEvaluation> listeRubriques;
 
+    @OneToMany(mappedBy = "idRubrique",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JsonIgnoreProperties({"idEvaluation","idRubrique"})
+    private List<RubriqueQuestion> listeQuestions;
+
     public Rubrique(Integer id) {
         this.id = id;
     }

@@ -4,6 +4,7 @@ import com.dosi.entities.*;
 import com.dosi.repositories.*;
 import jakarta.persistence.EntityExistsException;
 import jakarta.persistence.EntityNotFoundException;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -162,9 +163,18 @@ public class EvaluationService extends BaseService<Evaluation, Integer> {
                 .codeFormation(code_formation)
                 .anneeUniversitaire(annee_universitaire)
                 .build()).get();
-//        return ((EvaluationRepository)repository).findByEtatAndPromotion(Etat.DIS.toString(),promotion);
-        var evaluationsPubliees =  ((EvaluationRepository) repository).findByEtat(Etat.DIS.toString());
         return ((EvaluationRepository) repository).findByPromotion(promotion);
+    }
+
+    public List<Evaluation> findEvaluationsByPromotionAndUE(String code_formation, String annee_universitaire, String codeUE) {
+        var promotion = findEvaluationsByPromotion(code_formation, annee_universitaire);
+        var evalsByUeAndPromotion = promotion.stream()
+                .filter(e -> StringUtils.equals(e.getUniteEnseignement().getId().getCodeFormation(), code_formation)
+                        && StringUtils.equals( e.getUniteEnseignement().getId().getCodeUe(), codeUE ))
+                .toList();
+//        return ((EvaluationRepository)repository).findByEtatAndPromotion(Etat.DIS.toString(),promotion);
+//        var evaluationsPubliees =  ((EvaluationRepository) repository).findByEtat(Etat.DIS.toString());
+        return evalsByUeAndPromotion;
     }
 
     public List<ReponseEvaluation> findAllReponses(Integer id) {

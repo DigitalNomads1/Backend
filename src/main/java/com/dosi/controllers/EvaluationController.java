@@ -72,6 +72,11 @@ public class EvaluationController extends GlobalController<Evaluation, Integer> 
         return ((EvaluationService) service).findEvaluationsByPromotion(code_formation, annee_universitaire);
     }
 
+    @GetMapping("/promotion/{code_formation}_{annee_universitaire}/{ue}")
+    public List<Evaluation> findEvaluationsByPromotionAndUE(@PathVariable String code_formation, @PathVariable String annee_universitaire, @PathVariable String codeUE) {
+        return ((EvaluationService) service).findEvaluationsByPromotionAndUE(code_formation, annee_universitaire, codeUE);
+    }
+
     @GetMapping("/{id}/reponses")
     public List<ReponseEvaluation> getAllAnswers(@PathVariable Integer id) {
         return ((EvaluationService) service).findAllReponses(id);

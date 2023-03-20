@@ -15,8 +15,6 @@ public interface EvaluationRepository extends JpaRepository<Evaluation, Integer>
 
     List<Evaluation> findByEtat(String etat);
 
-    List<Evaluation> findAllByUniteEnseignement_CodeFormation(String codeFormation);
-
     List<Evaluation> findByEtatAndPromotion(String etat, Promotion promotion);
     List<Evaluation> findByPromotion( Promotion promotion);
 

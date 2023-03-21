@@ -92,14 +92,16 @@ public class EvaluationService extends BaseService<Evaluation, Integer> {
 
     void performDeleteForRubriqueEvaluation(int idEval) {
         rubriqueEvaluationRepository.findByIdEvaluation(idEval).forEach(rubEval -> {
+            System.out.println(rubEval.getId());
             performDeleteForQuestions(rubEval.getId());
-            rubriqueEvaluationRepository.deleteById(rubEval.getId());
         });
+        rubriqueEvaluationRepository.deleteByIdEvaluation(idEval);
     }
 
     @Override
     public Evaluation update(Evaluation entity) {
         performDeleteForRubriqueEvaluation(entity.getId());
+        List<RubriqueEvaluation> newRubriqueEvaluationList = new ArrayList<>();
         entity.getListeRubriques().forEach(rubriqueEvaluation -> {
             RubriqueEvaluation newRubriqueEvaluation = RubriqueEvaluation.builder()
                     .idEvaluation(entity)
@@ -109,18 +111,20 @@ public class EvaluationService extends BaseService<Evaluation, Integer> {
                     .ordre(rubriqueEvaluation.getOrdre())
                     .build();
             newRubriqueEvaluation = rubriqueEvaluationRepository.save(newRubriqueEvaluation);
-            for (QuestionEvaluation questionEvaluation : newRubriqueEvaluation.getQuestionEvaluationList()) {
+            var questionsList = List.copyOf(newRubriqueEvaluation.getQuestionEvaluationList());
+            for (QuestionEvaluation questionEvaluation : questionsList) {
                 QuestionEvaluation newQuestionEvaluation = QuestionEvaluation.builder()
                         .idQuestion(questionEvaluation.getIdQuestion())
                         .intitule(questionEvaluation.getIntitule())
                         .ordre(questionEvaluation.getOrdre())
                         .rubriqueEvaluation(newRubriqueEvaluation)
                         .build();
-                questionEvaluationRepository.save(newQuestionEvaluation);
+                newRubriqueEvaluation.getQuestionEvaluationList().add(questionEvaluationRepository.save(newQuestionEvaluation));
             }
+            newRubriqueEvaluationList.add(newRubriqueEvaluation);
         });
 
-        System.out.println(entity);
+        entity.setListeRubriques(newRubriqueEvaluationList);
         entity.setPromotion(promotionRepository.findById( new PromotionId( entity.getUniteEnseignement().getId().getCodeFormation(), entity.getAnneeUniversitaire())).get());
         super.update(entity);
         return super.read(entity.getId());

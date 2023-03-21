@@ -18,14 +18,14 @@ public interface RubriqueRepository extends JpaRepository<Rubrique, Integer> {
             "WHERE re.idEvaluation.id = :eval) ORDER BY r.ordre")
     List<Rubrique> findRubriquesNotInEvaluation(@Param("eval") Integer eval);
 
-    @Query(value = "SELECT re.id_rubrique, ROUND(AVG(positionnement), 2) positionnement " +
-            "FROM rubrique r, evaluation e, rubrique_evaluation re, question_evaluation qe, reponse_question rq " +
+    @Query(value = "SELECT qe.id_rubrique_evaluation ,ROUND(AVG(positionnement),2) positionnement " +
+            "FROM reponse_question rp, REPONSE_EVALUATION re, Question_EVALUATION qe, EVALUATION e , RUBRIQUE_EVALUATION rubEval " +
             "WHERE e.id_evaluation = :id_evaluation " +
+            "AND rp.id_question_evaluation = qe.id_question_evaluation AND rp.id_reponse_evaluation = re.id_reponse_evaluation " +
             "AND re.id_evaluation = e.id_evaluation " +
-            "AND re.id_rubrique = r.id_rubrique " +
-            "AND qe.id_rubrique_evaluation = re.id_rubrique_evaluation " +
-            "AND qe.id_question_evaluation = rq.id_question_evaluation " +
-            "GROUP BY re.id_rubrique", nativeQuery = true)
+            "AND qe.id_rubrique_evaluation=rubEval.id_rubrique_evaluation " +
+            "GROUP BY ( qe.id_rubrique_evaluation) " +
+            "ORDER BY qe.id_rubrique_evaluation", nativeQuery = true)
     List<List> findAvgOfEveryRubrique(@Param("id_evaluation") Integer id_evaluation);
 
 }

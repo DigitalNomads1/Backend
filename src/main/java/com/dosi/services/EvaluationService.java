@@ -51,6 +51,7 @@ public class EvaluationService extends BaseService<Evaluation, Integer> {
         entity.setUniteEnseignement(ue);
         Evaluation evaluation = null;
         try {
+            entity.setEtat(Etat.ELA.toString());
             evaluation = super.create(entity);
         } catch (Exception e) {
             if (e.getMessage().contains("DOSI.EVE_EVE_UK"))
@@ -100,6 +101,7 @@ public class EvaluationService extends BaseService<Evaluation, Integer> {
 
     @Override
     public Evaluation update(Evaluation entity) {
+        System.out.println(entity);
         performDeleteForRubriqueEvaluation(entity.getId());
         List<RubriqueEvaluation> newRubriqueEvaluationList = new ArrayList<>();
         entity.getListeRubriques().forEach(rubriqueEvaluation -> {
@@ -107,7 +109,7 @@ public class EvaluationService extends BaseService<Evaluation, Integer> {
                     .idEvaluation(entity)
                     .idRubrique(rubriqueEvaluation.getIdRubrique())
                     .designation(rubriqueEvaluation.getDesignation())
-                    .questionEvaluationList(rubriqueEvaluation.getQuestionEvaluationList())
+                    .questionEvaluationList(new ArrayList<>(rubriqueEvaluation.getQuestionEvaluationList()))
                     .ordre(rubriqueEvaluation.getOrdre())
                     .build();
             newRubriqueEvaluation = rubriqueEvaluationRepository.save(newRubriqueEvaluation);
@@ -149,6 +151,9 @@ public class EvaluationService extends BaseService<Evaluation, Integer> {
     public Evaluation read(Integer id) {
         var evaluation = super.read(id);
         double moyenne = calculerMoyenne(evaluation.getId());
+        System.out.println(evaluation);
+        System.out.println(evaluation.getListeRubriques());
+        System.out.println("MOYENNE :" + moyenne);
         evaluation.setMoyenne(moyenne);
         return evaluation;
     }
@@ -189,29 +194,15 @@ public class EvaluationService extends BaseService<Evaluation, Integer> {
         return repRepository.findByidEvaluation(repository.findById(id).get());
     }
 
-    public double calculerMoyenne(Integer id) {
-        List<ReponseEvaluation> reponsesEvaluation = repRepository.findByidEvaluation(repository.findById(id).get());
-        ;
-        if (reponsesEvaluation == null || reponsesEvaluation.isEmpty()) {
+    public double calculerMoyenne(Integer idEval) {
+        List<List> avgRub  = rubriqueRepository.findAvgOfEveryRubrique(idEval);
+        if( avgRub.isEmpty())
             return 0;
-        }
-
-        double sumPositionnement = 0;
-        double avg = 0;
-        for (ReponseEvaluation reponseEvaluation : reponsesEvaluation) {
-            List<ReponseQuestion> reponsesQuestion = reponseEvaluation.getReponseQuestionList();
-            sumPositionnement = reponseEvaluation.getReponseQuestionList()
-                    .stream()
-                    .mapToLong(ReponseQuestion::getPositionnement)
-                    .filter(Objects::nonNull)
-                    .sum();
-            if (reponsesQuestion.size() > 0)
-                avg += sumPositionnement / reponsesQuestion.size();
-        }
-        return BigDecimal.valueOf(avg)
-                .setScale(2, RoundingMode.HALF_UP)
-                .doubleValue();
-//        return 1L;
+        var avg = avgRub.stream()
+                .map(l -> ((BigDecimal)l.get(1)).doubleValue() )
+                .mapToDouble(Double::doubleValue)
+                .sum() /avgRub.size() ;
+        return avg;
     }
 
     public List<Rubrique> findRubriquesNotInEvaluation(Integer evaluationId) {

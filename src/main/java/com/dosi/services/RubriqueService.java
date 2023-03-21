@@ -33,6 +33,7 @@ public class RubriqueService extends BaseService<Rubrique, Integer> {
                     list.add(map);
                 }
         );
+        System.out.println(list);
         return list;
     }
 }

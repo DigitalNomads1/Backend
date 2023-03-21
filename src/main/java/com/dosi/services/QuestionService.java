@@ -25,8 +25,8 @@ public class QuestionService extends BaseService<Question, Integer> {
         ((QuestionRepository)repository).findAvgOfEveryQuestion(idEval).forEach( question ->
                 {
                     Map map = new HashMap();
-                    map.put("id_question", question.get(0));
-                    map.put("moyenne", question.get(1));
+                    map.put("id_question", question.get(1));
+                    map.put("moyenne", question.get(2));
                     list.add(map);
                 }
                 );

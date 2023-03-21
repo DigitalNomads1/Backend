@@ -28,9 +28,6 @@ public class EvaluationController extends GlobalController<Evaluation, Integer> 
     @Override
     @GetMapping("/{id}")
     public Evaluation read(@PathVariable Integer id) {
-        ((EvaluationService)service).read(id).getListeRubriques().forEach( rubriqueEvaluation -> {
-            System.out.println(rubriqueEvaluation.getQuestionEvaluationList());
-        });
         return super.read(id);
     }
 
@@ -53,6 +50,7 @@ public class EvaluationController extends GlobalController<Evaluation, Integer> 
         {
             throw new ApplicationException("Vous ne pouvez pas créer une évaluation sans ajouter des rubriques correspondantes. Veuillez ajouter au moins une rubrique avant de créer l'évaluation.");
         }
+        System.out.println("NOT THROWING: " + evaluation);
         evaluation.setEtat(Etat.DIS.toString());
         return super.update(evaluation);
     }

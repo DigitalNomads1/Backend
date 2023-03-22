@@ -105,8 +105,12 @@ public class UEController extends BaseController<UniteEnseignement, UniteEnseign
             throw new ResponseStatusException(NOT_FOUND,"Désolé, nous n'avons pas pu trouver une promotion " + id.getCodeFormation() +"-" + newPromotionId.getAnneeUniversitaire() + " .");
         }
         latestEvaluation.setPromotion(newPromotion.get());
-
-        var lowerYear =annee.split("-")[0];
+        var years = annee.split("-");
+        var lowerYear =years[0];
+        if( latestEvaluation.getDebutReponse() != null  ){
+            if(! latestEvaluation.getDebutReponse().equals(Integer.valueOf(lowerYear)))
+                lowerYear = years[1];
+        }
 
         latestEvaluation.setDebutReponse(latestEvaluation.getDebutReponse().withYear(Integer.valueOf(lowerYear)));
         latestEvaluation.setFinReponse(latestEvaluation.getFinReponse().withYear(Integer.valueOf(lowerYear)));

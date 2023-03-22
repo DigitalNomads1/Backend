@@ -63,7 +63,7 @@ public abstract class BaseService<T extends Identifiable, K> {
     public void delete(K id) {
         var entity = repository.findById(id);
         if (!entity.isPresent()) {
-            throw new ResponseStatusException(NOT_FOUND, "La ressource avec l'identifiant " + id + " n'a pas été trouvée.");
+            throw new ResponseStatusException(NOT_FOUND, "La ressource n'a pas été trouvée.");
         }
     }
 }

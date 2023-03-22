@@ -20,7 +20,7 @@ public class PromotionController extends BaseController<Promotion, PromotionId> 
     public PromotionController(PromotionService promotionService) {
         super(promotionService);
     }
-    @GetMapping("/{formation}-{annee}")
+    @GetMapping("/{formation}_{annee}")
     public Promotion read(@PathVariable String annee, @PathVariable String formation) {
         PromotionId id= PromotionId.builder()
                 .anneeUniversitaire(annee)
@@ -38,14 +38,14 @@ public class PromotionController extends BaseController<Promotion, PromotionId> 
         return service.read(id);
     }
 */
-    @DeleteMapping("/{formation}-{annee}")
+    @DeleteMapping("/{formation}_{annee}")
     public void delete(@PathVariable String annee, @PathVariable String formation) {
         PromotionId id= PromotionId.builder()
                 .anneeUniversitaire(annee)
                 .codeFormation(formation)
                 .build();
-//            promotionService.deleteByEmbeddedId(id.getAnneeUniversitaire(), id.getCodeFormation());
-
+        System.out.println(id);
+        promotionService.delete(id);
     }
 
   /*  @DeleteMapping("/{annee}-{formation}")

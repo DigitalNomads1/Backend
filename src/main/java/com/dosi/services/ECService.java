@@ -19,9 +19,11 @@ public class ECService extends BaseService<ElementConstitutif, ElementConstituti
     public void delete(ElementConstitutifId id) {
         super.delete(id);
         try {
-            repository.deleteById(id);
+            ((ElementConstitutifRepository)repository).deleteByCodeFormationAndCodeUEANDCodeEC(id.getCodeFormation(), id.getCodeUe(), id.getCodeEc());
         } catch (Exception e) {
-            throw new ApplicationException("Veuillez vérifier les données enregistrées");
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+            throw new ApplicationException("Une erreur est survenue lors de traiement de votre requête. Veuillez réessayer plus tard.");
         }
     }
 }
